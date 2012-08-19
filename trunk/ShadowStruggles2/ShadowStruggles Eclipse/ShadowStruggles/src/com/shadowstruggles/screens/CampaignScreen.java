@@ -7,6 +7,7 @@ import com.shadostruggles.games.Test;
 import com.shadowstruggles.Controller;
 import com.shadowstruggles.ShadowStruggles;
 
+
 public class CampaignScreen extends BaseScreen {
 	private ShadowStruggles game;
 	private TextButton test;

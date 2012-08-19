@@ -8,6 +8,7 @@ public class Deck{
 	private int maxCapacity=30;
 	private Array<Card> cards;
 	private Image deckImage;
+	private int deckNumber;
 	
 	public Deck() {
 		this.cards = null;

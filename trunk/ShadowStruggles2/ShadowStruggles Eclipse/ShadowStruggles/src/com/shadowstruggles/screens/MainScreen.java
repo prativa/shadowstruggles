@@ -1,15 +1,13 @@
 package com.shadowstruggles.screens;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.Texture.TextureFilter;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.shadowstruggles.Controller;
 import com.shadowstruggles.ShadowStruggles;
+import com.shadowstruggles.tools.DataManager;
+
 
 public class MainScreen extends BaseScreen {
 	private Texture texture;
@@ -30,8 +28,11 @@ public class MainScreen extends BaseScreen {
 		super.resize(width, height);
 		initComponents();
 	}
+	
+	
 
 	private void initComponents() {
+		
 		campaign = new TextButton("Campaign", super.getSkin());
 		campaign.width = width / 4 * 2;
 		campaign.height = height / 6;

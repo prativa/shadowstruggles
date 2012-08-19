@@ -8,7 +8,7 @@ public class BattlePlatform {
 	private Deck playerDeck;
 	private Deck enemyDeck;
 	private Map map;
-	private DefaultRules Rules;
+	private DefaultRules rules;
 	private Array<Card> playerDestroyedCards;
 	private Array<Card> enemyDestroyedCards;
 	
@@ -19,7 +19,7 @@ public class BattlePlatform {
 		this.playerDeck = playerDeck;
 		this.enemyDeck = enemyDeck;
 		this.map = map;
-		Rules = rules;
+		this.rules = rules;
 	}
 
 	public Enemy getEnemy() {
@@ -55,11 +55,11 @@ public class BattlePlatform {
 	}
 
 	public DefaultRules getRules() {
-		return Rules;
+		return this.rules;
 	}
 
 	public void setRules(DefaultRules rules) {
-		Rules = rules;
+		this.rules = rules;
 	}
 
 	public Array<Card> getPlayerDestroyedCards() {

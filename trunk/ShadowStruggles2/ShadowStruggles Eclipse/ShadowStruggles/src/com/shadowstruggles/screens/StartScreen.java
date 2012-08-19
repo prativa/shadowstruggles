@@ -10,6 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.shadowstruggles.Controller;
 import com.shadowstruggles.ShadowStruggles;
 
+
 public class StartScreen extends BaseScreen{
 	
 	private Texture texture;	
@@ -20,13 +21,6 @@ public class StartScreen extends BaseScreen{
 		super(game, controller);		
 	}	
 	
-	@Override
-	public void show() {	
-		super.show();
-		texture=new Texture(Gdx.files.internal("data/images/controls/botao.png"));
-		texture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
-	}
-	
 	
 	@Override
 	public void resize(int width, int height) {		
@@ -36,6 +30,8 @@ public class StartScreen extends BaseScreen{
 	
 	public void initComponents(){
 		stage.clear();		
+		texture=new Texture(Gdx.files.internal("data/images/controls/botao.png"));
+		texture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
 		continueGame = new TextButton("Continuar",super.getSkin());
 		continueGame.width = width/4*2;
 		continueGame.height = height/3;			
@@ -57,23 +53,13 @@ public class StartScreen extends BaseScreen{
 			
 			@Override
 			public void click(Actor arg0, float arg1, float arg2) {				
-				System.out.println("Função não implementada");
+				game.setScreen(game.getStrt());
 			}
 		});       
         stage.addActor( continueGame );
         stage.addActor(newGame);
 		
-	}
-	
-	
-	@Override
-	public void hide() {		
-		super.hide();
-	}
-	@Override
-	public void dispose() {		
-		super.dispose();
-	}
+	}	
 	
 
 }

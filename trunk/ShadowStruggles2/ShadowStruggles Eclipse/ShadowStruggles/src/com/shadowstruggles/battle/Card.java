@@ -24,6 +24,8 @@ public class Card{
 		this.sprite = null;
 		this.cardIlustration = null;
 	}
+	
+	
 
 
 	public Card(int type, int energyCost, String description, int buyCost,
@@ -102,5 +104,6 @@ public class Card{
 	public void setCardIlustration(Image cardIlustration) {
 		this.cardIlustration = cardIlustration;
 	}
+	
 	
 }

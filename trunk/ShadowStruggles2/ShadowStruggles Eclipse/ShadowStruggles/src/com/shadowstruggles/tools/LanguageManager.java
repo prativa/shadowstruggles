@@ -1,12 +1,17 @@
 package com.shadowstruggles.tools;
 
-import java.util.HashMap;
-import javax.xml.parsers.*;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 
-import org.w3c.dom.*;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.utils.ObjectMap;
 
 public class LanguageManager {
         private static LanguageManager _instance = null;
@@ -15,12 +20,12 @@ public class LanguageManager {
         private static final String DEFAULT_LANGUAGE = "en_UK";
         
         //private HashMap<String, HashMap<String, String>> _strings = null;
-        private HashMap<String, String> _language = null;
+        private ObjectMap<String, String> _language = null;
         private String _languageName = null;
         
         private LanguageManager() {
                 // Create language map
-                _language = new HashMap<String, String>();
+                _language = new ObjectMap<String, String>();
                 
                 // Try to load system language
                 // If it fails, fallback to default language

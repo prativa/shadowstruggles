@@ -1,7 +1,7 @@
 {
 resources: {
 	com.badlogic.gdx.graphics.g2d.TextureRegion: {
-		check-on: { width: 14, height: 14, x: 13, y: 77 },
+		check-on: { width: 128, height: 64, x: 0, y: 0 },
 		check-off: { width: 14, height: 14, x: 2, y: 97 },
 		selection: { width: 1, height: 1, x: 29, y: 80 },
 		default-slider-knob: { width: 9, height: 18, x: 2, y: 77 }
@@ -139,6 +139,12 @@ resources: {
 			{ width: 8, height: 3, x: 5, y: 108 },
 			{ width: 3, height: 3, x: 13, y: 108 }
 		],
+		textbutton-up: [
+		{width:128, height: 62, x:0, y:0}		
+		],
+		textbutton-down:[
+		{width:128, height: 62, x:0, y:63}
+		],
 		default-window: [
 			{ width: 4, height: 20, x: 2, y: 2 },
 			{ width: 20, height: 20, x: 6, y: 2 },
@@ -187,8 +193,8 @@ styles: {
 		toggle: { down: default-round-down, checked: default-round-down, up: default-round }
 	},
 	com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle: {
-		default: { down: default-round-down, up: default-round, font: default-font, fontColor: white },
-		toggle: { down: default-round-down, up: default-round, checked: default-round-down, font: default-font, fontColor: white, downFontColor: red }
+		default: { down:textbutton-down, up: textbutton-up, font: default-font, fontColor: white },
+		toggle: { down: textbutton-down, up: textbutton-up, checked: textbutton-up, font: default-font, fontColor: white, downFontColor: red }
 	},
 	com.badlogic.gdx.scenes.scene2d.ui.SelectBox$SelectBoxStyle: {
 		default: { listBackground: default-rect, listSelection: default-select-selection, font: default-font, fontColor: white, background: default-select }

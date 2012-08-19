@@ -44,7 +44,7 @@ public class ShadowStruggles extends Game{
 	
 	@Override
 	public void setScreen(Screen screen) {
-		//Gdx.app.log(ShadowStruggles.LOG,"Switching to Screen: "+screen.getClass().getSimpleName());
+		Gdx.app.log(ShadowStruggles.LOG,"Switching to Screen: "+screen.getClass().getSimpleName());
 		super.setScreen(screen);
 	}
 	public Controller getController() {

@@ -4,6 +4,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.shadowstruggles.Controller;
 import com.shadowstruggles.ShadowStruggles;
 
+
 public class FreePlayScreen extends BaseScreen{
 	private ImageButton battle;
 	private ImageButton reTurn;
