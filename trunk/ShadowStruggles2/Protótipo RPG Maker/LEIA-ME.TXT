@@ -1,3 +1,0 @@
-Para rodar o protótipo, é necessário ter o RTP (Run Time Package) do RPG Maker VX instalado.
-
-Você pode obter o RTP VX nesta página: http://www.rpgmakerweb.com/download/run-time-package.
