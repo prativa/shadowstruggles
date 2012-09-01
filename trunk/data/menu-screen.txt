@@ -1,0 +1,9 @@
+debug
+* spacing:10 padding:0 align:center
+'Welcome to Tyrian for Android!' spacingBottom:20
+---
+[startGameButton] width:200 height:60
+---
+[optionsButton] width:200 height:60
+---
+[hallOfFameButton] width:200 height:60
