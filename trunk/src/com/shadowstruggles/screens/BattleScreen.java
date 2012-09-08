@@ -45,8 +45,9 @@ public class BattleScreen extends BaseScreen {
 	private EnergyBar energyBar;
 	private Deck2D deck;
 	private HandBackground background;
-	private LifeBar life;
 	
+	public LifeBar playerLife;
+	public LifeBar enemyLife;
 	
 	/***
 	 * A test for the 'DR-002' fighter card on the field.
@@ -106,13 +107,15 @@ public class BattleScreen extends BaseScreen {
 	@Override
 	public void render(float delta) {
 		super.render(delta);
-		keyInput();
+		keyInput(delta);
 		
 		testFighter.action();
 		handCard.move(this.stage, CAMERA_INITIAL_X);
 		deck.move(this.stage, CAMERA_INITIAL_X);
 		energyBar.move(this.stage, CAMERA_INITIAL_X);
 		background.move(this.stage, CAMERA_INITIAL_X);
+		
+		playerLife.update();
 		
 		camera.update();
 //		ShapeRenderer sp = new ShapeRenderer(); // Rectangle for the bottom UI.
@@ -147,7 +150,7 @@ public class BattleScreen extends BaseScreen {
 	 * RIGHT KEY - Moves the camera to the right.
 	 */
 	
-	private void keyInput() {
+	private void keyInput(float delta) {
 
 		if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
 			if (camera.position.x > 480)
@@ -156,6 +159,14 @@ public class BattleScreen extends BaseScreen {
 		if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
 			if (camera.position.x < 1440)
 				camera.translate(3, 0, 0);
+		}
+		if(Gdx.input.isKeyPressed(Input.Keys.UP)) {
+			if(delta > 0.02f)
+				this.controller.playerLifeChanged(4);
+		}
+		if(Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
+			if(delta > 0.02f)
+				this.controller.playerLifeChanged(-4);
 		}
 	}
 
@@ -175,15 +186,15 @@ public class BattleScreen extends BaseScreen {
 		deck.y=20;
 		energyBar = new EnergyBar(controller, 100);
 		energyBar.y=50;
-		life= new LifeBar(controller);
-		life.x=20;
-		life.y=500;
+		playerLife = new LifeBar(1);
+		playerLife.x=20;
+		playerLife.y=500;
 		stage.addActor(background);
 		stage.addActor(deck);
 		stage.addActor(energyBar);
 		stage.addActor(map);		
 		stage.addActor(handCard);
-		stage.addActor(life);
+		stage.addActor(playerLife);
 		
 	}
 

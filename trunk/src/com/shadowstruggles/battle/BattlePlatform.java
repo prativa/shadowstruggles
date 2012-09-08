@@ -10,7 +10,7 @@ public class BattlePlatform {
 	private Deck playerDeck;
 	private Deck enemyDeck;
 	private Map map;
-	private DefaultRules rules;
+	public DefaultRules rules;
 	private Array<Card> playerDestroyedCards;
 	private Array<Card> enemyDestroyedCards;
 	private HandCard selectedCard;

@@ -5,6 +5,7 @@ import com.shadowstruggles.Profile;
 import com.shadowstruggles.ShadowStruggles;
 import com.shadowstruggles.battle.BattleLogic;
 import com.shadowstruggles.battle.BattlePlatform;
+import com.shadowstruggles.battle.DefaultRules;
 import com.shadowstruggles.battle.Map;
 import com.shadowstruggles.object2d.Map2D;
 import com.shadowstruggles.screens.BattleScreen;
@@ -13,24 +14,25 @@ import com.shadowstruggles.screens.BattleScreen;
  * A sample battle for testing the key aspects of the game engine.
  */
 
-public class BattleTest extends BattleScreen{
-	
-	
-	public BattleTest(ShadowStruggles game) {		
-		super(game, "data/images/maps/testmap.png",new Profile(null,null,null,0,0,0), game.getController(), new BattleLogic(new BattlePlatform(null, null, null, new Map(),null),game.getController()));
+public class BattleTest extends BattleScreen {
+
+	public BattleTest(ShadowStruggles game) {
+		super(game, "data/images/maps/testmap.png", new Profile(null, null,
+				null, 0, 0, 0), game.getController(), new BattleLogic(
+				new BattlePlatform(null, null, null, new Map(), new DefaultRules()),
+				game.getController()));
 	}
-	
-	
+
 	@Override
 	public void resize(int width, int height) {
 		// TODO Auto-generated method stub
 		super.resize(width, height);
-		//dr.walk();
+		// dr.walk();
 	}
-	
+
 	@Override
-	public void show() {		
-		super.show();		
+	public void show() {
+		super.show();
 	}
 
 }
