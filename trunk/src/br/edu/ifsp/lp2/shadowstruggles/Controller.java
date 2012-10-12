@@ -22,7 +22,6 @@ public class Controller {
 	private BattlePlatform platform;
 
 	public void mapClicked(float x, float y) {
-
 		if (platform.getSelectedCard() != null) {
 			// settings.screenHeight - settings.backgroundHeight
 			// + settings.tileHeight +
