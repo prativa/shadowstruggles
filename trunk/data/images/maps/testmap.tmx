@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="30" height="15" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="Desert" tilewidth="32" tileheight="32" spacing="1" margin="1">
+  <image source="tmw_desert_spacing.png" width="265" height="199"/>
+ </tileset>
+ <tileset firstgid="49" name="Roof East" tilewidth="32" tileheight="32">
+  <image source="Roof East.png" width="101" height="171"/>
+ </tileset>
+ <tileset firstgid="64" name="Roof North East" tilewidth="32" tileheight="32">
+  <image source="Roof North East.png" width="101" height="171"/>
+ </tileset>
+ <tileset firstgid="79" name="Roof North West" tilewidth="32" tileheight="32">
+  <image source="Roof North West.png" width="101" height="171"/>
+ </tileset>
+ <tileset firstgid="94" name="Roof North" tilewidth="32" tileheight="32">
+  <image source="Roof North.png" width="101" height="171"/>
+ </tileset>
+ <tileset firstgid="109" name="Roof South East" tilewidth="32" tileheight="32">
+  <image source="Roof South East.png" width="101" height="171"/>
+ </tileset>
+ <tileset firstgid="124" name="Roof South West" tilewidth="32" tileheight="32">
+  <image source="Roof South West.png" width="101" height="171"/>
+ </tileset>
+ <tileset firstgid="139" name="Roof South" tilewidth="32" tileheight="32">
+  <image source="Roof South.png" width="101" height="171"/>
+ </tileset>
+ <tileset firstgid="154" name="Roof West" tilewidth="32" tileheight="32">
+  <image source="Roof West.png" width="101" height="171"/>
+ </tileset>
+ <tileset firstgid="169" name="Stone Block" tilewidth="32" tileheight="32">
+  <image source="Stone Block.png" width="101" height="171"/>
+ </tileset>
+ <tileset firstgid="184" name="Wood Block" tilewidth="32" tileheight="32">
+  <image source="Wood Block.png" width="101" height="171"/>
+ </tileset>
+ <tileset firstgid="199" name="Chest Closed" tilewidth="32" tileheight="32">
+  <image source="Chest Closed.png" width="32" height="33"/>
+ </tileset>
+ <layer name="Ground" width="30" height="15">
+  <data encoding="base64" compression="zlib">
+   eJyTY2BgkBthmBGImYCYGU1cHY2vgUO/PA5xBQJ2cAIxFxBzA/FmIN4CxBuozEa2A2avIBALAbEwDcMUmx24whmE1XCEGzI+jkUtuv7BHM76OPyDL90QSmekhjMt88xgCWf08NND46PnaxA2wBM3+jjCeRQPXwwAnM9ZQg==
+  </data>
+ </layer>
+</map>

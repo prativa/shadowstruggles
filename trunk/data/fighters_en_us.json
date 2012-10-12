@@ -1,0 +1,2 @@
+[{"class":"br.edu.ifsp.lp2.shadowstruggles.battle.Fighter","name":"DR-002","energyCost":0,"description":"","buyCost":0,"health":20,"damage":3,"speed":0.5,"range":0,"hasEffect":false},
+{"class":"br.edu.ifsp.lp2.shadowstruggles.battle.Fighter","name":"DR-004","energyCost":0,"description":"","buyCost":0,"health":25,"damage":5,"speed":0.7,"range":0,"hasEffect":false}]
