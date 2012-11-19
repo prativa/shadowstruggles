@@ -19,6 +19,7 @@ import br.edu.ifsp.lp2.shadowstruggles.object2d.Map2D;
 import br.edu.ifsp.lp2.shadowstruggles.object2d.MenuButton;
 import br.edu.ifsp.lp2.shadowstruggles.object2d.Pentagram;
 import br.edu.ifsp.lp2.shadowstruggles.object2d.Timer2D;
+import br.edu.ifsp.lp2.shadowstruggles.object2d.Trap2D;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -128,6 +129,8 @@ public class BattleScreen extends BaseScreen {
 					((Fighter2D) (a)).render();
 				else if (a.getClass().equals(Effect2D.class))
 					((Effect2D) (a)).render();
+				else if(a.getClass().equals(Trap2D.class))
+					((Trap2D) (a)).render();
 
 			}
 
@@ -169,6 +172,8 @@ public class BattleScreen extends BaseScreen {
 				((Fighter2D) (a)).update();
 			else if (a.getClass().equals(Effect2D.class)) {
 				((Effect2D) (a)).update();
+			}else if (a.getClass().equals(Trap2D.class)) {
+				((Trap2D) (a)).update();
 			}
 		}
 
