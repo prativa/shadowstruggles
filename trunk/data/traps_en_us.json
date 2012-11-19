@@ -5,6 +5,14 @@
 "buyCost":0,
 "duration":5.0,
 "hasImmediateEffect":true,
+"isActivated":false},
+{"class":"br.edu.ifsp.lp2.shadowstruggles.model.Trap",
+"name":"Hacking",
+"energyCost":30,
+"description":"By altering the composition of the robot’s core systems, converts the next “DR” enemy fighter which activates the trap into an ally.",
+"buyCost":0,
+"duration":0.0,
+"hasImmediateEffect":true,
 "isActivated":false
 }
 ]

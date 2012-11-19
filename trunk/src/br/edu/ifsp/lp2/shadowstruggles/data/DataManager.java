@@ -8,6 +8,7 @@ import br.edu.ifsp.lp2.shadowstruggles.model.Scene;
 import br.edu.ifsp.lp2.shadowstruggles.model.Trap;
 import br.edu.ifsp.lp2.shadowstruggles.scripts.DefaultAction;
 import br.edu.ifsp.lp2.shadowstruggles.scripts.EletricCurrent1Action;
+import br.edu.ifsp.lp2.shadowstruggles.scripts.HackingAction;
 import br.edu.ifsp.lp2.shadowstruggles.scripts.MineralogyAction;
 import br.edu.ifsp.lp2.shadowstruggles.scripts.RecoveryAction;
 
@@ -148,6 +149,8 @@ public class DataManager {
 			if(trap.getName().equals("Electric Current Level 1")|| trap.getName().equals("Corrente Elétrica nível 1")){
 				
 				trap.action = new EletricCurrent1Action();
+			}else if(trap.getName().equals("Hacking")){
+				trap.action = new HackingAction();
 			}
 			trapList.add(trap);
 		}
