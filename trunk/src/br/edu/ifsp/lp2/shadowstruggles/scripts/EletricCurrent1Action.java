@@ -3,7 +3,6 @@ package br.edu.ifsp.lp2.shadowstruggles.scripts;
 import br.edu.ifsp.lp2.shadowstruggles.model.BattlePlatform;
 import br.edu.ifsp.lp2.shadowstruggles.model.Card;
 import br.edu.ifsp.lp2.shadowstruggles.model.Fighter;
-import br.edu.ifsp.lp2.shadowstruggles.object2d.Effect2D;
 import br.edu.ifsp.lp2.shadowstruggles.object2d.Trap2D;
 
 import com.badlogic.gdx.Gdx;

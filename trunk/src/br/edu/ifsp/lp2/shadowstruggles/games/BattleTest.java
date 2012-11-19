@@ -6,12 +6,8 @@ import br.edu.ifsp.lp2.shadowstruggles.data.ProfileDAO;
 import br.edu.ifsp.lp2.shadowstruggles.model.BattlePlatform;
 import br.edu.ifsp.lp2.shadowstruggles.model.Card;
 import br.edu.ifsp.lp2.shadowstruggles.model.DefaultRules;
-import br.edu.ifsp.lp2.shadowstruggles.model.Fighter;
 import br.edu.ifsp.lp2.shadowstruggles.model.Map;
-import br.edu.ifsp.lp2.shadowstruggles.object2d.Fighter2D;
 import br.edu.ifsp.lp2.shadowstruggles.screens.BattleScreen;
-
-import com.badlogic.gdx.math.MathUtils;
 
 /***
  * A sample battle for testing the key aspects of the game engine.
@@ -21,7 +17,7 @@ public class BattleTest extends BattleScreen {
 
 	private BattlePlatform platform;
 	private static final String DECKNAME = "Deck 1";
-	private float summonDelay;
+	
 	private float drawDelay;
 
 	public BattleTest(ShadowStruggles game) {
@@ -33,7 +29,7 @@ public class BattleTest extends BattleScreen {
 								.getSettings())));
 		this.platform = super.battlePlatform;
 		this.drawDelay = 0;
-		this.summonDelay = 0;
+		
 		this.timeElapsed = 0;
 		game.getAudio().stop();
 		game.getAudio().setMusic("s4");

@@ -1,6 +1,5 @@
 package br.edu.ifsp.lp2.shadowstruggles.object2d;
 
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import br.edu.ifsp.lp2.shadowstruggles.Controller;
 import br.edu.ifsp.lp2.shadowstruggles.data.Assets;
 import br.edu.ifsp.lp2.shadowstruggles.data.Settings;
