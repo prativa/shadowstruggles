@@ -1,0 +1,10 @@
+[{"class":"br.edu.ifsp.lp2.shadowstruggles.model.Trap",
+"name":"Electric Current Level 1",
+"energyCost":45,
+"description":"",
+"buyCost":0,
+"duration":5.0,
+"hasImmediateEffect":true,
+"isActivated":false
+}
+]

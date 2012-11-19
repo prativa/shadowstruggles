@@ -1,0 +1,1 @@
+Astrology must be active on the player’s field. Meteors are summoned to Earth, dealing 10 units of damage to all enemy fighters on the field and the enemy base.
