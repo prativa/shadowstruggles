@@ -95,7 +95,7 @@ public class ConfigurationScreen extends BaseScreen{
 		volume.y=400;
 		volume.setStyle(new LabelStyle(super.getSkin().getFont("andalus-font"),
 				Color.BLACK));
-		volumeLabel= new Label("Volume", super.getSkin());
+		volumeLabel= new Label(this.getGame().getManager().getMenuText().volume, super.getSkin());
 		volumeLabel.width=50;
 		volumeLabel.height=100;
 		volumeLabel.x=150;

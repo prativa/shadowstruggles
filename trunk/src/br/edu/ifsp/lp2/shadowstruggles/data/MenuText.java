@@ -38,6 +38,9 @@ public class MenuText implements Serializable {
 	public String exit = "";
 	public String checkCards="";
 	
+	//ConfigurationScreen
+	public String volume="";
+	
 	@Override
 	public void write(Json json) {
 		json.writeValue("continueGame", continueGame);
@@ -55,6 +58,7 @@ public class MenuText implements Serializable {
 		json.writeValue("returnToGame",returnToGame);
 		json.writeValue("exit",exit);
 		json.writeValue("checkCards",checkCards);
+		json.writeValue("volume:",volume);
 	}
 
 	@Override
@@ -74,6 +78,7 @@ public class MenuText implements Serializable {
 		returnToGame = json.readValue("returnToGame", String.class,jsonData);
 		exit = json.readValue("exit", String.class,jsonData);
 		checkCards= json.readValue("checkCards",String.class, jsonData);
+		volume = json.readValue("volume", String.class, jsonData);
 	}
 	
 }
