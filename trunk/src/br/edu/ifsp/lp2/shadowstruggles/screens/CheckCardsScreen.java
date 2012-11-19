@@ -25,6 +25,7 @@ public class CheckCardsScreen extends BaseScreen{
 	private InGameMenu menu;
 	private Image selectedImage;	
 	private Image background;
+	private Label name;
 	private Label description;
 	private TransitionControl right;
 	private TransitionControl left;
@@ -48,7 +49,13 @@ public class CheckCardsScreen extends BaseScreen{
 		background.scaleY = (640f / 380f);
 		
 		
-		
+		name = new Label(super.getSkin());
+		name.x=410;		
+		name.width=500;	
+		name.height=50;
+		name.setWrap(true);
+		name.setStyle(new LabelStyle(super.getSkin().getFont("andalus-font"),
+				Color.BLACK));
 		description = new Label(super.getSkin());
 		description.x=410;		
 		description.width=500;		
@@ -63,7 +70,7 @@ public class CheckCardsScreen extends BaseScreen{
 		box.x = 390;
 		box.y = 177;
 		box.scaleX=0.9f;
-		box.scaleY=0.73f;
+		box.scaleY=0.76f;
 		
 		
 		right = new TransitionControl(1);
@@ -110,6 +117,7 @@ public class CheckCardsScreen extends BaseScreen{
 		
 		stage.addActor(background);
 		stage.addActor(box);
+		stage.addActor(name);
 		stage.addActor(description);
 		stage.addActor(exit);
 		stage.addActor(right);
@@ -184,7 +192,8 @@ public class CheckCardsScreen extends BaseScreen{
 		selectedImage=new Image(new TextureRegion(Assets.handCards.get(card.name),360,480));
 		selectedImage.x=20;
 		selectedImage.y=160;
-		
+		name.setText(selectedCard.nameVisualization);
+		name.y=590;
 		stage.addActor(selectedImage);
 	}
 	@Override
