@@ -20,6 +20,7 @@ public class BattlePlatform {
 	private Array<Card> enemyHandCards;
 	private Field PlayerField;
 	private Field EnemyField;
+	private Enemy enemy;
 
 	public BattlePlatform(Deck playerDeck, Deck enemyDeck, Map map,
 			DefaultRules rules) {
@@ -33,6 +34,7 @@ public class BattlePlatform {
 		this.enemyHandCards = new Array<Card>();
 		this.PlayerField = new Field();
 		this.EnemyField = new Field();
+		this.enemy = new Enemy();
 	}
 
 	public void addPlayerHandCard(Card card) {
@@ -130,6 +132,33 @@ public class BattlePlatform {
 	public void setEnemyHandCards(Array<Card> enemyHandCards) {
 		this.enemyHandCards = enemyHandCards;
 	}
+
+	public boolean cardOnEnemyHand(Card card) {
+		for(Card c: enemyHandCards){
+			if(c.getName().equals(card.getName()))
+				return true;
+		}
+		return false;
+	}
+
+	public Card getCardFromEnemy(String string) {
+		Card c= null;
+		for(Card card: enemyHandCards){
+			if(card.getName().equals(string)){
+				c = card;break;
+			}
+		}
+		return c;
+	}
+
+	public Enemy getEnemy() {
+		return enemy;
+	}
+
+	public void setEnemy(Enemy enemy) {
+		this.enemy = enemy;
+	}
+
 	
 	
 

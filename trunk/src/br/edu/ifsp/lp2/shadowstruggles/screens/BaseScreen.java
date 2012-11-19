@@ -203,4 +203,13 @@ public abstract class BaseScreen implements Screen {
 	public void loadLanguage() {		
 	}
 
+	public Controller getController() {
+		return controller;
+	}
+
+	public void setController(Controller controller) {
+		this.controller = controller;
+	}
+
+	
 }

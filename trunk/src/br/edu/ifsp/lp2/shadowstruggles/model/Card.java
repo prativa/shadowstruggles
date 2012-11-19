@@ -161,7 +161,7 @@ public class Card implements Serializable {
 	public boolean readyToSummom(BattlePlatform platform){
 		boolean bool = true;
 		for( String card: this.preRequisites){
-			if(!platform.getMap().cardOnMap(new Card(card,CardDAO.getCard(card).nameVisualization, 0,null,0,null), -1)){
+			if(!platform.getMap().cardOnMap(new Card(card,CardDAO.getCard(card).nameVisualization, 0,null,0,null), -1,Map.HUMAN_PLAYER)){
 				bool =false;
 				break;
 			}

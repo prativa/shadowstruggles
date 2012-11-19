@@ -56,7 +56,7 @@ public class BattleTest extends BattleScreen {
 			drawDelay -= delta;
 	}
 
-	private void summonCard(float delta) {
+	/*private void summonCard(float delta) {
 		
 		if (summonDelay <= 0) {
 			
@@ -85,14 +85,14 @@ public class BattleTest extends BattleScreen {
 		} else
 			summonDelay -= delta;
 
-	}
+	}*/
 
 	@Override
 	public void render(float delta) {
 		super.render(delta);
 		//time=(int)super.timeElapsed;
-		draw(delta);
-		summonCard(delta);
+		/*draw(delta);
+		summonCard(delta);*/
 		
 	}
 	public static String getDeckname() {

@@ -137,7 +137,9 @@ public class BattleScreen extends BaseScreen {
 			if (time >= (float) (1 / FPS)) {
 				time = 0;
 				update(delta);
+				
 			}
+			battlePlatform.getEnemy().action(battlePlatform, this,delta);
 			time += delta;
 			camera.update();
 		}
@@ -176,6 +178,7 @@ public class BattleScreen extends BaseScreen {
 				((Trap2D) (a)).update();
 			}
 		}
+		
 
 	}
 
