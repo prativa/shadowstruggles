@@ -29,14 +29,14 @@ public class Scene implements Serializable {
 		this.id = 0;
 		this.setNextId(1000);
 		this.name = "The Shadow Struggles";
-		this.script = "Go beyond the clouds and the stars above, travel beneath the earth and the magma below, "
-				+ "transcending both time and space. Once there, you will find a place in which neither 'life' nor 'matter' have any special "
-				+ "meaning. The only reality is that of an endless opposition between two factions.\n\n'Light' and 'Darkness' or 'Good' and "
-				+ "'Evil' is how mortals perceive these ethereal entities, but that is only because of their own limited existences. "
-				+ "Their so precious universe is nothing but a small stain, residues of the war. An uninvited shadow.\n\n "
-				+ "By the time Light and Darkness took notice of it, the shadow had already grown significantly. In wonder, they decided to "
-				+ "entertain themselves and try to solve the conflict in a different way, through that funny new toy. Thus, the Shadow "
-				+ "Struggles began.";
+		this.script = "Go beyond the clouds and the stars above, travel beneath the earth and the magma below, transcending both "
+				+ "time and space. Once there, you will find a place in which neither \u0027life\u0027 nor \u0027matter\u0027 have any "
+				+ "special meaning. The only reality is that of an endless opposition between two factions.\n\n\u0027Light\u0027 and "
+				+ "\u0027Darkness\u0027 or \u0027Good\u0027 and \u0027Evil\u0027 is how mortals perceive these ethereal entities, "
+				+ "but that is only because of their own limited existences. Their so precious universe is nothing but a small stain, "
+				+ "residues of the war. An uninvited shadow.\n\nBy the time Light and Darkness took notice of it, the shadow had "
+				+ "already grown significantly. In wonder, they decided to entertain themselves and try to solve the conflict in a "
+				+ "different way, through that funny new toy. Thus, the Shadow Struggles began.";
 		this.setLanguage("en_us");
 		this.backgroundImage = "data/images/scenes/light_darkness_2.png";
 		this.backgroundMusic = "scene1";
@@ -82,7 +82,7 @@ public class Scene implements Serializable {
 	public void setChoices(String[] choices) {
 		this.choices = choices;
 	}
-	
+
 	public String getName() {
 		return name;
 	}

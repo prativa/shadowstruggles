@@ -12,6 +12,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import br.edu.ifsp.lp2.shadowstruggles.Controller;
 import br.edu.ifsp.lp2.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.lp2.shadowstruggles.data.Assets;
+import br.edu.ifsp.lp2.shadowstruggles.data.SceneDAO;
+import br.edu.ifsp.lp2.shadowstruggles.games.BattleTest;
 import br.edu.ifsp.lp2.shadowstruggles.screens.utils.ScreenUtils;
 
 public class PosGameScreen extends BaseScreen {
@@ -20,7 +22,7 @@ public class PosGameScreen extends BaseScreen {
 	private Label text;
 	private TextButton continueButton;
 	private TextButton mainMenu;
-	private BattleScreen bt;// tirar depois
+	private BattleScreen bt;
 
 	public PosGameScreen(ShadowStruggles game, Controller controller,
 			String message) {
@@ -49,13 +51,22 @@ public class PosGameScreen extends BaseScreen {
 
 			@Override
 			public void click(Actor actor, float x, float y) {
-				game.setScreen(bt);
+				game.getProfile().setCurrentScene(
+						SceneDAO.getScene(game.getProfile().getCurrentScene()
+								.getNextId(), game.getManager()));
+				if(bt.getClass() == BattleTest.class) {
+					if(!game.getProfile().getBattlesFought().contains(-1, true)) {
+						game.getProfile().getBattlesFought().add(-1);
+					}
+				}
+				game.setScreen(new SceneScreen(game, controller));
 
 			}
 		});
 		mainMenu = new TextButton(
 				game.getManager().getMenuText().mainMenuButton, super.getSkin());
-		mainMenu = ScreenUtils.initButton(mainMenu, 500, 100, game.getManager().getMenuText().mainMenuButton.length() * 32, 100);
+		mainMenu = ScreenUtils.initButton(mainMenu, 500, 100, game.getManager()
+				.getMenuText().mainMenuButton.length() * 32, 100);
 		mainMenu.setClip(true);
 		mainMenu.setClickListener(new ClickListener() {
 

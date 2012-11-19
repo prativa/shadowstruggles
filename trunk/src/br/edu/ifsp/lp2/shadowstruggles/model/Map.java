@@ -121,7 +121,6 @@ public class Map {
 		}
 		return cards;
 	}
-	
 
 	/**
 	 * Returns the next available lane, from top to down. A lane is available if
@@ -131,16 +130,19 @@ public class Map {
 	 *            Indicates which field to look into: Map.HUMAN_PLAYER or
 	 *            Map.ENEMY_PLAYER.
 	 */
-	
+
 	public int nextAvailableLane(int player) {
 		int[] lane = new int[4];
 		Array<Card> cards;
-		if(player==HUMAN_PLAYER)cards=getPlayerCards();
-		else cards=getEnemyCards();		
-		for(Card card : cards)
-			lane[(int)((Fighter)card).markLane]+=1;
-		for(int i =0;i<4;i++){
-			if(lane[i]<5)return i;
+		if (player == HUMAN_PLAYER)
+			cards = getPlayerCards();
+		else
+			cards = getEnemyCards();
+		for (Card card : cards)
+			lane[(int) ((Fighter) card).markLane] += 1;
+		for (int i = 0; i < 4; i++) {
+			if (lane[i] < 5)
+				return i;
 		}
 		return -1;
 	}
@@ -154,22 +156,24 @@ public class Map {
 	 *            Indicates which field to look into: Map.HUMAN_PLAYER or
 	 *            Map.ENEMY_PLAYER.
 	 */
-	
+
 	public int nextAvailableTile(int lane, int player) {
-		int start;		
+		int start;
 		float[] tile = new float[5];
 		Array<Card> cards;
-		if(player==HUMAN_PLAYER){
-			start=0;
-			cards=getPlayerCards();
-		}else{
-			start=30;
-			cards=getEnemyCards();
+		if (player == HUMAN_PLAYER) {
+			start = 0;
+			cards = getPlayerCards();
+		} else {
+			start = 30;
+			cards = getEnemyCards();
 		}
-		for(Card card : cards)
-			if(((Fighter)card).markLane==lane)tile[(int)((Fighter)card).markTile-start]=1;
-		for(int i =0;i<4;i++){
-			if(tile[i]!=1)return i+start;
+		for (Card card : cards)
+			if (((Fighter) card).markLane == lane)
+				tile[(int) ((Fighter) card).markTile - start] = 1;
+		for (int i = 0; i < 4; i++) {
+			if (tile[i] != 1)
+				return i + start;
 		}
 		return -1;
 	}
@@ -250,17 +254,19 @@ public class Map {
 	 *            Indicates which field to look into: Map.HUMAN_PLAYER or
 	 *            Map.ENEMY_PLAYER.
 	 */
-	
+
 	public int laneWithMoreEnemiesInvading(int player) {
 		Integer[] lane = new Integer[4];
 		Array<Card> cards;
-		if(player==COMPUTER_PLAYER)cards=getPlayerCards();
-		else cards=getEnemyCards();		
-		for(Card card : cards)
-			lane[(int)((Fighter)card).lane]+=1;
+		if (player == COMPUTER_PLAYER)
+			cards = getPlayerCards();
+		else
+			cards = getEnemyCards();
+		for (Card card : cards)
+			lane[(int) ((Fighter) card).lane] += 1;
 		Array<Integer> temp = new Array<Integer>(lane);
 		temp.sort();
-		return temp.get(temp.size-1);
+		return temp.get(temp.size - 1);
 	}
 
 	/**

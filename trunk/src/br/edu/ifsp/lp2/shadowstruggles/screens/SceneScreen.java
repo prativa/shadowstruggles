@@ -13,6 +13,7 @@ import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -45,10 +46,16 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 
 	private void initComponents() {
 		this.text = new Label(scene.getScript(), super.getSkin());
-		if (!scene.getBackgroundImage().equals(""))
-			background = new Image(new Texture(Gdx.files.internal(scene
-					.getBackgroundImage())));
-		else
+		if (!scene.getBackgroundImage().equals("")) {
+			if (scene.getBackgroundImage().contains("/maps/")) {
+				background = new Image(new TextureRegion(new Texture(
+						Gdx.files.internal(scene.getBackgroundImage())),
+						settings.backgroundWidth, settings.backgroundHeight));
+			} else {
+				background = new Image(new Texture(Gdx.files.internal(scene
+						.getBackgroundImage())));
+			}
+		} else
 			background = new Image();
 
 		background.x = 0;
@@ -73,21 +80,11 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 		next = new TransitionControl(1) {
 			@Override
 			public boolean touchDown(float x, float y, int pointer) {
-				if (scene.getId() == 0) {// Verificar se cena procede uma
-											// batalha
-					game.setScreenWithTransition(new BattleTest(game));
-					// TODO: redirecionar para a batalha correta
-				} else {
-					game.getProfile().setCurrentScene(
-							SceneDAO.getScene(scene.getNextId(),
-									game.getManager()));
-					game.setScreenWithTransition(new SceneScreen(game,
-							controller));
-				}
+				nextScreen();
 				return super.touchDown(x, y, pointer);
 			}
 		};
-		
+
 		next.scaleY = 6.0f;
 
 		if (!scene.getBackgroundMusic().equals("")) {
@@ -96,8 +93,8 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 		}
 		inputSources.addProcessor(this.stage);
 		inputSources.addProcessor(this);
-		
-		//Gdx.input.setInputProcessor(inputSources);
+
+		// Gdx.input.setInputProcessor(inputSources);
 
 		stage.addActor(background);
 		stage.addActor(box);
@@ -109,28 +106,31 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 			for (int i = 0; i < scene.getChoices().length; i++) {
 				final int j = i;
 				choices[i] = new TextButton(scene.getChoices()[i],
-						super.getSkin());/*{
-					@Override
-					public boolean touchDown(float x, float y, int pointer) {
+						super.getSkin());/*
+										 * {
+										 * 
+										 * @Override public boolean
+										 * touchDown(float x, float y, int
+										 * pointer) {
+										 * 
+										 * if
+										 * (choices[j].getText().equals(scene.
+										 * getChoices()[0])) {
+										 * game.getProfile().setCurrentScene(
+										 * SceneDAO.getScene(scene.getNextId(),
+										 * game.getManager()));
+										 * 
+										 * } else {
+										 * game.getProfile().setCurrentScene(
+										 * SceneDAO.getScene(scene.getNextId() +
+										 * 1, game.getManager())); } return
+										 * super.touchDown(x, y, pointer); } };
+										 */
 
-						if (choices[j].getText().equals(scene.getChoices()[0])) {
-							game.getProfile().setCurrentScene(
-									SceneDAO.getScene(scene.getNextId(),
-											game.getManager()));
-
-						} else {
-							game.getProfile().setCurrentScene(
-									SceneDAO.getScene(scene.getNextId() + 1,
-											game.getManager()));
-						}
-						return super.touchDown(x, y, pointer);
-					}
-				};*/
-
-				choices[i] = ScreenUtils.initButton(choices[i], box.x + (i * 220),
-						box.y - 100, 200, 80);
+				choices[i] = ScreenUtils.initButton(choices[i], box.x
+						+ (i * 220), box.y - 100, 200, 80);
 				choices[i].setClickListener(new ClickListener() {
-					
+
 					@Override
 					public void click(Actor actor, float x, float y) {
 						if (choices[j].getText().equals(scene.getChoices()[0])) {
@@ -143,7 +143,7 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 									SceneDAO.getScene(scene.getNextId() + 1,
 											game.getManager()));
 						}
-						
+
 					}
 				});
 				stage.addActor(choices[i]);
@@ -152,11 +152,23 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 			stage.addActor(next);
 	}
 
+	public void nextScreen() {
+		if (scene.getId() == 1000) {
+			game.setScreenWithTransition(new BattleTest(game));
+			// TODO: redirecionar para a batalha correta
+		} else {
+			game.getProfile().setCurrentScene(
+					SceneDAO.getScene(scene.getNextId(), game.getManager()));
+			game.getManager().writeProfile(game.getProfile());
+			game.setScreenWithTransition(new SceneScreen(game, controller));
+		}
+	}
+
 	@Override
 	public void resize(int width, int height) {
 
 		super.resize(width, height);
-		
+
 		Gdx.input.setInputProcessor(inputSources);
 		// initComponents();
 
@@ -251,7 +263,7 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 
 	@Override
 	public boolean keyTyped(char character) {
-		game.setScreenWithTransition(new BattleTest(game));
+		this.nextScreen();
 		return false;
 	}
 
