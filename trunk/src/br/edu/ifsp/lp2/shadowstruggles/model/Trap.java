@@ -16,13 +16,13 @@ public class Trap extends Card implements Serializable{
 
 	public Trap(){}
 	public Trap(BattlePlatform platform, int lane, int tile, boolean sentido,
-			String name, CardAction action, Image img) {
-		super(platform, lane, tile, name, action, img);
+			String name, String nameVisualization, CardAction action, Image img) {
+		super(platform, lane, tile, name, nameVisualization, action, img);
 	}
 
-	public Trap(String name, int energyCost, String description,
+	public Trap(String name, String nameVisualization, int energyCost, String description,
 			int buyCost, CardAction action, float duration, boolean hasImmediateEffect) {
-		super(name, energyCost, description, buyCost, action);
+		super(name, nameVisualization, energyCost, description, buyCost, action);
 		this.duration = duration;
 		this.hasImmediateEffect = hasImmediateEffect;
 		this.direction =1;

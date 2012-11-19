@@ -40,7 +40,7 @@ public class Map {
 		for (Array<Array<Card>> lanes : tiles) {
 			for (Array<Card> tiles : lanes) {
 				for (Card card : tiles) {
-					if (card.getName().equals(c.getName()))
+					if (card.name.equals(c.name))
 						return true;
 				}
 			}

@@ -25,7 +25,7 @@ public class Fighter extends Card {
 
 	public int health;
 	public int maxHealth;
-
+	
 	public int damage;
 	public float speed;// = 0.5f;
 	public int range;
@@ -46,18 +46,18 @@ public class Fighter extends Card {
 	}
 
 	public Fighter(BattlePlatform bl, int tile, int lane, int direction,
-			String name, CardAction action, Image img, String size) {
-		super(bl, tile, lane, name, action, img);
+			String name, String nameVisualization,CardAction action, Image img, String size) {
+		super(bl, tile, lane, name, nameVisualization, action, img);
 		
 		this.direction = direction;
 		this.setSize(size);
 		this.direction = 1;
 	}
 
-	public Fighter(String name, int energyCost, String description,
+	public Fighter(String name, String nameVisualization, int energyCost, String description,
 			int buyCost, CardAction action, int health, int damage,
 			float speed, int range, boolean hasEffect, String size,float attackDelay,Array<String> preRequisite) {
-		super(name, energyCost, description, buyCost, action);
+		super(name, nameVisualization, energyCost, description, buyCost, action);
 		
 		this.health = health;
 		this.damage = damage;

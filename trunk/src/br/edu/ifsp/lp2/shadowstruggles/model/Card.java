@@ -1,5 +1,6 @@
 package br.edu.ifsp.lp2.shadowstruggles.model;
 
+import br.edu.ifsp.lp2.shadowstruggles.data.CardDAO;
 import br.edu.ifsp.lp2.shadowstruggles.scripts.CardAction;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -19,6 +20,7 @@ public class Card implements Serializable {
 	public String description;
 	public int buyCost;
 	public String name;
+	public String nameVisualization;
 	public Image image;
 	public CardAction action;
 	public BattlePlatform platform;
@@ -48,9 +50,10 @@ public class Card implements Serializable {
 		this.description = "";
 	}
 
-	public Card(BattlePlatform platform, int tile, int lane, String name,
+	public Card(BattlePlatform platform, int tile, int lane, String name, String nameVisualization,
 			CardAction action, Image img) {
 		this.name = name;
+		this.nameVisualization=nameVisualization;
 		this.platform = platform;
 		this.lane = lane;
 		this.tile = tile;
@@ -59,9 +62,10 @@ public class Card implements Serializable {
 		this.description = "";
 	}
 
-	public Card(String name, int energyCost, String description, int buyCost,
+	public Card(String name, String nameVisualization, int energyCost, String description, int buyCost,
 			CardAction action) {
 		this.name = name;
+		this.nameVisualization=nameVisualization;
 		this.energyCost = energyCost;
 		this.description = description;
 		this.buyCost = buyCost;
@@ -72,66 +76,13 @@ public class Card implements Serializable {
 		this.action.doAction(platform, image);
 	}
 
-	public int getEnergyCost() {
-		return energyCost;
-	}
-
-	public void setEnergyCost(int energyCost) {
-		this.energyCost = energyCost;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public int getBuyCost() {
-		return buyCost;
-	}
-
-	public void setBuyCost(int buyCost) {
-		this.buyCost = buyCost;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public void setCount(int count) {
-		this.count = count;
-	}
-
-	public int getCount() {
-		return this.count;
-	}
-
-	public int getLane() {
-		return lane;
-	}
-
-	public void setLane(int lane) {
-		this.lane = lane;
-	}
-
-	public int getTile() {
-		return tile;
-	}
-
-	public void setTile(int tile) {
-		this.tile = tile;
-	}
+	
 
 	@Override
 	public void write(Json json) {
 		// json.setOutputType(Gdx.files.internal("data/fighters_en_us.json"));
 		json.writeValue("name", this.name);
+		json.writeValue("nameVisualization", this.nameVisualization);
 		json.writeValue("energyCost", this.energyCost);
 		json.writeValue("description", this.description);
 		json.writeValue("buyCost", this.buyCost);
@@ -142,11 +93,24 @@ public class Card implements Serializable {
 	@Override
 	public void read(Json json, OrderedMap<String, Object> jsonData) {
 		this.name = json.readValue("name", String.class, jsonData);
+		this.nameVisualization = json.readValue("nameVisualization", String.class, jsonData);
 		this.energyCost = json.readValue("energyCost", Integer.class, jsonData);
 		this.description = json
 				.readValue("description", String.class, jsonData);
 		this.buyCost = json.readValue("buyCost", Integer.class, jsonData);
 		this.preRequisites = json.readValue("preRequisites", Array.class, jsonData);
+	}
+	public String getName() {
+		return name;
+	}
+	public int getEnergyCost() {
+		return energyCost;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public int getBuyCost() {
+		return buyCost;
 	}
 
 	public Image getImage() {
@@ -180,12 +144,24 @@ public class Card implements Serializable {
 	public void setDirection(int direction) {
 		this.direction = direction;
 	}
+	public int getLane() {
+		return lane;
+	}
+	public int getTile() {
+		return tile;
+	}
+	public void setLane(int lane) {
+		this.lane = lane;
+	}
+	public void setTile(int tile) {
+		this.tile = tile;
+	}
 
 
 	public boolean readyToSummom(BattlePlatform platform){
 		boolean bool = true;
 		for( String card: this.preRequisites){
-			if(!platform.getMap().cardOnMap(new Card(card,0,null,0,null), -1)){
+			if(!platform.getMap().cardOnMap(new Card(card,CardDAO.getCard(card).nameVisualization, 0,null,0,null), -1)){
 				bool =false;
 				break;
 			}

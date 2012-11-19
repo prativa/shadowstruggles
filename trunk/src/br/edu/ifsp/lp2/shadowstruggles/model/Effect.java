@@ -19,13 +19,13 @@ public class Effect extends Card{
 	
 	public Effect() {}
 	
-	public Effect(BattlePlatform platform,int lane,int tile, String name, CardAction action, Image img) {		
-		super(platform, lane, tile, name, action,img);				
+	public Effect(BattlePlatform platform,int lane,int tile, String name, String nameVisualization, CardAction action, Image img) {		
+		super(platform, lane, tile, name, nameVisualization,action,img);				
 	}
 	
-	public Effect(String name, int energyCost, String description,
+	public Effect(String name, String nameVisualization, int energyCost, String description,
 			int buyCost, CardAction action, float duration, boolean isImmediateEffect, boolean onFighter) {
-		super(name, energyCost, description, buyCost, action);
+		super(name, nameVisualization, energyCost, description, buyCost, action);
 		this.onFighter=onFighter;
 		this.duration = duration;
 		this.isImmediateEffect = isImmediateEffect;

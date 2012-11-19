@@ -102,14 +102,14 @@ public class DataManager {
 		Array<Fighter> retrievedFighters = retrieveFighters();
 
 		for (Fighter f : retrievedFighters) {
-			if (f.getName().equals("DR-002") ||  f.getName().equals("RD-002")||
-					f.getName().equals("DR-004")|| f.getName().equals("RD-004")||
-					f.getName().equals("DR-003")|| f.getName().equals("RD-003")||
-					f.getName().equals("DR-000")|| f.getName().equals("RD-000")||
+			if (f.getName().equals("DR-002") || 
+					f.getName().equals("DR-004")|| 
+					f.getName().equals("DR-003")||
+					f.getName().equals("DR-000")||
 					f.getName().equals("Broomy")||
 					f.getName().equals("Golem")||
-					f.getName().equals("Scrap Boy")|| f.getName().equals("Garoto Entulho")||
-					f.getName().equals("Rock") || f.getName().equals("Rocha")) {
+					f.getName().equals("Scrap Boy")||
+					f.getName().equals("Rock") ) {
 				f.action = new DefaultAction();
 			}
 			fighterList.add(f);

@@ -62,10 +62,10 @@ public class Controller {
 
 	private void activateEffect(Card handCard, int lane, int tile) {
 		System.out.println("Effect Activated!");
-		handCard.setLane(lane);
-		handCard.setTile(tile);
+		handCard.lane=lane;
+		handCard.tile=tile;
 		((BattleScreen) currentScreen).getBackcards().get(
-				(handCard.getTile()/2)*4 + handCard.getLane()).visible = true;
+				(handCard.tile/2)*4 + handCard.getLane()).visible = true;
 		((Effect) handCard).markLane = lane;
 		((Effect) handCard).markTile = tile;
 		platform.getPlayerField().getTiles().get(handCard.getTile()/2)
@@ -91,14 +91,14 @@ public class Controller {
 	}
 
 	private void summonFighter(Card handCard, int lane, int tile) {
-		handCard.setLane(lane);
-		handCard.setTile(tile);
+		handCard.lane=lane;
+		handCard.tile=tile;
 		((BattleScreen) currentScreen).getBackcards().get(
-				(handCard.getTile()/2)*4  + handCard.getLane()).visible = true;
+				(handCard.tile/2)*4  + handCard.lane).visible = true;
 		((Fighter) handCard).markLane = lane;
 		((Fighter) handCard).markTile = tile;
-		platform.getPlayerField().getTiles().get(handCard.getTile()/2)
-				.set(handCard.getLane(), handCard);
+		platform.getPlayerField().getTiles().get(handCard.tile/2)
+				.set(handCard.lane, handCard);
 		float initialX = 0;
 
 		if ((handCard.getImage()).getClass().equals(HandCard.class))
@@ -122,10 +122,10 @@ public class Controller {
 	}
 	
 	private void putTrap(Card handCard, int lane, int tile) {
-			handCard.setLane(lane);
-			handCard.setTile(tile);
+			handCard.lane=lane;
+			handCard.tile=tile;
 			((BattleScreen) currentScreen).getBackcards().get(
-					(handCard.getTile()/2)*4  + handCard.getLane()).visible = true;
+					(handCard.tile/2)*4  + handCard.lane).visible = true;
 			((Trap) handCard).markLane = lane;
 			((Trap) handCard).markTile = tile;
 			platform.getPlayerField().getTiles().get(handCard.getTile()/2)

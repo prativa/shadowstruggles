@@ -13,8 +13,8 @@ public class EffectDAO {
 			if(c.getName().equals(key)) {
 				/* This makes a deep copy of the effect so that similar effects
 				don't share the same memory blocks. */
-				card = new Effect(c.getName(), c.getEnergyCost(),
-						c.getDescription(), c.getBuyCost(), c.getAction(),
+				card = new Effect(c.getName(), c.nameVisualization, c.energyCost,
+						c.description, c.buyCost, c.getAction(),
 						c.getDuration(), c.isImmediateEffect(),c.isOnFighter());
 			}
 		}
