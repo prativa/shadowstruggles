@@ -10,6 +10,7 @@
 },
 {"class":"br.edu.ifsp.lp2.shadowstruggles.model.Trap",
 "name":"Hacking",
+"nameVisualization":"Hacking",
 "energyCost":45,
 "description":"Alterando a composição dos sistemas principais do robô, converte o próximo lutador inimigo do tipo “RD” que ativar a armadilha em aliado.",
 "buyCost":0,
