@@ -64,6 +64,15 @@
 	"speed":"FAST","range":1,
 	"hasEffect":false,"size":"LARGE","attackDelay":"FAST",
 	"preRequisites":[]
+	},
+{"class":"br.edu.ifsp.lp2.shadowstruggles.model.Fighter",
+	"name":"Rocha",
+	"energyCost":5,
+	"description":"Para usar esta carta, pelo menos uma carta Mineralogia deve estar ativa no campo do jogador. Transmuta uma rocha no local especificado, que suporta até 10 unidades de dano de ataques e impede lutadores inimigos de avançar.",
+	"buyCost":0,"health":10,"damage":0,
+	"speed":0,"range":0,
+	"hasEffect":false,"size":"SMALL","attackDelay":"FAST",
+	"preRequisites":["Mineralogy"]
 	}
 	
 	

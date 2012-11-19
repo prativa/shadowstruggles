@@ -12,4 +12,5 @@ public abstract class CardAction {
 	public void doAction(BattlePlatform platform, Image img) { }
 	public void doAction(BattlePlatform platform, int lane, int tile){}
 	public void update(Image f1){}
+	public abstract CardAction copy();
 }

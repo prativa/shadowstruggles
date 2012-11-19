@@ -4,6 +4,7 @@ import br.edu.ifsp.lp2.shadowstruggles.model.Card;
 import br.edu.ifsp.lp2.shadowstruggles.model.Deck;
 import br.edu.ifsp.lp2.shadowstruggles.model.Effect;
 import br.edu.ifsp.lp2.shadowstruggles.model.Fighter;
+import br.edu.ifsp.lp2.shadowstruggles.model.Trap;
 
 import com.badlogic.gdx.utils.Array;
 
@@ -32,9 +33,16 @@ public class DeckDAO {
 			if (card.getClass().equals(Fighter.class)) {
 				card = FighterDAO.getFighter(card.getName(), manager);
 				card.setAction(FighterDAO.getFighter(card.getName(), manager)
-						.getAction());
-			} else if (card.getClass().equals(Effect.class))
+						.getAction().copy());
+			} else if (card.getClass().equals(Effect.class)) {
 				card = EffectDAO.getEffect(card.getName(), manager);
+				card.setAction(EffectDAO.getEffect(card.getName(), manager)
+						.getAction().copy());
+			} else if (card.getClass().equals(Trap.class)){
+				card = TrapDAO.getTrap(card.getName(), manager);
+				card.setAction(TrapDAO.getTrap(card.getName(), manager)
+						.getAction().copy());
+			}
 			copiaCards.add(card);
 		}
 

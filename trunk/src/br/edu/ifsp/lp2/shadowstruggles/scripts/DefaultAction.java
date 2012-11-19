@@ -169,4 +169,9 @@ public class DefaultAction extends CardAction {
 		}
 		
 	}
+
+	@Override
+	public CardAction copy() {
+		return new DefaultAction();
+	}
 }

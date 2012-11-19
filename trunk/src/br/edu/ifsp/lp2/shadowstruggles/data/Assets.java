@@ -41,7 +41,8 @@ public class Assets {
 	public static OrderedMap<String, Texture> fighterAttack;
 	public static OrderedMap<String, Texture> handCards;
 	public static OrderedMap<String, Texture> effectAnimation;
-
+	public static OrderedMap<String, Texture> trapAnimation;
+	
 	/**
 	 * Loads all of the textures and sounds. It should be called exactly once in
 	 * the application.
@@ -97,6 +98,7 @@ public class Assets {
 		fighterWalk = new OrderedMap<String, Texture>();
 		fighterAttack = new OrderedMap<String, Texture>();
 		effectAnimation = new OrderedMap<String, Texture>();
+		trapAnimation = new OrderedMap<String, Texture>();
 		handCards = new OrderedMap<String, Texture>();
 		for (Fighter f : manager.getFighterList()) {
 			fighterWalk.put(
@@ -131,6 +133,10 @@ public class Assets {
 					t.getName(),
 					new Texture(Gdx.files.internal("data/images/sprites/"
 							+ t.getName() + "/card.png")));
+			trapAnimation.put(
+					t.getName(),
+					new Texture(Gdx.files.internal("data/images/sprites/"
+							+ t.getName() + "/animation_sheet.png")));
 		}
 	}
 }

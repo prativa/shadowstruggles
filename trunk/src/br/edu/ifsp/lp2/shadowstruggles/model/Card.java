@@ -190,6 +190,7 @@ public class Card implements Serializable {
 				break;
 			}
 		}
+		System.out.println(bool);
 		return bool;
 		
 	}

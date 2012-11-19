@@ -64,4 +64,9 @@ public class RecoveryAction extends CardAction {
 		}
 		
 	}
+
+	@Override
+	public CardAction copy() {
+		return new RecoveryAction();
+	}
 }

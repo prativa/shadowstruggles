@@ -49,8 +49,8 @@ public class Controller {
 				}/* else if (lane <= 3 && lane >= 0 && tile > 5
 						&& handCard.getClass().equals(Fighter.class)) {
 					pentagramClicked(lane, nextAvailableSlot(lane));
-				} */else if (lane <= 3 && handCard.getClass().equals(Trap.class)) {
-				} else {
+				} else if (lane <= 3 && handCard.getClass().equals(Trap.class)) {
+				}*/ else {
 					returnHandCard();
 				}
 			} else {
@@ -120,6 +120,37 @@ public class Controller {
 
 		rearrangeCards(initialX);
 	}
+	
+	private void putTrap(Card handCard, int lane, int tile) {
+			handCard.setLane(lane);
+			handCard.setTile(tile);
+			((BattleScreen) currentScreen).getBackcards().get(
+					(handCard.getTile()/2)*4  + handCard.getLane()).visible = true;
+			((Trap) handCard).markLane = lane;
+			((Trap) handCard).markTile = tile;
+			platform.getPlayerField().getTiles().get(handCard.getTile()/2)
+					.set(handCard.getLane(), handCard);
+			float initialX = 0;
+
+			if ((handCard.getImage()).getClass().equals(HandCard.class))
+				initialX = ((HandCard) handCard.getImage()).getInitialX();
+
+			Trap2D f2d = new Trap2D((Trap) handCard, this);
+
+			f2d.create();
+			platform.getMap().addCard(handCard, tile, lane);
+			currentScreen.addGameObject(f2d);
+			platform.getPlayerHandCards().removeValue(platform.getSelectedCard(),
+					true);
+			platform.setSelectedCard(null);
+			// ((BattleScreen)currentScreen).getRemovedCards().add(handCard.getImage());
+			handCard.getImage().markToRemove(true);
+			((MyStage) currentScreen.getStage()).getCurrentActor().removeValue(
+					handCard.getImage(), true);
+			handCard.setImage(f2d);
+
+			rearrangeCards(initialX);
+	}
 
 	public void backCardClicked(int lane, int tile) {
 		Card handCard = platform.getSelectedCard();
@@ -186,6 +217,8 @@ public class Controller {
 		} else if (handCard.getClass().equals(Effect.class)
 				&& !((Effect) handCard).isOnFighter()) {
 			activateEffect(handCard, lane, tile);
+		} else if(handCard.getClass().equals(Trap.class)){
+			putTrap(handCard,lane,tile);
 		}
 		platform.setSelectedCard(null);
 	}
@@ -383,7 +416,7 @@ public class Controller {
 		((MyStage) currentScreen.getStage()).getCurrentActor().removeValue(
 				c.getImage(), true);
 
-		if (c.getDirection() == 1) {
+
 			for (int i = 0; i < platform.getPlayerField().getTiles().size; i++) {
 				for (int j = 0; j < platform.getPlayerField().getTiles().get(i).size; j++) {
 					if (platform.getPlayerField().getTiles().get(i).get(j) != null)
@@ -396,9 +429,7 @@ public class Controller {
 						}
 				}
 			}
-		} else {
-
-		}
+		
 
 	}
 

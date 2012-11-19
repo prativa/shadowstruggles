@@ -25,6 +25,7 @@ public class Trap extends Card implements Serializable{
 		super(name, energyCost, description, buyCost, action);
 		this.duration = duration;
 		this.hasImmediateEffect = hasImmediateEffect;
+		this.direction =1;
 	}
 	public float getDuration() {
 		return duration;

@@ -34,4 +34,9 @@ public class MineralogyAction extends CardAction {
 			finished=true;
 		}
 	}
+
+	@Override
+	public CardAction copy() {
+		return new MineralogyAction();
+	}
 }

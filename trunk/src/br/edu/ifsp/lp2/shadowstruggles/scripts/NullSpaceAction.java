@@ -22,4 +22,9 @@ public class NullSpaceAction extends CardAction{
 			}
 		}
 	}
+
+	@Override
+	public CardAction copy() {
+		return new NullSpaceAction();
+	}
 }

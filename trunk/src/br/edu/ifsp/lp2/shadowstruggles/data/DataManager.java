@@ -7,6 +7,7 @@ import br.edu.ifsp.lp2.shadowstruggles.model.Profile;
 import br.edu.ifsp.lp2.shadowstruggles.model.Scene;
 import br.edu.ifsp.lp2.shadowstruggles.model.Trap;
 import br.edu.ifsp.lp2.shadowstruggles.scripts.DefaultAction;
+import br.edu.ifsp.lp2.shadowstruggles.scripts.EletricCurrent1Action;
 import br.edu.ifsp.lp2.shadowstruggles.scripts.MineralogyAction;
 import br.edu.ifsp.lp2.shadowstruggles.scripts.RecoveryAction;
 
@@ -64,11 +65,10 @@ public class DataManager {
 
 		this.gameSettings = Gdx.files.internal("data/game_settings.json");
 		this.profiles = Gdx.files.local("data/data_profiles.json");
-		
-		this.languages=json.fromJson(Languages.class, Gdx.files.internal("data/menu/languages.json"));
 		this.decks = Gdx.files.internal("data/decks.json");
-		this.createDecks();
+		this.languages=json.fromJson(Languages.class, Gdx.files.internal("data/menu/languages.json"));
 		
+		this.createDecks();
 		this.createSettings();
 		
 		this.changeLanguage(language);
@@ -101,18 +101,14 @@ public class DataManager {
 		Array<Fighter> retrievedFighters = retrieveFighters();
 
 		for (Fighter f : retrievedFighters) {
-			if (f.getName().equals("DR-002") || 
-					f.getName().equals("DR-004")||
-					f.getName().equals("DR-003")||
-					f.getName().equals("DR-000")||
+			if (f.getName().equals("DR-002") ||  f.getName().equals("RD-002")||
+					f.getName().equals("DR-004")|| f.getName().equals("RD-004")||
+					f.getName().equals("DR-003")|| f.getName().equals("RD-003")||
+					f.getName().equals("DR-000")|| f.getName().equals("RD-000")||
 					f.getName().equals("Broomy")||
 					f.getName().equals("Golem")||
-					f.getName().equals("Scrap Boy")||
-					f.getName().equals("Garoto Entulho")||
-					f.getName().equals("RD-002")||
-					f.getName().equals("RD-004")||
-					f.getName().equals("RD-003")||
-					f.getName().equals("RD-000")) {
+					f.getName().equals("Scrap Boy")|| f.getName().equals("Garoto Entulho")||
+					f.getName().equals("Rock") || f.getName().equals("Rocha")) {
 				f.action = new DefaultAction();
 			}
 			fighterList.add(f);
@@ -130,9 +126,9 @@ public class DataManager {
 		Array<Effect> retrievedEffects = retrieveEffects();
 
 		for (Effect effect : retrievedEffects) {
-			if(effect.getName().equals("Reconnect Circuits")||effect.getName().equals("Reconectar Circuitos")){
+			if(effect.getName().equals("Reconnect Circuits") || effect.getName().equals("Reconectar Circuitos")){
 				effect.action=new RecoveryAction();
-			}else if(effect.getName().equals("Mineralogy")||effect.getName().equals("Mineralogia")){
+			}else if(effect.getName().equals("Mineralogy")|| effect.getName().equals("Mineralogia")){
 				effect.action=new MineralogyAction();
 			}
 			effectList.add(effect);
@@ -148,8 +144,11 @@ public class DataManager {
 	private void createTraps() {
 		trapList = new Array<Trap>();
 		Array<Trap> retrievedTraps = retrieveTraps();
-
 		for (Trap trap : retrievedTraps) {
+			if(trap.getName().equals("Electric Current Level 1")|| trap.getName().equals("Corrente Elétrica nível 1")){
+				
+				trap.action = new EletricCurrent1Action();
+			}
 			trapList.add(trap);
 		}
 	}
