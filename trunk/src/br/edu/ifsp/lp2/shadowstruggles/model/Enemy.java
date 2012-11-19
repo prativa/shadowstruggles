@@ -1,7 +1,5 @@
 package br.edu.ifsp.lp2.shadowstruggles.model;
 
-import com.sun.opengl.impl.mipmap.Image;
-
 import br.edu.ifsp.lp2.shadowstruggles.object2d.Effect2D;
 import br.edu.ifsp.lp2.shadowstruggles.object2d.Fighter2D;
 import br.edu.ifsp.lp2.shadowstruggles.object2d.Trap2D;
@@ -70,6 +68,7 @@ public class Enemy {
 			i2d.create();
 			card.setImage(i2d);
 			platform.getMap().addCard(card, tile, lane);
+			card.markLane=lane;			
 			screen.addGameObject(i2d);
 		} else if (card.getClass().equals(Effect.class)) {
 			Effect2D i2d = new Effect2D((Effect) card, screen.getController());

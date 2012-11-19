@@ -58,6 +58,7 @@ public class Map {
 		for (Array<Array<Card>> lanes : tiles) {
 			for (Array<Card> tiles : lanes) {
 				for (Card card : tiles) {
+					if(card.getClass().equals(Fighter.class))
 					if (card.direction == 1)
 						if (((Fighter) card).tile + ((Fighter) card).range > 35)
 							return true;
@@ -167,7 +168,8 @@ public class Map {
 			cards=getEnemyCards();
 		}
 		for(Card card : cards)
-			if(((Fighter)card).markLane==lane)tile[(int)((Fighter)card).markTile-start]=1;
+			if(((Fighter)card).markLane==lane)
+				tile[(int)((Fighter)card).markTile-start]=1;
 		for(int i =0;i<4;i++){
 			if(tile[i]!=1)return i+start;
 		}
@@ -305,6 +307,8 @@ public class Map {
 
 	public void addCard(Card card, int tile, int lane) {
 		tiles.get(tile).get(lane).add(card);
+		card.markLane=lane;
+		card.markTile=tile;
 	}
 
 	public String getName() {
