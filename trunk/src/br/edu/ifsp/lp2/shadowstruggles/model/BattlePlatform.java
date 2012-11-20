@@ -1,5 +1,7 @@
 package br.edu.ifsp.lp2.shadowstruggles.model;
 
+import br.edu.ifsp.lp2.shadowstruggles.model.enemies.Enemy;
+
 import com.badlogic.gdx.utils.Array;
 
 /**
@@ -23,7 +25,7 @@ public class BattlePlatform {
 	private Enemy enemy;
 
 	public BattlePlatform(Deck playerDeck, Deck enemyDeck, Map map,
-			DefaultRules rules) {
+			DefaultRules rules, Enemy enemy) {
 		super();
 
 		this.playerDeck = playerDeck;
@@ -34,7 +36,7 @@ public class BattlePlatform {
 		this.enemyHandCards = new Array<Card>();
 		this.PlayerField = new Field();
 		this.EnemyField = new Field();
-		this.enemy = new Enemy();
+		this.enemy = enemy;
 	}
 
 	public void addPlayerHandCard(Card card) {
