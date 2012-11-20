@@ -61,8 +61,6 @@ public class BattleScreen extends BaseScreen {
 	private Array<Pentagram> pentagrams;
 	private Array<BackCard> backcards;
 	protected Deck playerDeck;
-	// private CameraController right;
-	// private CameraController left;
 
 	/***
 	 * Initializes the visual elements.
@@ -85,7 +83,6 @@ public class BattleScreen extends BaseScreen {
 		controller.setPlatform(battlePlatform);
 
 		this.battlePlatform = battlePlatform;
-		// testFighter = new Fighter(battlePlatform, 1, 1, 1, "DR-002");
 		String mapPath = "data/images/maps/"
 				+ battlePlatform.getMap().getName() + ".png";
 		TextureRegion mapImage = new TextureRegion(new Texture(
@@ -129,7 +126,7 @@ public class BattleScreen extends BaseScreen {
 					((Fighter2D) (a)).render();
 				else if (a.getClass().equals(Effect2D.class))
 					((Effect2D) (a)).render();
-				else if(a.getClass().equals(Trap2D.class))
+				else if (a.getClass().equals(Trap2D.class))
 					((Trap2D) (a)).render();
 
 			}
@@ -137,9 +134,9 @@ public class BattleScreen extends BaseScreen {
 			if (time >= (float) (1 / FPS)) {
 				time = 0;
 				update(delta);
-				
+
 			}
-			battlePlatform.getEnemy().action(battlePlatform, this,delta);
+			battlePlatform.getEnemy().action(battlePlatform, this, delta);
 			time += delta;
 			camera.update();
 		}
@@ -175,11 +172,10 @@ public class BattleScreen extends BaseScreen {
 				((Fighter2D) (a)).update();
 			else if (a.getClass().equals(Effect2D.class)) {
 				((Effect2D) (a)).update();
-			}else if (a.getClass().equals(Trap2D.class)) {
+			} else if (a.getClass().equals(Trap2D.class)) {
 				((Trap2D) (a)).update();
 			}
 		}
-		
 
 	}
 
@@ -188,19 +184,12 @@ public class BattleScreen extends BaseScreen {
 			Actor a = stage.getActors().get(i);
 			if (a.getClass().equals(HandCard.class)) {
 				((HandCard) a).move(this.stage, CAMERA_INITIAL_X);
-
-				/*
-				 * if (!inputSources.getProcessors().contains((HandCard) a,
-				 * false)) inputSources.addProcessor((HandCard) a);
-				 */
 			}
 		}
 
 		deck.move(this.stage, CAMERA_INITIAL_X);
 		energyBar.move(this.stage, CAMERA_INITIAL_X);
 		background.move(this.stage, CAMERA_INITIAL_X);
-		// right.move(this.stage, CAMERA_INITIAL_X);
-		// left.move(this.stage, CAMERA_INITIAL_X);
 		timer.move(this.stage, CAMERA_INITIAL_X);
 		playerLife.move(this.stage, CAMERA_INITIAL_X);
 		enemyLife.move(this.stage, CAMERA_INITIAL_X);
@@ -238,21 +227,17 @@ public class BattleScreen extends BaseScreen {
 				|| Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) {
 			controller.menuButtonClicked(game);
 		}
-		if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
+		if (game.isDebugMode() && Gdx.input.isKeyPressed(Input.Keys.UP)) {
 			this.controller.playerLifeChanged(4);
 		}
-		if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
+		if (game.isDebugMode() && Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
 			this.controller.playerLifeChanged(-4);
 		}
-		if (Gdx.input.isKeyPressed(Input.Keys.W)) {
+		if (game.isDebugMode() && Gdx.input.isKeyPressed(Input.Keys.W)) {
 			this.controller.playerEnergyChanged(4);
 		}
-		if (Gdx.input.isKeyPressed(Input.Keys.S)) {
+		if (game.isDebugMode() && Gdx.input.isKeyPressed(Input.Keys.S)) {
 			this.controller.playerEnergyChanged(-4);
-		}
-		if (Gdx.input.isKeyPressed(Input.Keys.B)) {
-			// if (delta > 0.02f)
-
 		}
 	}
 
@@ -277,8 +262,6 @@ public class BattleScreen extends BaseScreen {
 			menu.scaleY = 1.5f;
 			inputSources.addProcessor(menu);
 			inputSources.addProcessor(map2d);
-			// right = new CameraController(1);
-			// left = new CameraController(-1);
 			deck = new Deck2D(controller, settings.deckX);
 			deck.y = settings.bottomElementY;
 			inputSources.addProcessor(deck);
@@ -305,22 +288,35 @@ public class BattleScreen extends BaseScreen {
 		stage.addActor(map2d);
 		for (int i = 0; i < 5; i++) {
 			for (int j = 0; j < 4; j++) {
-				pentagrams.add(new Pentagram(settings.tileWidth*2
-						+ settings.tileWidth * 2*i, BACKGROUND_Y + 60 + 72 * j,
-						game));
+				pentagrams.add(new Pentagram(settings.tileWidth * 2
+						+ settings.tileWidth * 2 * i, BACKGROUND_Y + 60 + 72
+						* j, game));
 				stage.addActor(pentagrams.get(i * 4 + j));
 			}
 		}
+
 		for (int i = 0; i < 5; i++) {
 			for (int j = 0; j < 4; j++) {
-				BackCard bc = new BackCard(settings.tileWidth*2
-						+ settings.tileWidth *2* i+settings.tileWidth/2, BACKGROUND_Y + 60 + 72 * j,
-						game);
+				BackCard bc = new BackCard(settings.tileWidth * 2
+						+ settings.tileWidth * 2 * i + settings.tileWidth / 2,
+						BACKGROUND_Y + 60 + 72 * j, game);
 
 				backcards.add(bc);
 				stage.addActor(backcards.get(i * 4 + j));
 			}
 		}
+
+		for (int i = 30; i > 25; i--) {
+			for (int j = 0; j < 4; j++) {
+				BackCard bc = new BackCard(settings.tileWidth * 2
+						+ settings.tileWidth * 2 * i + settings.tileWidth / 2,
+						BACKGROUND_Y + 60 + 72 * j, game);
+
+				backcards.add(bc);
+				stage.addActor(backcards.get(i * 4 + j));
+			}
+		}
+
 		stage.addActor(playerLife);
 		stage.addActor(enemyLife);
 

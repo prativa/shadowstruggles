@@ -96,7 +96,6 @@ public class DataManager {
 	 * attributing to each fighter its respective battleAction. This method
 	 * should be invoked only once in the entire application.
 	 */
-	// TODO: Popular a array com todos os lutadores do jogo.
 	private void createFighters() {
 		fighterList = new Array<Fighter>();
 		Array<Fighter> retrievedFighters = retrieveFighters();
@@ -121,7 +120,6 @@ public class DataManager {
 	 * attributing to each effect its respective battleAction. This method
 	 * should be invoked only once in the entire application.
 	 */
-	// TODO: Popular a array com todos os efeitos do jogo.
 	private void createEffects() {
 		effectList = new Array<Effect>();
 		Array<Effect> retrievedEffects = retrieveEffects();
@@ -141,7 +139,6 @@ public class DataManager {
 	 * to each trap its respective battleAction. This method should be invoked
 	 * only once in the entire application.
 	 */
-	// TODO: Popular a array com todas as armadilhas do jogo.
 	private void createTraps() {
 		trapList = new Array<Trap>();
 		Array<Trap> retrievedTraps = retrieveTraps();

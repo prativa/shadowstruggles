@@ -20,9 +20,6 @@ public class SelectProfileScreen extends BaseScreen {
 	private Image background;
 	private TextButton returnButton;
 
-	// private Group group;
-	// private ScrollPane scrollPane;
-
 	public SelectProfileScreen(ShadowStruggles game, Controller controller) {
 		super(game, controller);
 		initComponents();
@@ -50,8 +47,6 @@ public class SelectProfileScreen extends BaseScreen {
 
 		stage.addActor(background);
 		stage.addActor(returnButton);
-		// group.addActor(background);
-		// group.addActor(returnButton);
 
 		if (game.getManager().profileExists()) {
 			int count = 0;
@@ -83,9 +78,6 @@ public class SelectProfileScreen extends BaseScreen {
 				count++;
 			}
 		}
-
-		// scrollPane.setWidget(group);
-		// stage.addActor(scrollPane);
 
 	}
 

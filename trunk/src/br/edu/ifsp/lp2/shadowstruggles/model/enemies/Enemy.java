@@ -17,7 +17,8 @@ public abstract class Enemy {
 	public Enemy() {
 	}
 
-	public abstract void action(BattlePlatform platform, BattleScreen screen, float delta);
+	public abstract void action(BattlePlatform platform, BattleScreen screen,
+			float delta);
 
 	protected void summomCard(int tile, int lane, Card card,
 			BattlePlatform platform, BattleScreen screen) {
@@ -35,8 +36,7 @@ public abstract class Enemy {
 			card.markLane = lane;
 			screen.addGameObject(i2d);
 		} else if (card.getClass().equals(Effect.class)) {
-			Effect2D i2d = new Effect2D((Effect) card,
-					screen.getController());
+			Effect2D i2d = new Effect2D((Effect) card, screen.getController());
 			i2d.create();
 			card.setImage(i2d);
 			platform.getMap().addCard(card, tile, lane);

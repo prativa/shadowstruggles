@@ -24,11 +24,9 @@ public class Controller {
 	private BaseScreen currentScreen;
 	private BattlePlatform platform;
 
-	// TODO: Implementar efeito sonoro quando uma carta for posicionada.
-
 	public void mapClicked(float x, float y) {
 		int lane = (int) ((y - 48) / 72);
-		int tile = ((int) ((x - 96) / 48)/2)*2;
+		int tile = ((int) ((x - 96) / 48) / 2) * 2;
 
 		if (platform.getSelectedCard() != null) {
 
@@ -36,21 +34,23 @@ public class Controller {
 			int playerEnergy = platform.getRules().getPlayerEnergy();
 
 			// Verifica energia suficiente
-			if (playerEnergy - handCard.energyCost >= 0 && handCard.readyToSummom(platform)) {
+			if (playerEnergy - handCard.energyCost >= 0
+					&& handCard.readyToSummom(platform)) {
 
 				// Verifica se foi clicado no pentagrama
 				if (x >= 96 && tile <= 9 && y >= 48 && lane <= 3) {
-					// Verifiva se clicou em uma backCard
-					if (platform.getPlayerField().getTiles().get(tile/2)
+					// Verifica se clicou em uma backCard
+					if (platform.getPlayerField().getTiles().get(tile / 2)
 							.get(lane) == null) {
 						pentagramClicked(lane, tile);
 					} else
-						backCardClicked(lane/2, tile);
-				}/* else if (lane <= 3 && lane >= 0 && tile > 5
-						&& handCard.getClass().equals(Fighter.class)) {
-					pentagramClicked(lane, nextAvailableSlot(lane));
-				} else if (lane <= 3 && handCard.getClass().equals(Trap.class)) {
-				}*/ else {
+						backCardClicked(lane / 2, tile);
+				}/*
+				 * else if (lane <= 3 && lane >= 0 && tile > 5 &&
+				 * handCard.getClass().equals(Fighter.class)) {
+				 * pentagramClicked(lane, nextAvailableSlot(lane)); } else if
+				 * (lane <= 3 && handCard.getClass().equals(Trap.class)) { }
+				 */else {
 					returnHandCard();
 				}
 			} else {
@@ -61,14 +61,13 @@ public class Controller {
 	}
 
 	private void activateEffect(Card handCard, int lane, int tile) {
-		System.out.println("Effect Activated!");
-		handCard.lane=lane;
-		handCard.tile=tile;
+		handCard.lane = lane;
+		handCard.tile = tile;
 		((BattleScreen) currentScreen).getBackcards().get(
-				(handCard.tile/2)*4 + handCard.getLane()).visible = true;
+				(handCard.tile / 2) * 4 + handCard.getLane()).visible = true;
 		((Effect) handCard).markLane = lane;
 		((Effect) handCard).markTile = tile;
-		platform.getPlayerField().getTiles().get(handCard.getTile()/2)
+		platform.getPlayerField().getTiles().get(handCard.getTile() / 2)
 				.set(handCard.getLane(), handCard);
 		float initialX = 0;
 		if ((handCard.getImage()).getClass().equals(HandCard.class))
@@ -91,13 +90,13 @@ public class Controller {
 	}
 
 	private void summonFighter(Card handCard, int lane, int tile) {
-		handCard.lane=lane;
-		handCard.tile=tile;
+		handCard.lane = lane;
+		handCard.tile = tile;
 		((BattleScreen) currentScreen).getBackcards().get(
-				(handCard.tile/2)*4  + handCard.lane).visible = true;
+				(handCard.tile / 2) * 4 + handCard.lane).visible = true;
 		((Fighter) handCard).markLane = lane;
 		((Fighter) handCard).markTile = tile;
-		platform.getPlayerField().getTiles().get(handCard.tile/2)
+		platform.getPlayerField().getTiles().get(handCard.tile / 2)
 				.set(handCard.lane, handCard);
 		float initialX = 0;
 
@@ -120,36 +119,36 @@ public class Controller {
 
 		rearrangeCards(initialX);
 	}
-	
+
 	private void putTrap(Card handCard, int lane, int tile) {
-			handCard.lane=lane;
-			handCard.tile=tile;
-			((BattleScreen) currentScreen).getBackcards().get(
-					(handCard.tile/2)*4  + handCard.lane).visible = true;
-			((Trap) handCard).markLane = lane;
-			((Trap) handCard).markTile = tile;
-			platform.getPlayerField().getTiles().get(handCard.getTile()/2)
-					.set(handCard.getLane(), handCard);
-			float initialX = 0;
+		handCard.lane = lane;
+		handCard.tile = tile;
+		((BattleScreen) currentScreen).getBackcards().get(
+				(handCard.tile / 2) * 4 + handCard.lane).visible = true;
+		((Trap) handCard).markLane = lane;
+		((Trap) handCard).markTile = tile;
+		platform.getPlayerField().getTiles().get(handCard.getTile() / 2)
+				.set(handCard.getLane(), handCard);
+		float initialX = 0;
 
-			if ((handCard.getImage()).getClass().equals(HandCard.class))
-				initialX = ((HandCard) handCard.getImage()).getInitialX();
+		if ((handCard.getImage()).getClass().equals(HandCard.class))
+			initialX = ((HandCard) handCard.getImage()).getInitialX();
 
-			Trap2D f2d = new Trap2D((Trap) handCard, this);
+		Trap2D f2d = new Trap2D((Trap) handCard, this);
 
-			f2d.create();
-			platform.getMap().addCard(handCard, tile, lane);
-			currentScreen.addGameObject(f2d);
-			platform.getPlayerHandCards().removeValue(platform.getSelectedCard(),
-					true);
-			platform.setSelectedCard(null);
-			// ((BattleScreen)currentScreen).getRemovedCards().add(handCard.getImage());
-			handCard.getImage().markToRemove(true);
-			((MyStage) currentScreen.getStage()).getCurrentActor().removeValue(
-					handCard.getImage(), true);
-			handCard.setImage(f2d);
+		f2d.create();
+		platform.getMap().addCard(handCard, tile, lane);
+		currentScreen.addGameObject(f2d);
+		platform.getPlayerHandCards().removeValue(platform.getSelectedCard(),
+				true);
+		platform.setSelectedCard(null);
+		// ((BattleScreen)currentScreen).getRemovedCards().add(handCard.getImage());
+		handCard.getImage().markToRemove(true);
+		((MyStage) currentScreen.getStage()).getCurrentActor().removeValue(
+				handCard.getImage(), true);
+		handCard.setImage(f2d);
 
-			rearrangeCards(initialX);
+		rearrangeCards(initialX);
 	}
 
 	public void backCardClicked(int lane, int tile) {
@@ -161,7 +160,6 @@ public class Controller {
 			((BattleScreen) currentScreen).changePentagram(false);
 		} else
 			returnHandCard();
-		
 
 	}
 
@@ -217,8 +215,8 @@ public class Controller {
 		} else if (handCard.getClass().equals(Effect.class)
 				&& !((Effect) handCard).isOnFighter()) {
 			activateEffect(handCard, lane, tile);
-		} else if(handCard.getClass().equals(Trap.class)){
-			putTrap(handCard,lane,tile);
+		} else if (handCard.getClass().equals(Trap.class)) {
+			putTrap(handCard, lane, tile);
 		}
 		platform.setSelectedCard(null);
 	}
@@ -416,20 +414,18 @@ public class Controller {
 		((MyStage) currentScreen.getStage()).getCurrentActor().removeValue(
 				c.getImage(), true);
 
-
-			for (int i = 0; i < platform.getPlayerField().getTiles().size; i++) {
-				for (int j = 0; j < platform.getPlayerField().getTiles().get(i).size; j++) {
-					if (platform.getPlayerField().getTiles().get(i).get(j) != null)
-						if (platform.getPlayerField().getTiles().get(i).get(j)
-								.equals(c)) {
-							platform.getPlayerField().getTiles().get(i)
-									.set(j, null);
-							((BattleScreen) currentScreen).getBackcards().get(
-									4 * i + j).visible = false;
-						}
-				}
+		for (int i = 0; i < platform.getPlayerField().getTiles().size; i++) {
+			for (int j = 0; j < platform.getPlayerField().getTiles().get(i).size; j++) {
+				if (platform.getPlayerField().getTiles().get(i).get(j) != null)
+					if (platform.getPlayerField().getTiles().get(i).get(j)
+							.equals(c)) {
+						platform.getPlayerField().getTiles().get(i)
+								.set(j, null);
+						((BattleScreen) currentScreen).getBackcards().get(
+								4 * i + j).visible = false;
+					}
 			}
-		
+		}
 
 	}
 

@@ -3,7 +3,6 @@ package br.edu.ifsp.lp2.shadowstruggles.screens;
 import br.edu.ifsp.lp2.shadowstruggles.Controller;
 import br.edu.ifsp.lp2.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.lp2.shadowstruggles.data.Assets;
-import br.edu.ifsp.lp2.shadowstruggles.data.DeckDAO;
 import br.edu.ifsp.lp2.shadowstruggles.model.Card;
 import br.edu.ifsp.lp2.shadowstruggles.object2d.TransitionControl;
 
