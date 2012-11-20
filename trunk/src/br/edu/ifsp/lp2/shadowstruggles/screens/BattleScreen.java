@@ -41,6 +41,7 @@ public class BattleScreen extends BaseScreen {
 	public final static float FPS = 65;
 
 	protected BattlePlatform battlePlatform;
+	protected String name;
 
 	public Timer2D timer;
 	public EnergyBar energyBar;
@@ -74,9 +75,10 @@ public class BattleScreen extends BaseScreen {
 	 */
 
 	public BattleScreen(ShadowStruggles game, Profile player,
-			Controller controller, BattlePlatform battlePlatform) {
+			Controller controller, BattlePlatform battlePlatform, String name) {
 		super(game, controller);
 
+		this.name = name;
 		inputSources = new InputMultiplexer();
 
 		controller.setCurrentscreen(this);
@@ -407,6 +409,14 @@ public class BattleScreen extends BaseScreen {
 
 	public void setInputSources(InputMultiplexer inputSources) {
 		this.inputSources = inputSources;
+	}
+	
+	public String getName() {
+		return this.name;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }

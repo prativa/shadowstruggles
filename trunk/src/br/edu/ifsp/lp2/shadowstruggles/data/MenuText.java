@@ -8,6 +8,7 @@ import com.badlogic.gdx.utils.OrderedMap;
  * Class for storage of all text shown in the GUI, for purposes of i18n.
  */
 public class MenuText implements Serializable {
+
 	public String languageName;
 
 	// Start Screen
@@ -44,6 +45,9 @@ public class MenuText implements Serializable {
 	// defeatScreen
 	public String defeat = "";
 	public String retryButton = "";
+	
+	// FreePlayScreen
+	public String tutorialBattle = "";
 
 	@Override
 	public void write(Json json) {
@@ -66,6 +70,7 @@ public class MenuText implements Serializable {
 		json.writeValue("volume:", volume);
 		json.writeValue("retryButton", retryButton);
 		json.writeValue("defeat", defeat);
+		json.writeValue("tutorialBattle", tutorialBattle);
 	}
 
 	@Override
@@ -92,6 +97,7 @@ public class MenuText implements Serializable {
 		volume = json.readValue("volume", String.class, jsonData);
 		defeat = json.readValue("defet", String.class, jsonData);
 		retryButton = json.readValue("retryButton", String.class, jsonData);
+		tutorialBattle = json.readValue("tutorialBattle", String.class, jsonData);
 	}
 
 }

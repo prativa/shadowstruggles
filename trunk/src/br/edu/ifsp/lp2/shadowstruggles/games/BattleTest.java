@@ -28,7 +28,7 @@ public class BattleTest extends BattleScreen {
 						DeckDAO.getDeck(DECKNAME, game.getManager()),
 						DeckDAO.getDeck(ENEMY_DECKNAME, game.getManager()), new Map(
 								"cena1"), new DefaultRules(game.getManager()
-								.getSettings()), new TutorialEnemy()));
+								.getSettings()), new TutorialEnemy()), "Test");
 		this.platform = super.battlePlatform;
 		this.drawDelay = 0;
 		

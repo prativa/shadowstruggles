@@ -14,6 +14,7 @@ import br.edu.ifsp.lp2.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.lp2.shadowstruggles.data.Assets;
 import br.edu.ifsp.lp2.shadowstruggles.data.SceneDAO;
 import br.edu.ifsp.lp2.shadowstruggles.games.BattleTest;
+import br.edu.ifsp.lp2.shadowstruggles.games.Tutorial;
 import br.edu.ifsp.lp2.shadowstruggles.screens.utils.ScreenUtils;
 
 public class PosGameScreen extends BaseScreen {
@@ -54,11 +55,19 @@ public class PosGameScreen extends BaseScreen {
 				game.getProfile().setCurrentScene(
 						SceneDAO.getScene(game.getProfile().getCurrentScene()
 								.getNextId(), game.getManager()));
-				if(bt.getClass() == BattleTest.class) {
-					if(!game.getProfile().getBattlesFought().contains(-1, true)) {
+
+				// Adds the battles to the array of fought battles.
+				if (bt.getClass() == Tutorial.class) {
+					if (!game.getProfile().getBattlesFought()
+							.contains(-1, true)) {
 						game.getProfile().getBattlesFought().add(-1);
 					}
 				}
+				
+				game.getProfile().setCurrentScene(
+						SceneDAO.getScene(game.getProfile()
+								.getCurrentScene().getNextId(),
+								game.getManager()));
 				game.setScreen(new SceneScreen(game, controller));
 
 			}

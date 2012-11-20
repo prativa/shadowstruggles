@@ -16,4 +16,6 @@
 "checkCards": "Ver Cartas",
 "volume":"Volume",
 "retryButton":"Reiniciar",
-"defeat":"Voce perdeu, tente novamente"}
+"defeat":"Voce perdeu, tente novamente",
+"tutorialBattle":"Tutorial"
+}
