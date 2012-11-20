@@ -40,7 +40,7 @@ public class Scene implements Serializable {
 		this.setLanguage("en_us");
 		this.backgroundImage = "data/images/scenes/light_darkness_2.png";
 		this.backgroundMusic = "scene1";
-		this.choices = new String[4];
+		this.choices = new String[]{};
 	}
 
 	public int getId() {

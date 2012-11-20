@@ -24,15 +24,18 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 //TODO: Botão para menu.
 public class SceneScreen extends BaseScreen implements InputProcessor {
 	private Scene scene;
+	private int touchY;
+	private ShadowStruggles game;
+	private boolean touched;
+	private boolean justTouched;
+	
 	private Image background;
 	private Label text;
 	private Image next;
 	private TextButton[] choices;
-	private ShadowStruggles game;
-	private boolean touched;
-	private boolean justTouched;
-	private int touchY;
 	private Image box;
+	private TextButton menu;
+	
 	public InputMultiplexer inputSources;
 
 	public SceneScreen(ShadowStruggles game, Controller controller) {
@@ -87,6 +90,17 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 
 		next.scaleY = 6.0f;
 
+		menu = new TextButton("M", getSkin());
+		menu = ScreenUtils.initButton(menu, next.x - 15, 70, 50, 50);
+		menu.setClickListener(new ClickListener() {
+
+			@Override
+			public void click(Actor arg0, float arg1, float arg2) {
+				game.setScreenWithTransition(new MainScreen(game, controller));
+			}
+			
+		});
+		
 		if (!scene.getBackgroundMusic().equals("")) {
 			game.getAudio().stop();
 			game.getAudio().setMusic(scene.getBackgroundMusic());
@@ -94,38 +108,18 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 		inputSources.addProcessor(this.stage);
 		inputSources.addProcessor(this);
 
-		// Gdx.input.setInputProcessor(inputSources);
-
 		stage.addActor(background);
 		stage.addActor(box);
 		stage.addActor(text);
 		stage.addActor(next);
+		stage.addActor(menu);
 
 		if (scene.getChoices().length > 1) {
 			choices = new TextButton[scene.getChoices().length];
 			for (int i = 0; i < scene.getChoices().length; i++) {
 				final int j = i;
 				choices[i] = new TextButton(scene.getChoices()[i],
-						super.getSkin());/*
-										 * {
-										 * 
-										 * @Override public boolean
-										 * touchDown(float x, float y, int
-										 * pointer) {
-										 * 
-										 * if
-										 * (choices[j].getText().equals(scene.
-										 * getChoices()[0])) {
-										 * game.getProfile().setCurrentScene(
-										 * SceneDAO.getScene(scene.getNextId(),
-										 * game.getManager()));
-										 * 
-										 * } else {
-										 * game.getProfile().setCurrentScene(
-										 * SceneDAO.getScene(scene.getNextId() +
-										 * 1, game.getManager())); } return
-										 * super.touchDown(x, y, pointer); } };
-										 */
+						super.getSkin());
 
 				choices[i] = ScreenUtils.initButton(choices[i], box.x
 						+ (i * 220), box.y - 100, 200, 80);
@@ -179,6 +173,7 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 		super.render(delta);
 		background.y = this.camera.position.y - CAMERA_INITIAL_Y;
 		next.y = this.camera.position.y - CAMERA_INITIAL_Y + 320;
+		menu.y = this.camera.position.y - CAMERA_INITIAL_Y + 20;
 	}
 
 	@Override
