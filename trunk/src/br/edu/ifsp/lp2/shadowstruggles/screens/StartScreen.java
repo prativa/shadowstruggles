@@ -56,7 +56,7 @@ public class StartScreen extends BaseScreen {
 			public void click(Actor arg0, float arg1, float arg2) {
 				Assets.buttonSound1.play(1);
 				game.setScreenWithTransition(new SelectProfileScreen(game,
-						controller));
+						controller, "start"));
 			}
 		});
 

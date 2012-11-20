@@ -20,10 +20,17 @@ public class SelectProfileScreen extends BaseScreen {
 	private Image background;
 	private TextButton returnButton;
 
-	public SelectProfileScreen(ShadowStruggles game, Controller controller) {
-		super(game, controller);
-		initComponents();
+	/**
+	 * Indicates which screen the return button should reference: "start" - A
+	 * StartScreen; "main" - A MainScreen.
+	 */
+	private String returnScreen;
 
+	public SelectProfileScreen(ShadowStruggles game, Controller controller,
+			String returnScreen) {
+		super(game, controller);
+		this.returnScreen = returnScreen;
+		initComponents();
 	}
 
 	private void initComponents() {
@@ -41,7 +48,10 @@ public class SelectProfileScreen extends BaseScreen {
 			@Override
 			public void click(Actor actor, float x, float y) {
 				Assets.buttonSound2.play(1);
-				game.setScreenWithTransition(new StartScreen(game, controller));
+				if(returnScreen.toLowerCase().equals("start"))
+					game.setScreenWithTransition(new StartScreen(game, controller));
+				else if(returnScreen.toLowerCase().equals("main"))
+					game.setScreenWithTransition(new MainScreen(game, controller));
 			}
 		});
 

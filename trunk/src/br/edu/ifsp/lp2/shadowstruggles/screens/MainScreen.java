@@ -17,6 +17,7 @@ public class MainScreen extends BaseScreen {
 	private TextButton campaign;
 	private TextButton freePlay;
 	private TextButton config;
+	private TextButton changeProfile;
 
 	public MainScreen(ShadowStruggles game, Controller controller) {
 		super(game, controller);
@@ -80,10 +81,23 @@ public class MainScreen extends BaseScreen {
 			}
 		});
 
+		changeProfile = new TextButton(game.getManager().getMenuText().changeProfile,
+				super.getSkin());
+		changeProfile = ScreenUtils.initButton(changeProfile, 240, 126, 480, 106);
+		changeProfile.setClickListener(new ClickListener() {
+
+			@Override
+			public void click(Actor arg0, float arg1, float arg2) {
+				game.setScreenWithTransition(new SelectProfileScreen(game, controller, "main"));
+			}
+			
+		});
+		
 		stage.addActor(background);
 		stage.addActor(config);
 		stage.addActor(campaign);
 		stage.addActor(freePlay);
+		stage.addActor(changeProfile);
 
 	}
 	
