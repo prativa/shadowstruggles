@@ -7,7 +7,7 @@ import br.edu.ifsp.lp2.shadowstruggles.model.BattlePlatform;
 import br.edu.ifsp.lp2.shadowstruggles.model.Card;
 import br.edu.ifsp.lp2.shadowstruggles.model.DefaultRules;
 import br.edu.ifsp.lp2.shadowstruggles.model.Map;
-import br.edu.ifsp.lp2.shadowstruggles.screens.BaseScreen;
+import br.edu.ifsp.lp2.shadowstruggles.model.enemies.TutorialEnemy;
 import br.edu.ifsp.lp2.shadowstruggles.screens.BattleScreen;
 
 /***
@@ -28,7 +28,7 @@ public class BattleTest extends BattleScreen {
 						DeckDAO.getDeck(DECKNAME, game.getManager()),
 						DeckDAO.getDeck(ENEMY_DECKNAME, game.getManager()), new Map(
 								"cena1"), new DefaultRules(game.getManager()
-								.getSettings())));
+								.getSettings()), new TutorialEnemy()));
 		this.platform = super.battlePlatform;
 		this.drawDelay = 0;
 		
@@ -95,11 +95,6 @@ public class BattleTest extends BattleScreen {
 	}
 	public static String getDeckname() {
 		return DECKNAME;
-	}
-	
-	@Override
-	public BaseScreen copy() {
-		return new BattleTest(this.game);
 	}
 
 }
