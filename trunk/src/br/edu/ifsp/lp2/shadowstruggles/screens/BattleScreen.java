@@ -148,7 +148,8 @@ public class BattleScreen extends BaseScreen {
 	public void update(float delta) {
 		if (this.battlePlatform.getRules().gameState()
 				.equals(DefaultRules.ENEMY_VICTORY)) {
-
+			game.setScreenWithTransition(new DefeatScreen(game, controller,
+					game.getManager().getMenuText().defeat, this));
 		} else if (this.battlePlatform.getRules().gameState()
 				.equals(DefaultRules.PLAYER_VICTORY)) {
 			game.setScreenWithTransition(new PosGameScreen(game, controller,

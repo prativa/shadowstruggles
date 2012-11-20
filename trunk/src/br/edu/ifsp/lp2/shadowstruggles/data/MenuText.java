@@ -41,6 +41,10 @@ public class MenuText implements Serializable {
 	//ConfigurationScreen
 	public String volume="";
 	
+	//defeatScreen
+	public String defeat="";
+	public String retryButton="";
+	
 	@Override
 	public void write(Json json) {
 		json.writeValue("continueGame", continueGame);
@@ -59,6 +63,8 @@ public class MenuText implements Serializable {
 		json.writeValue("exit",exit);
 		json.writeValue("checkCards",checkCards);
 		json.writeValue("volume:",volume);
+		json.writeValue("retryButton",retryButton);
+		json.writeValue("defeat",defeat);
 	}
 
 	@Override
@@ -79,6 +85,8 @@ public class MenuText implements Serializable {
 		exit = json.readValue("exit", String.class,jsonData);
 		checkCards= json.readValue("checkCards",String.class, jsonData);
 		volume = json.readValue("volume", String.class, jsonData);
+		defeat = json.readValue("defet", String.class,jsonData);
+		retryButton = json.readValue("retryButton",String.class, jsonData);
 	}
 	
 }

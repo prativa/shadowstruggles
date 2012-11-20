@@ -13,4 +13,6 @@
 "returnToGame": "Retornar ao Jogo",
 "exit":"Sair do Jogo",
 "checkCards": "Ver Cartas",
-"volume":"Volume"}
+"volume":"Volume",
+"retryButton":"Reiniciar",
+"defeat":"Voce perdeu, tente novamente"}

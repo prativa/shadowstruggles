@@ -122,7 +122,10 @@ public class CheckCardsScreen extends BaseScreen{
 		stage.addActor(exit);
 		stage.addActor(right);
 		
-		this.cards=(DeckDAO.getDeck(this.menu.getBattleScreen().getBattlePlatform().getPlayerDeck().getName(), game.getManager())).getCards();
+		this.cards= new Array<Card>();
+		this.cards.addAll(game.getManager().getFighterList());
+		this.cards.addAll(game.getManager().getEffectList());
+		this.cards.addAll(game.getManager().getTrapList());
 		for(Card card:cards)
 			for(Card nextCard: cards)if(card.name.equals(nextCard.name)&& !card.equals(nextCard))
 				cards.removeValue(nextCard, true);

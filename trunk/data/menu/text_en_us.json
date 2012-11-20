@@ -8,10 +8,12 @@
 "freePlay":"Free Play",
 "configurations":"Configurations",
 "victory":"Congratulations, you've won!",
+"defeat":"You Lose, try again",
 "continueButton":"Continue",
 "mainMenuButton":"Main Menu",
 "returnToGame":"Return to Game",
 "exit":"Exit to Title",
 "checkCards": "Check Cards",
-"volume":"Volume"
+"volume":"Volume",
+"retryButton":"Retry"
 }

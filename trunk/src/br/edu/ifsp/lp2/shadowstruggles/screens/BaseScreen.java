@@ -211,5 +211,8 @@ public abstract class BaseScreen implements Screen {
 		this.controller = controller;
 	}
 
+	public BaseScreen copy(){
+		return null;
+	}
 	
 }
