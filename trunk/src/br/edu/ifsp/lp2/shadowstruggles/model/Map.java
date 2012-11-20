@@ -53,19 +53,19 @@ public class Map {
 	 * if it's inside the range of an enemy fighter.
 	 */
 
-	public boolean enemyBaseAttacked() {
-		boolean attacked = false;
+	public int enemyBaseAttacked() {
+		int lane = -1;
 		for (Array<Array<Card>> lanes : tiles) {
 			for (Array<Card> tiles : lanes) {
 				for (Card card : tiles) {
 					if(card.getClass().equals(Fighter.class))
 					if (card.direction == 1)
 						if (((Fighter) card).tile + ((Fighter) card).range > 35)
-							return true;
+							lane = card.lane;
 				}
 			}
 		}
-		return attacked;
+		return lane;
 	}
 
 	/***

@@ -17,6 +17,7 @@ public class BattleTest extends BattleScreen {
 
 	private BattlePlatform platform;
 	private static final String DECKNAME = "Deck 1";
+	private static final String ENEMY_DECKNAME = "Deck Tutorial";
 	
 	private float drawDelay;
 
@@ -24,7 +25,7 @@ public class BattleTest extends BattleScreen {
 		super(game, ProfileDAO.getProfile(1), game.getController(),
 				new BattlePlatform(
 						DeckDAO.getDeck(DECKNAME, game.getManager()),
-						DeckDAO.getDeck(DECKNAME, game.getManager()), new Map(
+						DeckDAO.getDeck(ENEMY_DECKNAME, game.getManager()), new Map(
 								"cena1"), new DefaultRules(game.getManager()
 								.getSettings())));
 		this.platform = super.battlePlatform;

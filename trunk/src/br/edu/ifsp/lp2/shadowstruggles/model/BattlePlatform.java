@@ -134,11 +134,12 @@ public class BattlePlatform {
 	}
 
 	public boolean cardOnEnemyHand(Card card) {
+		boolean b = false;
 		for(Card c: enemyHandCards){
-			if(c.getName().equals(card.getName()))
-				return true;
+			if(c.getName().equals(card.getName())){
+				b=true;}
 		}
-		return false;
+		return b;
 	}
 
 	public Card getCardFromEnemy(String string) {
