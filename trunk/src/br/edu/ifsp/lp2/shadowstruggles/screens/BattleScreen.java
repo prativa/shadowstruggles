@@ -424,4 +424,6 @@ public class BattleScreen extends BaseScreen {
 		this.name = name;
 	}
 
+	
+	
 }

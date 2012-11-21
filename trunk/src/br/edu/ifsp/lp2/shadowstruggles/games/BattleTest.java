@@ -8,6 +8,7 @@ import br.edu.ifsp.lp2.shadowstruggles.model.Card;
 import br.edu.ifsp.lp2.shadowstruggles.model.DefaultRules;
 import br.edu.ifsp.lp2.shadowstruggles.model.Map;
 import br.edu.ifsp.lp2.shadowstruggles.model.enemies.TutorialEnemy;
+import br.edu.ifsp.lp2.shadowstruggles.screens.BaseScreen;
 import br.edu.ifsp.lp2.shadowstruggles.screens.BattleScreen;
 
 /***
@@ -95,6 +96,11 @@ public class BattleTest extends BattleScreen {
 	}
 	public static String getDeckname() {
 		return DECKNAME;
+	}
+	
+	@Override
+	public BaseScreen copy() {
+		return new BattleTest(this.game);
 	}
 
 }

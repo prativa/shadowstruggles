@@ -24,11 +24,21 @@ public class TutorialEnemy extends Enemy {
 					if (platform.cardOnEnemyHand(new Card("Rock", null, 0, "",
 							0, null)))
 						card = platform.getCardFromEnemy("Rock");
-				} else {
-					if (platform.cardOnEnemyHand(new Card("Mineralogy", null,
-							0, "", 0, null)))
-						card = platform.getCardFromEnemy("Rock");
-				}
+				} else if (platform.cardOnEnemyHand(new Card("Mineralogy", null,
+							0, "", 0, null)) && platform.getCardFromEnemy("Rock").getEnergyCost()>platform.getRules().getEnemyEnergy()){
+						card = platform.getCardFromEnemy("Mineralogy");
+				}else if (platform.cardOnEnemyHand(new Card("DR-002", null, 0, "", 0,
+						null)))
+					card = platform.getCardFromEnemy("DR-002");
+				else if (platform.cardOnEnemyHand(new Card("DR-003", null, 0,
+						"", 0, null)))
+					card = platform.getCardFromEnemy("DR-003");
+				else if (platform.cardOnEnemyHand(new Card(
+						"Eletric Current level 1", null, 0, "", 0, null)))
+					card = platform.getCardFromEnemy("Eletric Current level 1");
+				else if (platform.cardOnEnemyHand(new Card("Hacking", null, 0,
+						"", 0, null)))
+					card = platform.getCardFromEnemy("Hacking");
 			} else {
 				tile = 35 - MathUtils.random(5);
 				lane = MathUtils.random(3);

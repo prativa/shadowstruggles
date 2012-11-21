@@ -59,6 +59,7 @@ public class ShadowStruggles extends Game {
 	}
 
 	public void setScreen(Screen screen) {
+			System.out.println(screen);
 			super.setScreen(screen);
 			controller.setCurrentscreen((BaseScreen) screen);
 	}

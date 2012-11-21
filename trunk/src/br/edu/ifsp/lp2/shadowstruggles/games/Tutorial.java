@@ -6,6 +6,7 @@ import br.edu.ifsp.lp2.shadowstruggles.model.BattlePlatform;
 import br.edu.ifsp.lp2.shadowstruggles.model.DefaultRules;
 import br.edu.ifsp.lp2.shadowstruggles.model.Map;
 import br.edu.ifsp.lp2.shadowstruggles.model.enemies.TutorialEnemy;
+import br.edu.ifsp.lp2.shadowstruggles.screens.BaseScreen;
 import br.edu.ifsp.lp2.shadowstruggles.screens.BattleScreen;
 
 public class Tutorial extends BattleScreen {
@@ -20,6 +21,10 @@ public class Tutorial extends BattleScreen {
 						.getManager().getMenuText().tutorialBattle);
 		game.getAudio().stop();
 		game.getAudio().setMusic("s4");
+	}
+	
+	public BaseScreen copy() {
+		return new Tutorial(this.game);
 	}
 
 }
