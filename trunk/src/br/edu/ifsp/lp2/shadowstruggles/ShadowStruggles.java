@@ -21,7 +21,7 @@ import com.badlogic.gdx.utils.Array;
  */
 
 public class ShadowStruggles extends Game {
-	public static final String LOG = ShadowStruggles.class.getSimpleName();
+	public static final String LOG = ShadowStruggles.class.getName();
 	private Controller controller;
 	private Profile profile;
 	private DataManager manager;

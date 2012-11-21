@@ -95,7 +95,7 @@ public class MenuText implements Serializable {
 		exit = json.readValue("exit", String.class, jsonData);
 		checkCards = json.readValue("checkCards", String.class, jsonData);
 		volume = json.readValue("volume", String.class, jsonData);
-		defeat = json.readValue("defet", String.class, jsonData);
+		defeat = json.readValue("defeat", String.class, jsonData);
 		retryButton = json.readValue("retryButton", String.class, jsonData);
 		tutorialBattle = json.readValue("tutorialBattle", String.class, jsonData);
 	}

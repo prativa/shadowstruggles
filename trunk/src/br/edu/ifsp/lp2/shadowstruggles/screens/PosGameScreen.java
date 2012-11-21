@@ -1,5 +1,12 @@
 package br.edu.ifsp.lp2.shadowstruggles.screens;
 
+import br.edu.ifsp.lp2.shadowstruggles.Controller;
+import br.edu.ifsp.lp2.shadowstruggles.ShadowStruggles;
+import br.edu.ifsp.lp2.shadowstruggles.data.Assets;
+import br.edu.ifsp.lp2.shadowstruggles.data.SceneDAO;
+import br.edu.ifsp.lp2.shadowstruggles.games.Tutorial;
+import br.edu.ifsp.lp2.shadowstruggles.screens.utils.ScreenUtils;
+
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -8,14 +15,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-
-import br.edu.ifsp.lp2.shadowstruggles.Controller;
-import br.edu.ifsp.lp2.shadowstruggles.ShadowStruggles;
-import br.edu.ifsp.lp2.shadowstruggles.data.Assets;
-import br.edu.ifsp.lp2.shadowstruggles.data.SceneDAO;
-import br.edu.ifsp.lp2.shadowstruggles.games.BattleTest;
-import br.edu.ifsp.lp2.shadowstruggles.games.Tutorial;
-import br.edu.ifsp.lp2.shadowstruggles.screens.utils.ScreenUtils;
 
 public class PosGameScreen extends BaseScreen {
 

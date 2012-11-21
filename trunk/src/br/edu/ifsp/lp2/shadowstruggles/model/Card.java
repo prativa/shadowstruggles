@@ -1,6 +1,5 @@
 package br.edu.ifsp.lp2.shadowstruggles.model;
 
-import br.edu.ifsp.lp2.shadowstruggles.data.CardDAO;
 import br.edu.ifsp.lp2.shadowstruggles.scripts.CardAction;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -161,7 +160,9 @@ public class Card implements Serializable {
 	public boolean readyToSummom(BattlePlatform platform){
 		boolean bool = true;
 		for( String card: this.preRequisites){
-			if(!platform.getMap().cardOnMap(new Card(card,CardDAO.getCard(card).nameVisualization, 0,null,0,null), -1,Map.HUMAN_PLAYER)){
+			if(!platform.getMap()
+					.cardOnMap(
+							new Card(card,card, 0,null,0,null), -1,Map.HUMAN_PLAYER)){
 				bool =false;
 				break;
 			}

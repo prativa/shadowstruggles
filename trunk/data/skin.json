@@ -180,10 +180,11 @@ resources: {
 		]
 	},
 	com.badlogic.gdx.graphics.g2d.BitmapFont: { 
-		default-font: { file: font-large.fnt },
-		small-font: { file: font-small.fnt } ,
-		medium-font: { file: font-medium.fnt },
-		andalus-font: { file: andalus.fnt }
+		default-font: { file: fonts/font-large.fnt },
+		small-font: { file: fonts/font-small.fnt } ,
+		medium-font: { file: fonts/font-medium.fnt },
+		andalus-font: { file: fonts/andalus.fnt },
+		gg-font:{file: fonts/font-gg.fnt}
 	},
 	com.badlogic.gdx.graphics.Color: {
 		green: { a: 1, b: 0, g: 1, r: 0 },

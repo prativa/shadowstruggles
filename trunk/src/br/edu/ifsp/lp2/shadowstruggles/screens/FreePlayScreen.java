@@ -3,8 +3,6 @@ package br.edu.ifsp.lp2.shadowstruggles.screens;
 import br.edu.ifsp.lp2.shadowstruggles.Controller;
 import br.edu.ifsp.lp2.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.lp2.shadowstruggles.data.Assets;
-import br.edu.ifsp.lp2.shadowstruggles.games.BattleTest;
-import br.edu.ifsp.lp2.shadowstruggles.games.Tutorial;
 import br.edu.ifsp.lp2.shadowstruggles.screens.utils.ScreenUtils;
 
 import com.badlogic.gdx.graphics.g2d.TextureRegion;

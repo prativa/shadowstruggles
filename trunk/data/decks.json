@@ -1,5 +1,5 @@
 [{"class":"br.edu.ifsp.lp2.shadowstruggles.model.Deck",
-"name":"Deck 1",
+"name":"Tutorial Deck Player",
 "minCapacity":20,
 "maxCapacity":30,
 "cards":[	
@@ -36,7 +36,7 @@
 	]
 },
 {"class":"br.edu.ifsp.lp2.shadowstruggles.model.Deck",
-"name":"Deck Tutorial",
+"name":"Tutorial Deck Enemy",
 "minCapacity":20,
 "maxCapacity":30,
 "cards":[

@@ -15,7 +15,7 @@ public class Tutorial extends BattleScreen {
 				new BattlePlatform(DeckDAO.getDeck("Tutorial Deck Player",
 						game.getManager()), DeckDAO.getDeck(
 						"Tutorial Deck Enemy", game.getManager()), new Map(
-						"cena 1"), new DefaultRules(game.getManager()
+						"cena1"), new DefaultRules(game.getManager()
 						.getSettings()), new TutorialEnemy()), game
 						.getManager().getMenuText().tutorialBattle);
 		game.getAudio().stop();

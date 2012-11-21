@@ -20,6 +20,7 @@ public class Deck implements Serializable{
 		shuffle();
 	}
 	public Card draw(){
+		
 		return cards.pop();
 	}
 	

@@ -9,7 +9,6 @@ import br.edu.ifsp.lp2.shadowstruggles.object2d.*;
 import br.edu.ifsp.lp2.shadowstruggles.screens.BaseScreen;
 import br.edu.ifsp.lp2.shadowstruggles.screens.BattleScreen;
 import br.edu.ifsp.lp2.shadowstruggles.screens.InGameMenu;
-
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.actions.Delay;
 import com.badlogic.gdx.scenes.scene2d.actions.MoveTo;
@@ -80,7 +79,7 @@ public class Controller {
 		platform.getPlayerHandCards().removeValue(platform.getSelectedCard(),
 				true);
 		platform.setSelectedCard(null);
-		// ((BattleScreen)currentScreen).getRemovedCards().add(handCard.getImage());
+		
 		handCard.getImage().markToRemove(true);
 		((MyStage) currentScreen.getStage()).getCurrentActor().removeValue(
 				handCard.getImage(), true);
@@ -167,6 +166,7 @@ public class Controller {
 
 	}
 
+	@SuppressWarnings("unused")
 	private int nextAvailableSlot(int lane) {
 		int next = 4;
 		for (BackCard backCard : ((BattleScreen) currentScreen).getBackcards()) {
@@ -294,6 +294,7 @@ public class Controller {
 
 		((BattleScreen) this.currentScreen).playerLife.percentage = this.platform.rules
 				.getPlayerHpPercent();
+		
 
 	}
 

@@ -20,7 +20,7 @@ public class DefeatScreen extends BaseScreen {
 	private Label text;
 	private TextButton retryButton;
 	private TextButton mainMenu;
-	private BattleScreen bt;
+	private BattleScreen battleScreen;
 
 	public DefeatScreen(ShadowStruggles game, Controller controller,
 			String message) {
@@ -29,10 +29,10 @@ public class DefeatScreen extends BaseScreen {
 	}
 
 	public DefeatScreen(ShadowStruggles game, Controller controller,
-			String message, BattleScreen bt) {
+			String message, BattleScreen battleScreen) {
 		super(game, controller);
 		initComponents(message);
-		this.bt = bt;
+		this.battleScreen=battleScreen;
 	}
 
 	public void initComponents(String message) {
@@ -49,7 +49,7 @@ public class DefeatScreen extends BaseScreen {
 
 			@Override
 			public void click(Actor actor, float x, float y) {
-				game.setScreenWithTransition(bt.copy());
+				game.setScreenWithTransition(battleScreen.copy());
 			}
 		});
 		mainMenu = new TextButton(
@@ -66,10 +66,11 @@ public class DefeatScreen extends BaseScreen {
 
 		});
 		this.text = new Label(message, super.getSkin());
-		text.setStyle(new LabelStyle(super.getSkin().getFont("default-font"),
+		text.setStyle(new LabelStyle(super.getSkin().getFont("gg-font"),
 				Color.YELLOW));
+		
 		text.x = (960 - text.getPrefWidth()) / 2;
-		text.y = 300;
+		text.y = 400;
 
 		this.getStage().addActor(background);
 		this.getStage().addActor(text);

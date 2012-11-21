@@ -145,10 +145,10 @@ public class BattleScreen extends BaseScreen {
 	}
 
 	public void update(float delta) {
+		System.out.println(this.battlePlatform.getRules().gameState());
 		if (this.battlePlatform.getRules().gameState()
 				.equals(DefaultRules.ENEMY_VICTORY)) {
-			game.setScreenWithTransition(new DefeatScreen(game, controller,
-					game.getManager().getMenuText().defeat, this));
+			playerLose();
 		} else if (this.battlePlatform.getRules().gameState()
 				.equals(DefaultRules.PLAYER_VICTORY)) {
 			game.setScreenWithTransition(new PosGameScreen(game, controller,
@@ -315,7 +315,9 @@ public class BattleScreen extends BaseScreen {
 						BACKGROUND_Y + 60 + 72 * j, game);
 
 				backcards.add(bc);
-				stage.addActor(backcards.get(i * 4 + j));
+				//stage.addActor(backcards.get(i * 4 + j));
+				stage.addActor(bc);
+				
 			}
 		}
 
@@ -385,6 +387,9 @@ public class BattleScreen extends BaseScreen {
 			}
 		}
 
+	}
+	public void playerLose(){
+		game.setScreenWithTransition(new DefeatScreen(game, controller, game.getManager().getMenuText().defeat, this));
 	}
 
 	public Array<BackCard> getBackcards() {
