@@ -1,6 +1,7 @@
 package br.edu.ifsp.lp2.shadowstruggles.object2d;
 
 import br.edu.ifsp.lp2.shadowstruggles.Controller;
+import br.edu.ifsp.lp2.shadowstruggles.screens.*;
 import br.edu.ifsp.lp2.shadowstruggles.data.Assets;
 import br.edu.ifsp.lp2.shadowstruggles.model.Card;
 import br.edu.ifsp.lp2.shadowstruggles.screens.BaseScreen;
@@ -31,6 +32,8 @@ public class HandCard extends FixedObject implements InputProcessor {
 	private boolean touched;
 	private boolean justTouched;
 	private boolean dragging;
+	private float clickedX;
+	private float clickedY;
 	
 	public HandCard(Controller controller, String name, int initialX, Card card) {
 		super(new TextureRegion(Assets.handCards.get(card.getName()), 0, 0,
@@ -118,6 +121,8 @@ public class HandCard extends FixedObject implements InputProcessor {
 
 			if (!justTouched) {
 				justTouched = true;
+				clickedX=x;
+				clickedY=y;
 			}
 			return true;
 		}
@@ -160,8 +165,9 @@ public class HandCard extends FixedObject implements InputProcessor {
 					}
 				}
 			} else {
-				//resetPosition();
+				resetPosition();
 				this.controller.getPlatform().setSelectedCard(null);
+				((BattleScreen)(this.controller.getCurrentScreen())).changePentagram(false);
 			}
 
 			touched = false;
@@ -187,11 +193,13 @@ public class HandCard extends FixedObject implements InputProcessor {
 			this.controller.handCardClicked(this.getCard(), true);
 		}
 		
-		if (touched) {
+		if (touched && Math.sqrt(Math.pow(x-clickedX,2)+Math.pow(y-clickedY,2))>50 ) {
 			if(!dragging){
 				this.dragging=true;
 				this.scaleX=(float)(this.scaleX/2);
 				this.scaleY=(float)(this.scaleY/2);
+				clickedX=-100;
+				clickedY=-100;
 			}
 			this.x = x - this.width * this.scaleX / 2 + deltaCamX;
 			this.y = invertY - this.height * this.scaleY / 2;
