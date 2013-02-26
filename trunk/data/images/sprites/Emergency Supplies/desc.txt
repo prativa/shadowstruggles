@@ -1,1 +1,0 @@
-Restores 35 units of damage of the player’s base.
