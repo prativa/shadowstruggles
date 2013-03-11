@@ -1,0 +1,127 @@
+
+skin.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+table_texture
+  rotate: false
+  xy: 1, 1
+  size: 1020, 1020
+  orig: 1020, 1020
+  offset: 0, 0
+  index: -1
+
+skin2.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+book
+  rotate: false
+  xy: 1, 455
+  size: 1020, 510
+  orig: 1020, 510
+  offset: 0, 0
+  index: -1
+button
+  rotate: false
+  xy: 1, 197
+  size: 512, 256
+  orig: 512, 256
+  offset: 0, 0
+  index: -1
+button_blur
+  rotate: false
+  xy: 1, 67
+  size: 512, 128
+  orig: 512, 128
+  offset: 0, 0
+  index: -1
+candle
+  rotate: false
+  xy: 515, 325
+  size: 256, 128
+  orig: 256, 128
+  offset: 0, 0
+  index: -1
+Profiles
+  rotate: false
+  xy: 515, 195
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+beaker
+  rotate: false
+  xy: 773, 325
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+tripod
+  rotate: false
+  xy: 645, 195
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+scroll_bar
+  rotate: false
+  xy: 903, 325
+  size: 32, 128
+  orig: 32, 128
+  offset: 0, 0
+  index: -1
+Minus
+  rotate: false
+  xy: 1, 1
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+Mute
+  rotate: false
+  xy: 515, 129
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+Plus
+  rotate: false
+  xy: 775, 259
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+right
+  rotate: false
+  xy: 937, 389
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+scroll_down
+  rotate: false
+  xy: 67, 1
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+scroll_up
+  rotate: false
+  xy: 581, 129
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+
+skin3.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+button_down
+  rotate: false
+  xy: 1, 1
+  size: 512, 256
+  orig: 512, 256
+  offset: 0, 0
+  index: -1
