@@ -15,9 +15,9 @@ import br.edu.ifsp.lp2.shadowstruggles.screens.BattleScreen;
 import br.edu.ifsp.lp2.shadowstruggles.screens.InGameMenu;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.actions.Delay;
-import com.badlogic.gdx.scenes.scene2d.actions.MoveTo;
-import com.badlogic.gdx.scenes.scene2d.actions.Sequence;
+//import com.badlogic.gdx.scenes.scene2d.actions.Delay;
+//import com.badlogic.gdx.scenes.scene2d.actions.MoveTo;
+//import com.badlogic.gdx.scenes.scene2d.actions.Sequence;
 
 /***
  * Acts as a link between the visual elements and the logic ones. The visual

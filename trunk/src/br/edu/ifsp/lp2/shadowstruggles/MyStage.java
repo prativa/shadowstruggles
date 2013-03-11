@@ -30,9 +30,10 @@ public class MyStage extends Stage {
 	}
 	
 		
-	@Override
+	//@Override							Leon
 	public void removeActor(Actor actor) {
-		super.removeActor(actor);
+		//super.removeActor(actor);		Leon
+		actor.remove();
 		currentActor.removeValue(actor,true);
 	}
 	
