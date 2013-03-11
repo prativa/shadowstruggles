@@ -1,0 +1,20 @@
+[{"class":"br.edu.ifsp.pds.shadowstruggles.model.Trap",
+"name":"Electric Current Level 1",
+"nameVisualization":"Electric Current Level 1",
+"energyCost":25,
+"description":"When an enemy fighter passes through the specified location, it generates a difference of electrical potential, creating an electric current that lasts for 5 seconds. Once activated, it deals 2 units of damage per second and prevents the enemy fighter(s) from moving.",
+"buyCost":0,
+"duration":5.0,
+"hasImmediateEffect":true,
+"isActivated":false},
+{"class":"br.edu.ifsp.pds.shadowstruggles.model.Trap",
+"name":"Hacking",
+"nameVisualization":"Hacking",
+"energyCost":30,
+"description":"By altering the composition of the robot’s core systems, converts the next “DR” enemy fighter which activates the trap into an ally.",
+"buyCost":0,
+"duration":0.0,
+"hasImmediateEffect":true,
+"isActivated":false
+}
+]

@@ -1,0 +1,67 @@
+animation_sheet.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+0001
+  rotate: false
+  xy: 1, 1
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+0010 (2)
+  rotate: false
+  xy: 513, 513
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+0002
+  rotate: false
+  xy: 257, 1
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+0003
+  rotate: false
+  xy: 513, 1
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+0004
+  rotate: false
+  xy: 1, 257
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+0005
+  rotate: false
+  xy: 257, 257
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+0006
+  rotate: false
+  xy: 513, 257
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+0007
+  rotate: false
+  xy: 1, 513
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+0008
+  rotate: false
+  xy: 257, 513
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
