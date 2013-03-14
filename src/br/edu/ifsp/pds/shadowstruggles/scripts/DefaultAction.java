@@ -152,6 +152,13 @@ public class DefaultAction extends CardAction {
 			}
 		}
 	}
+	
+	/**
+	 * Display the animation of fighting of a fighter during a fight 
+	 * 
+	 * @param f1
+	 * 			The fighter Drawable
+	 */
 
 	public void update(Image f1) {
 		Fighter2D fighter = (Fighter2D) f1;
