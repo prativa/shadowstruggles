@@ -15,6 +15,7 @@
 	com.badlogic.gdx.scenes.scene2d.ui.Button$ButtonStyle: {
         default: { down: button_down, up: button },
         toggle: { down: button_down, checked: button_down, up: button }
+        blur: { down: button_blur, up: button_blur }
 	},
 	com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle: {
         default: { down: button_down, up: button, font: default-font, fontColor: white },
