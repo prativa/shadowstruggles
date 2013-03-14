@@ -10,6 +10,7 @@ import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.actions.AlphaAction;
 import com.badlogic.gdx.scenes.scene2d.actions.DelayAction;
 import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
@@ -88,8 +89,15 @@ public class HandCard extends FixedObject implements InputProcessor {
 		return this.dragging;
 	}
 
+	public void startBlink() {
+		this.addAction(Actions.forever(Actions.sequence(Actions.fadeOut(0.3f),
+				Actions.fadeIn(0.3f))));
+
+	}
+
 	public void resetBlink() {
 		this.clearActions();
+		this.addAction(Actions.fadeIn(0.3f));
 	}
 
 	public boolean isSelected() {
@@ -162,19 +170,8 @@ public class HandCard extends FixedObject implements InputProcessor {
 					if (isSelected) {
 						game.getController().handCardClicked(getCard(),
 								isSelected);
-						
-						AlphaAction fIn = new AlphaAction();
-						fIn.setAlpha(255f);
-						AlphaAction fOut = new AlphaAction();
-						fOut.setAlpha(0.25f);
-						DelayAction delayAction = new DelayAction();
-						delayAction.setDuration(0.25f);
-						
-						sAction.addAction(fIn);
-						sAction.addAction(fOut);
-						sAction.addAction(delayAction);
-						
-						this.addAction(sAction);
+
+						startBlink();
 					} else {
 						game.getController().handCardClicked(getCard(),
 								isSelected);
