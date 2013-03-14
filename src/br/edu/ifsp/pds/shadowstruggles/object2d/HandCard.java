@@ -11,9 +11,6 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
-import com.badlogic.gdx.scenes.scene2d.actions.AlphaAction;
-import com.badlogic.gdx.scenes.scene2d.actions.DelayAction;
-import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
 /***
@@ -164,8 +161,7 @@ public class HandCard extends FixedObject implements InputProcessor {
 						isSelected = true;
 					else
 						isSelected = false;
-
-					SequenceAction sAction = new SequenceAction();
+					
 
 					if (isSelected) {
 						game.getController().handCardClicked(getCard(),

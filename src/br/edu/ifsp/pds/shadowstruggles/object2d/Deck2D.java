@@ -7,12 +7,7 @@ import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
-import com.badlogic.gdx.scenes.scene2d.actions.AlphaAction;
-import com.badlogic.gdx.scenes.scene2d.actions.DelayAction;
-import com.badlogic.gdx.scenes.scene2d.actions.RepeatAction;
-import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.badlogic.gdx.utils.Pool;
 
 /***
  * A visual representation of the player deck.
@@ -39,24 +34,9 @@ public class Deck2D extends FixedObject implements InputProcessor {
 		this.setReady(true);
 	}
 
-	public void startBlink() {
-		SequenceAction sAction = new SequenceAction();
-
-		/*
-		 * AlphaAction fIn = new AlphaAction(); fIn.setDuration(100);
-		 * fIn.setAlpha(255f); AlphaAction fOut = new AlphaAction();
-		 * fOut.setDuration(100); fOut.setAlpha(0f); DelayAction delayAction =
-		 * new DelayAction(); delayAction.setDuration(0.25f);
-		 * sAction.addAction(fIn); sAction.addAction(fOut);
-		 * 
-		 * sAction.addAction(delayAction); RepeatAction rAction = new
-		 * RepeatAction(); rAction.setCount(RepeatAction.FOREVER);
-		 * rAction.setAction(sAction);
-		 */
-
+	public void startBlink() {	
 		this.addAction(Actions.forever(Actions.sequence(Actions.fadeOut(0.3f),
 				Actions.fadeIn(0.3f))));
-
 	}
 
 	public void stopBlink() {

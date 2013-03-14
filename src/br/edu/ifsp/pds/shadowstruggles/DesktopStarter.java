@@ -2,7 +2,6 @@ package br.edu.ifsp.pds.shadowstruggles;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
-import com.badlogic.gdx.tools.imagepacker.TexturePacker2;
 
 public class DesktopStarter {
 
