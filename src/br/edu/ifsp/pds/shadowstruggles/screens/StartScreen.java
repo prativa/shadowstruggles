@@ -12,12 +12,57 @@ import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
+import com.badlogic.gdx.scenes.scene2d.ui.Slider;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ObjectMap;
 
 public class StartScreen extends BaseScreen {
+//	private TextButton continueGame;
+//	private TextButton newGame;
+//	private Drawable tableTexture;
+//	private Image book;
+//	private Image beaker;
+//	private Image candle;
+//	private Image tripod;
+//	private ScrollPane scrollStates;
+//	private Array<TextButton> states;
+//	
+//	private boolean loadStates;
+//	
+//	public StartScreen(ShadowStruggles game, Controller controller) {
+//		super(game, controller);
+//	}
+//	
+//	@Override
+//	public void resize(int width, int height) {
+//		super.resize(width, height);
+//		initComponents();
+//	}
+//	
+//	public void initComponents() {
+//		stage.clear();
+//		
+//		continueGame = new TextButton(game.getManager().getMenuText().continueGame, this.getSkin().get("blur", TextButtonStyle.class));
+//		newGame = new TextButton(game.getManager().getMenuText().newGame, this.getSkin());
+//		tableTexture = this.getSkin().getDrawable("table_texture");
+//		book = new Image(this.getSkin().getDrawable("book"));
+//		beaker = new Image(this.getSkin().getDrawable("beaker"));
+//		candle = new Image(this.getSkin().getDrawable("candle"));
+//		tripod = new Image(this.getSkin().getDrawable("tripod"));
+//		scrollStates = new ScrollPane(null);
+//		
+//		Table table = new Table();
+//		table.setBackground(tableTexture);
+//		table.add(continueGame);
+//		
+//		stage.addActor(table);
+//	}
 
 	private Image background;
 	private Texture texture;

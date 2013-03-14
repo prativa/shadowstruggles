@@ -15,13 +15,19 @@
 	com.badlogic.gdx.scenes.scene2d.ui.Button$ButtonStyle: {
         default: { down: button_down, up: button },
         toggle: { down: button_down, checked: button_down, up: button }
-        blur: { down: button_blur, up: button_blur }
 	},
 	com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle: {
         default: { down: button_down, up: button, font: default-font, fontColor: white },
-        toggle: { down: button_down, up: button, checked: button_down, font: default-font, fontColor: white, downFontColor: red }
+        toggle: { down: button_down, up: button, checked: button_down, font: default-font, fontColor: white, downFontColor: red },
+        blur: { down: button_blur, up: button_blur, font: andalus-font, fontColor: black }
 	},
 	com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle: {
         default: { font: default-font, fontColor: white }
+	},
+	com.badlogic.gdx.scenes.scene2d.ui.ScrollPane$ScrollPaneStyle: {
+        default: { vScroll: scroll_bar, vScrollKnob: scroll_up }
+	},
+	com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle: {
+        default: { font: andalus-font, fontColor: white }
 	}
 }
