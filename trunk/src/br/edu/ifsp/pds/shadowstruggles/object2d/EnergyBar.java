@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
 /***
  * A visual representation of the player energy.
@@ -14,9 +15,11 @@ public class EnergyBar extends FixedObject {
 
 	private float percentage;
 	private Label energy;
+	private ShadowStruggles game;
 	public EnergyBar(int initialX, ShadowStruggles game) {
 		super(new TextureRegion(game.getAssets().get("data/images/objects/energy100.png", Texture.class), 0, 0, 128, 128), initialX);
 		this.percentage = 0.45f;
+		this.game=game;
 	}
 
 	/**
@@ -26,6 +29,9 @@ public class EnergyBar extends FixedObject {
 		this.energy.setX(this.getX() + 30);
 		float h1 = percentage * 128;
 		this.setHeight(h1);
+		//TODO: otimizar essa função. Prioridade: minima
+		int h2=(int)h1;			
+		this.setDrawable(new TextureRegionDrawable(new TextureRegion(game.getAssets().get("data/images/objects/energy100.png", Texture.class), 0, 128-h2, 128, h2)));
 	}
 
 	public void initEnergy(int currentEnergy, int maxEnergy, Skin skin) {

@@ -21,10 +21,7 @@ public class Map2D extends Image implements InputProcessor {
 	private int touchX;
 
 	public Map2D(final Controller controller, TextureRegion tRegion) {
-		super(tRegion);
-		/*
-		this.scaleX = 2f; this.scaleY = 2f;
-		*/
+		super(tRegion);		
 		touched = false;
 		justTouched = false;
 		this.controller = controller;
