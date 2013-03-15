@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import com.badlogic.gdx.utils.Array;
+
 import br.edu.ifsp.pds.shadowstruggles.model.Card;
 import br.edu.ifsp.pds.shadowstruggles.model.Fighter;
 import br.edu.ifsp.pds.shadowstruggles.model.Map;
@@ -79,38 +81,90 @@ public class MapTest {
 
 	@Test
 	public void testLaneWithMoreEnemies() {
-//		assertEquals("Result:", aaa, aaa);
-		fail("Not yet implemented");
+		Map map = new Map("teste");
+		Fighter fighter1 = new Fighter("DR002", "DR002", 15, "", 14, new DefaultAction(), 15, 15, 15.0f, 1, false, "", 0, null);
+		fighter1.setDirection(-1);
+		map.addCard(fighter1, 1, 2);
+		Fighter fighter2 = new Fighter("DR002", "DR002", 15, "", 14, new DefaultAction(), 15, 15, 15.0f, 1, false, "", 0, null);
+		fighter2.setDirection(-1);
+		map.addCard(fighter2, 1, 2);
+		Fighter fighter3 = new Fighter("DR002", "DR002", 15, "", 14, new DefaultAction(), 15, 15, 15.0f, 1, false, "", 0, null);
+		fighter3.setDirection(-1);
+		map.addCard(fighter3, 1, 2);
+		Fighter fighter4 = new Fighter("DR002", "DR002", 15, "", 14, new DefaultAction(), 15, 15, 15.0f, 1, false, "", 0, null);
+		fighter4.setDirection(-1);
+		map.addCard(fighter4, 1, 2);
+		assertEquals("Result:", 2, map.laneWithMoreEnemies(1));
 		}
 
 	@Test
 	public void testLaneWithLessAllies() {
-//		assertEquals("Result:", aaa, aaa);
-		fail("Not yet implemented");
+		Map map = new Map("teste");
+		Fighter fighter1 = new Fighter("DR002", "DR002", 15, "", 14, new DefaultAction(), 15, 15, 15.0f, 1, false, "", 0, null);
+		fighter1.setDirection(1);
+		map.addCard(fighter1, 0, 0);
+		Fighter fighter2 = new Fighter("DR002", "DR002", 15, "", 14, new DefaultAction(), 15, 15, 15.0f, 1, false, "", 0, null);
+		fighter2.setDirection(1);
+		map.addCard(fighter2, 1, 1);
+		Fighter fighter3 = new Fighter("DR002", "DR002", 15, "", 14, new DefaultAction(), 15, 15, 15.0f, 1, false, "", 0, null);
+		fighter3.setDirection(1);
+		map.addCard(fighter3, 3, 3);
+		assertEquals("Result:", 2, map.laneWithLessAllies(1));
 		}
 
 	@Test
 	public void testLaneWithMoreEnemiesInvading() {
-//		assertEquals("Result:", aaa, aaa);
-		fail("Not yet implemented");
+		Map map = new Map("teste");
+		Fighter fighter1 = new Fighter("DR002", "DR002", 15, "", 14, new DefaultAction(), 15, 15, 15.0f, 1, false, "", 0, null);
+		fighter1.setDirection(1);
+		map.addCard(fighter1, 1, 2);
+		Fighter fighter2 = new Fighter("DR002", "DR002", 15, "", 14, new DefaultAction(), 15, 15, 15.0f, 1, false, "", 0, null);
+		fighter2.setDirection(1);
+		map.addCard(fighter2, 1, 2);
+		Fighter fighter3 = new Fighter("DR002", "DR002", 15, "", 14, new DefaultAction(), 15, 15, 15.0f, 1, false, "", 0, null);
+		fighter3.setDirection(1);
+		map.addCard(fighter3, 1, 2);
+		Fighter fighter4 = new Fighter("DR002", "DR002", 15, "", 14, new DefaultAction(), 15, 15, 15.0f, 1, false, "", 0, null);
+		fighter4.setDirection(1);
+		map.addCard(fighter4, 1, 2);
+		assertEquals("Result:", 2, map.laneWithMoreEnemiesInvading(1));
 		}
 
 	@Test
 	public void testTileClosestToBase() {
-//		assertEquals("Result:", aaa, aaa);
-		fail("Not yet implemented");
+		Map map = new Map("teste");
+		Card card1 = new Card("DR-002", "DR-002", 15, "description", 100, new DefaultAction());
+		card1.setDirection(1);
+		map.addCard(card1, 0, 0);
+		Card card2 = new Card("DR-002", "DR-002", 15, "description", 100, new DefaultAction());
+		card2.setDirection(1);
+		map.addCard(card2, 1, 0);
+		Card card3 = new Card("DR-002", "DR-002", 15, "description", 100, new DefaultAction());
+		card3.setDirection(1);
+		map.addCard(card3, 2, 0);
+		assertEquals("Result:", 3, map.tileClosestToBase(0, 1));
 		}
 
 	@Test
 	public void testTileFurthestFromBase() {
-//		assertEquals("Result:", aaa, aaa);
-		fail("Not yet implemented");
+		Map map = new Map("teste");
+		Card card1 = new Card("DR-002", "DR-002", 15, "description", 100, new DefaultAction());
+		card1.setDirection(1);
+		map.addCard(card1, 3, 0);
+		Card card2 = new Card("DR-002", "DR-002", 15, "description", 100, new DefaultAction());
+		card2.setDirection(1);
+		map.addCard(card2, 4, 0);
+		assertEquals("Result:", 2, map.tileFurthestFromBase(0, 1));
 		}
 
 	@Test
 	public void testAddCard() {
-//		assertEquals("Result:", aaa, aaa);
-		fail("Not yet implemented");
+		Map map = new Map("teste");
+		Card card1 = new Card("DR-002", "DR-002", 15, "description", 100, new DefaultAction());
+		card1.setDirection(1);
+		map.addCard(card1, 0, 0);
+		Array<Card> cards = map.getPlayerCards();
+		assertEquals("Result:", "DR-002", cards.get(0).getName());
 	}
 
 }
