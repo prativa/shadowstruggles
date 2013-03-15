@@ -1,5 +1,6 @@
 package br.edu.ifsp.pds.shadowstruggles.model.enemies;
 
+import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.model.BattlePlatform;
 import br.edu.ifsp.pds.shadowstruggles.model.Card;
 import br.edu.ifsp.pds.shadowstruggles.model.Effect;
@@ -17,9 +18,11 @@ import br.edu.ifsp.pds.shadowstruggles.screens.BattleScreen;
 public abstract class Enemy {
 
 	protected float delay;
+	private Controller controller;
 
-	public Enemy() {
+	public Enemy(Controller controller) {
 		this.delay = 5;
+		this.controller=controller;
 	}
 
 	public abstract void action(BattlePlatform platform, BattleScreen screen,
@@ -37,13 +40,15 @@ public abstract class Enemy {
 		card.setDirection(-card.getDirection());
 
 		if (card.getClass().equals(Fighter.class)) {
-			Fighter2D i2d = new Fighter2D((Fighter) card,
+			/*Fighter2D i2d = new Fighter2D((Fighter) card,
 					screen.getGame());
 			i2d.create();
 			card.setImage(i2d);
 			platform.getMap().addCard(card, tile, lane);
 			card.setMarkLane(lane);
-			screen.addGameObject(i2d);
+			screen.addGameObject(i2d);*/
+			
+			
 		} else if (card.getClass().equals(Effect.class)) {
 			Effect2D i2d = new Effect2D((Effect) card, screen.getGame());
 			i2d.create();

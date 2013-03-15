@@ -2,12 +2,16 @@ package br.edu.ifsp.pds.shadowstruggles.model.enemies;
 
 import com.badlogic.gdx.math.MathUtils;
 
+import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.model.BattlePlatform;
 import br.edu.ifsp.pds.shadowstruggles.model.Card;
 import br.edu.ifsp.pds.shadowstruggles.model.Map;
 import br.edu.ifsp.pds.shadowstruggles.screens.BattleScreen;
 
 public class PracticeEnemy extends Enemy {
+	public PracticeEnemy(Controller controller) {
+		super(controller);
+	}
 
 	@Override
 	public void action(BattlePlatform platform, BattleScreen screen, float delta) {
