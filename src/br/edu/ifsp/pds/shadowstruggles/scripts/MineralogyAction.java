@@ -5,11 +5,20 @@ import br.edu.ifsp.pds.shadowstruggles.object2d.Effect2D;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.utils.Json;
+import com.badlogic.gdx.utils.OrderedMap;
+
+/**
+ * Mineralogy action. Don't have an active effect, just self-destroy after 2 min.
+ * 
+ */
+
 
 public class MineralogyAction extends CardAction {
 
 	private boolean finished;
 	private boolean started;
+	private int id;
 
 	public MineralogyAction() {
 		this.finished = false;
@@ -41,6 +50,17 @@ public class MineralogyAction extends CardAction {
 		}
 	}
 
+	@Override
+	public void write(Json json) {
+		
+	}
+	
+
+	@Override
+	public void read(Json json, OrderedMap<String, Object> jsonData) {
+		//this.id = json.readValue("id", Integer.class, jsonData);
+	}
+	
 	@Override
 	public CardAction copy() {
 		return new MineralogyAction();

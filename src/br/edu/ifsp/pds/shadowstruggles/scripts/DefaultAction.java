@@ -7,6 +7,8 @@ import br.edu.ifsp.pds.shadowstruggles.object2d.Fighter2D;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.utils.Json;
+import com.badlogic.gdx.utils.OrderedMap;
 
 /**
  * The default behavior of a fighter card. It walks towards the opposing base
@@ -15,6 +17,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
  */
 public class DefaultAction extends CardAction {
 
+	private int id; //pra fazer a gambiarra
+	
 	@Override
 	public void doAction(BattlePlatform platform, Image image, float delta) {
 		Fighter2D fighter = (Fighter2D) image;
@@ -182,5 +186,16 @@ public class DefaultAction extends CardAction {
 	@Override
 	public CardAction copy() {
 		return new DefaultAction();
+	}
+	
+	@Override
+	public void write(Json json) {
+		
+	}
+	
+
+	@Override
+	public void read(Json json, OrderedMap<String, Object> jsonData) {
+		//this.id = json.readValue("id", Integer.class, jsonData);
 	}
 }

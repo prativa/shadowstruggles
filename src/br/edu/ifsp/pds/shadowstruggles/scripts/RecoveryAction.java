@@ -8,11 +8,21 @@ import br.edu.ifsp.pds.shadowstruggles.object2d.Effect2D;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.Json;
+import com.badlogic.gdx.utils.OrderedMap;
+
+/**
+ * Recovery action. Recover 30% of max life of all allied 'DR' units
+ * 
+ * 
+ */
+
 
 public class RecoveryAction extends CardAction {
 
 	private boolean finished;
 	private boolean used;
+	private int id;
 	
 	public RecoveryAction() {
 		this.used=false;
@@ -49,6 +59,15 @@ public class RecoveryAction extends CardAction {
 		}
 	}
 
+	/**
+	 * Recover 30% of max life of the specific fighter
+	 * 
+	 * 
+	 * @param fighter
+	 *            The fighter that will be healed
+	 * 
+	 */
+	
 	private void fighterRecovery(Fighter fighter) {
 
 		fighter.setHealth(fighter.getHealth() + (fighter.getMaxHealth() / 3));
@@ -67,6 +86,17 @@ public class RecoveryAction extends CardAction {
 			finished = true;
 		}
 
+	}
+	
+	@Override
+	public void write(Json json) {
+		
+	}
+	
+
+	@Override
+	public void read(Json json, OrderedMap<String, Object> jsonData) {
+		//this.id = json.readValue("id", Integer.class, jsonData);
 	}
 
 	@Override

@@ -7,6 +7,14 @@ import br.edu.ifsp.pds.shadowstruggles.object2d.Trap2D;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.utils.Json;
+import com.badlogic.gdx.utils.OrderedMap;
+
+/**
+ * EletricCurrent1 action. The first enemy that pass it, cannot move and take
+ * 10 of damage over 5 seconds.
+ * 
+ */
 
 public class EletricCurrent1Action extends CardAction {
 
@@ -15,6 +23,7 @@ public class EletricCurrent1Action extends CardAction {
 	private float initialSpeed;
 	private int count;
 	private Card aflicted;
+	private int id;
 
 	public EletricCurrent1Action() {
 		this.finished = false;
@@ -104,6 +113,17 @@ public class EletricCurrent1Action extends CardAction {
 		}
 	}
 
+	@Override
+	public void write(Json json) {
+		
+	}
+	
+
+	@Override
+	public void read(Json json, OrderedMap<String, Object> jsonData) {
+		//this.id = json.readValue("id", Integer.class, jsonData);
+	}
+	
 	@Override
 	public CardAction copy() {
 		return new EletricCurrent1Action();
