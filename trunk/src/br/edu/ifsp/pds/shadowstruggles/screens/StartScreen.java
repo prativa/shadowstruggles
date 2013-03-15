@@ -49,7 +49,8 @@ public class StartScreen extends BaseScreen {
 //		stage.clear();
 //		
 //		continueGame = new TextButton(game.getManager().getMenuText().continueGame, this.getSkin().get("blur", TextButtonStyle.class));
-//		newGame = new TextButton(game.getManager().getMenuText().newGame, this.getSkin());
+//		newGame = new TextButton(game.getManager().getMenuText().newGame, this.getSkin().get("blur", TextButtonStyle.class));
+//		TextButton teste = new TextButton("Blabla", this.getSkin());
 //		tableTexture = this.getSkin().getDrawable("table_texture");
 //		book = new Image(this.getSkin().getDrawable("book"));
 //		beaker = new Image(this.getSkin().getDrawable("beaker"));
@@ -58,8 +59,14 @@ public class StartScreen extends BaseScreen {
 //		scrollStates = new ScrollPane(null);
 //		
 //		Table table = new Table();
-//		table.setBackground(tableTexture);
-//		table.add(continueGame);
+//		table.row();
+//		table.add(continueGame).fillX().expandX();
+//		table.row();
+//		table.add(newGame);
+//		table.row();
+//		table.add(teste);
+//		table.row();
+//		table.add(tripod);
 //		
 //		stage.addActor(table);
 //	}
