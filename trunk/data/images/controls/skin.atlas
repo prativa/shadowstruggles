@@ -50,7 +50,7 @@ candle
   orig: 256, 128
   offset: 0, 0
   index: -1
-Profiles
+profiles
   rotate: false
   xy: 515, 197
   size: 128, 128
@@ -78,21 +78,21 @@ scroll_bar
   orig: 32, 128
   offset: 0, 0
   index: -1
-Minus
+minus
   rotate: false
   xy: 903, 391
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-Mute
+mute
   rotate: false
   xy: 679, 261
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-Plus
+plus
   rotate: false
   xy: 745, 261
   size: 64, 64
