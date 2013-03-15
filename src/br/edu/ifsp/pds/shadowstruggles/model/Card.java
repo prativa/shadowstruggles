@@ -85,6 +85,7 @@ public class Card implements Serializable {
 		json.writeValue("description", this.description);
 		json.writeValue("buyCost", this.buyCost);
 		json.writeValue("preRequisites", this.preRequisites);
+		json.writeValue("Action", this.action);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -97,6 +98,7 @@ public class Card implements Serializable {
 				.readValue("description", String.class, jsonData);
 		this.buyCost = json.readValue("buyCost", Integer.class, jsonData);
 		this.preRequisites = json.readValue("preRequisites", Array.class, jsonData);
+		this.action = json.readValue("Action", CardAction.class, jsonData);
 	}
 	
 	public String getName() {
@@ -163,7 +165,15 @@ public class Card implements Serializable {
 		this.tile = tile;
 	}
 
-
+	/**
+	 * Verifies if a card is ready to summon based on its preRequisites
+	 * 
+	 * @param platform
+	 * 			Gathers the current data of the battle
+	 * @return
+	 * 			true: the card can be summoned right now
+	 * 			false: the card can't be summoned right now
+	 */
 	/**
 	 * Verifies if a card is ready to summon based on its preRequisites
 	 * 
