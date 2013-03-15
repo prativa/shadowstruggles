@@ -178,7 +178,7 @@ public class HandCard extends FixedObject implements InputProcessor {
 				resetPosition();
 				game.getController().getPlatform().setSelectedCard(null);
 				((BattleScreen) (game.getController().getCurrentScreen()))
-						.changePentagram(false);
+						.changeHexagram(false);
 			}
 
 			touched = false;

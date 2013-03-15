@@ -123,7 +123,7 @@ public class Controller {
 				&& ((Effect) handCard).isOnFighter()) {
 			activateEffect(handCard, lane, tile);
 			platform.setSelectedCard(null);
-			((BattleScreen) currentScreen).changePentagram(false);
+			((BattleScreen) currentScreen).changeHexagram(false);
 		} else
 			returnHandCard();
 	}
@@ -167,7 +167,7 @@ public class Controller {
 		BattleScreen battleScreen = (BattleScreen) currentScreen;
 		Card handCard = platform.getSelectedCard();
 		this.playerEnergyChanged(-handCard.getEnergyCost());
-		battleScreen.changePentagram(false);
+		battleScreen.changeHexagram(false);
 		if (handCard.getClass().equals(Fighter.class)) {
 			summonFighter(handCard, lane, tile);
 
@@ -198,7 +198,7 @@ public class Controller {
 			}
 			platform.setSelectedCard(null);
 		}
-		((BattleScreen) currentScreen).changePentagram(isSelected);
+		((BattleScreen) currentScreen).changeHexagram(isSelected);
 
 	}
 

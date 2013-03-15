@@ -5,6 +5,7 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -85,6 +86,7 @@ public class LoadingScreen extends BaseScreen {
 				Texture.class);
 		game.getAssets().load("data/images/objects/back_card.png",
 				Texture.class);
+//		game.getAssets().load("data/images/objects/objects.atlas", TextureAtlas.class);
 
 		// Load music and sound effects.
 		

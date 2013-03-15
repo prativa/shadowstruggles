@@ -1,0 +1,111 @@
+
+objects.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+box
+  rotate: false
+  xy: 1, 455
+  size: 1022, 512
+  orig: 1022, 512
+  offset: 0, 0
+  index: -1
+background
+  rotate: false
+  xy: 1, 197
+  size: 1022, 256
+  orig: 1022, 256
+  offset: 0, 0
+  index: -1
+energy100
+  rotate: false
+  xy: 1, 67
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+hexagram
+  rotate: false
+  xy: 131, 67
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+life100
+  rotate: false
+  xy: 1, 1
+  size: 128, 64
+  orig: 128, 64
+  offset: 0, 0
+  index: -1
+loading_bar
+  rotate: false
+  xy: 261, 131
+  size: 128, 64
+  orig: 128, 64
+  offset: 0, 0
+  index: -1
+back_card
+  rotate: false
+  xy: 131, 1
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+deck
+  rotate: false
+  xy: 391, 131
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+deckNotReady
+  rotate: false
+  xy: 457, 131
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+pause
+  rotate: false
+  xy: 523, 131
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+
+objects2.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+logo
+  rotate: false
+  xy: 1, 1
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: -1
+
+objects3.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+logo_shadow_struggles
+  rotate: false
+  xy: 1, 1
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: -1
+
+objects4.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+msbackground
+  rotate: false
+  xy: 1, 1
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: -1

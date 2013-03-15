@@ -16,6 +16,7 @@ public class DesktopStarter {
         boolean useOpenGLES2 = false;
         new LwjglApplication( listener, title, width, height, useOpenGLES2 );
 //		TexturePacker2.process("data/images/controls", "data/images/controls", "skin");
+//		TexturePacker2.process("data/images/objects", "data/images/objects", "objects");
 	}
 
 }

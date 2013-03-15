@@ -17,7 +17,7 @@ import br.edu.ifsp.pds.shadowstruggles.object2d.HandCard;
 import br.edu.ifsp.pds.shadowstruggles.object2d.LifeBar;
 import br.edu.ifsp.pds.shadowstruggles.object2d.Map2D;
 import br.edu.ifsp.pds.shadowstruggles.object2d.MenuButton;
-import br.edu.ifsp.pds.shadowstruggles.object2d.Pentagram;
+import br.edu.ifsp.pds.shadowstruggles.object2d.Hexagram;
 import br.edu.ifsp.pds.shadowstruggles.object2d.Timer2D;
 import br.edu.ifsp.pds.shadowstruggles.object2d.Trap2D;
 
@@ -56,7 +56,7 @@ public class BattleScreen extends BaseScreen {
 	private Map2D map2d;
 	private HandBackground background;
 	private boolean inicializado = false;
-	private Array<Pentagram> pentagrams;
+	private Array<Hexagram> hexagrams;
 	private Array<BackCard> backcards;
 	
 	protected Deck playerDeck;
@@ -103,7 +103,7 @@ public class BattleScreen extends BaseScreen {
 		timeDelay = 0;
 		battlePlatform.getEnemyDeck().shuffle();
 		battlePlatform.getPlayerDeck().shuffle();
-		pentagrams = new Array<Pentagram>();
+		hexagrams = new Array<Hexagram>();
 		backcards = new Array<BackCard>();
 		initComponents();
 	}
@@ -301,10 +301,10 @@ public class BattleScreen extends BaseScreen {
 		stage.addActor(map2d);
 		for (int i = 0; i < 5; i++) {
 			for (int j = 0; j < 4; j++) {
-				pentagrams.add(new Pentagram(settings.tileWidth * 2
+				hexagrams.add(new Hexagram(settings.tileWidth * 2
 						+ settings.tileWidth * 2 * i, BACKGROUND_Y + 60 + 72
 						* j, game));
-				stage.addActor(pentagrams.get(i * 4 + j));
+				stage.addActor(hexagrams.get(i * 4 + j));
 			}
 		}
 
@@ -382,17 +382,17 @@ public class BattleScreen extends BaseScreen {
 		this.inputSources.addProcessor(handCard);
 	}
 
-	public void changePentagram(boolean isSelected) {
+	public void changeHexagram(boolean isSelected) {
 		if (isSelected) {
 			for (int i = 0; i < 20; i++) {
 				if (backcards.get(i).isVisible() != true)
-					pentagrams.get(i).setVisible(true);
+					hexagrams.get(i).setVisible(true);
 
 			}
 		} else {
 			for (int i = 0; i < 20; i++) {
 
-				pentagrams.get(i).setVisible(false);
+				hexagrams.get(i).setVisible(false);
 
 			}
 		}
