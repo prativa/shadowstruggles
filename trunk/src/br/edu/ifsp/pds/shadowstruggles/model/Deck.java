@@ -18,11 +18,11 @@ public class Deck implements Serializable{
 	private String name;
 	
 	
-	
 	public Deck() {
 		this.cards = new Array<Card>();
 		shuffle();
 	}
+	
 	public Card draw(){
 		return cards.pop();
 	}
