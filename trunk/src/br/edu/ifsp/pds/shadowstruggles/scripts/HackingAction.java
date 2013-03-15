@@ -8,11 +8,19 @@ import br.edu.ifsp.pds.shadowstruggles.object2d.Trap2D;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.utils.Json;
+import com.badlogic.gdx.utils.OrderedMap;
+
+/**
+ * Hacking action. The first enemy that pass it, will change his side
+ */
+
 
 public class HackingAction extends CardAction {
 
 	private boolean finished;
 	private boolean activated;
+	private int id;
 
 	public HackingAction() {
 		this.finished = false;
@@ -56,6 +64,17 @@ public class HackingAction extends CardAction {
 				finished = true;
 			}
 		}
+	}
+	
+	@Override
+	public void write(Json json) {
+		
+	}
+	
+
+	@Override
+	public void read(Json json, OrderedMap<String, Object> jsonData) {
+		//this.id = json.readValue("id", Integer.class, jsonData);
 	}
 
 	@Override
