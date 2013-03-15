@@ -104,7 +104,7 @@ public class DataManager {
 		Array<Fighter> retrievedFighters = retrieveFighters();
 
 		for (Fighter fighter : retrievedFighters) {
-			if (fighter.getName().equals("DR-002")
+			/*if (fighter.getName().equals("DR-002")
 					|| fighter.getName().equals("DR-004")
 					|| fighter.getName().equals("DR-003")
 					|| fighter.getName().equals("DR-000")
@@ -113,7 +113,7 @@ public class DataManager {
 					|| fighter.getName().equals("Scrap Boy")
 					|| fighter.getName().equals("Rock")) {
 				fighter.setAction(new DefaultAction());
-			}
+			}*/
 			fighterList.add(fighter);
 		}
 	}
@@ -128,13 +128,13 @@ public class DataManager {
 		Array<Effect> retrievedEffects = retrieveEffects();
 
 		for (Effect effect : retrievedEffects) {
-			if (effect.getName().equals("Reconnect Circuits")
+			/*if (effect.getName().equals("Reconnect Circuits")
 					|| effect.getName().equals("Reconectar Circuitos")) {
 				effect.setAction(new RecoveryAction());
 			} else if (effect.getName().equals("Mineralogy")
 					|| effect.getName().equals("Mineralogia")) {
 				effect.setAction(new MineralogyAction());
-			}
+			}*/
 			effectList.add(effect);
 		}
 	}
@@ -148,13 +148,13 @@ public class DataManager {
 		trapList = new Array<Trap>();
 		Array<Trap> retrievedTraps = retrieveTraps();
 		for (Trap trap : retrievedTraps) {
-			if (trap.getName().equals("Electric Current Level 1")
-					|| trap.getName().equals("Corrente Elétrica nível 1")) {
+			/*if (trap.getName().equals("Electric Current Level 1")
+					|| trap.getName().equals("Corrente Elï¿½trica nï¿½vel 1")) {
 
 				trap.setAction(new EletricCurrent1Action());
 			} else if (trap.getName().equals("Hacking")) {
 				trap.setAction(new HackingAction());
-			}
+			}*/
 			trapList.add(trap);
 		}
 	}
