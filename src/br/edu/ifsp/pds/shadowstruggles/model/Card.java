@@ -98,15 +98,19 @@ public class Card implements Serializable {
 		this.buyCost = json.readValue("buyCost", Integer.class, jsonData);
 		this.preRequisites = json.readValue("preRequisites", Array.class, jsonData);
 	}
+	
 	public String getName() {
 		return name;
 	}
+	
 	public int getEnergyCost() {
 		return energyCost;
 	}
+	
 	public String getDescription() {
 		return description;
 	}
+	
 	public int getBuyCost() {
 		return buyCost;
 	}
@@ -142,20 +146,33 @@ public class Card implements Serializable {
 	public void setDirection(int direction) {
 		this.direction = direction;
 	}
+	
 	public int getLane() {
 		return lane;
 	}
+	
 	public int getTile() {
 		return tile;
 	}
+	
 	public void setLane(int lane) {
 		this.lane = lane;
 	}
+	
 	public void setTile(int tile) {
 		this.tile = tile;
 	}
 
 
+	/**
+	 * Verifies if a card is ready to summon based on its preRequisites
+	 * 
+	 * @param platform
+	 * 			Gathers the current data of the battle
+	 * @return
+	 * 			true: the card can be summoned right now
+	 * 			false: the card can't be summoned right now
+	 */
 	public boolean readyToSummom(BattlePlatform platform){
 		boolean bool = true;
 		for( String card: this.preRequisites){
@@ -181,11 +198,11 @@ public class Card implements Serializable {
 	public float getMarkLane() {
 		return markLane;
 	}
+	
 	public void setMarkLane(float markLane) {
 		this.markLane = markLane;
 	}
 
-	
 	public void setMarkPosition(float lane, float tile){
 		this.markLane=lane;
 		this.markTile=tile;

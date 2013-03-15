@@ -95,12 +95,15 @@ public class Profile implements Serializable, Comparable<Object> {
 	public void setBattlesFought(Array<Float> battlesFought) {
 		this.battlesFought = battlesFought;
 	}
+	
 	public Deck getDeck(DataManager data) {
 		return DeckDAO.getDeck(deck, data);
 	}
+	
 	public int getMoney() {
 		return money;
 	}
+	
 	public boolean moveMoney(int value){
 		
 		if((money+value)>=0){
@@ -108,6 +111,7 @@ public class Profile implements Serializable, Comparable<Object> {
 			return true;
 		}else return false;
 	}
+	
 	public Array<Card> getTrunk() {
 		return trunk;
 	}

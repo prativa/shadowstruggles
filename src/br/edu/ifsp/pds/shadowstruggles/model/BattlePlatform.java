@@ -134,6 +134,15 @@ public class BattlePlatform {
 		this.enemyHandCards = enemyHandCards;
 	}
 
+	/**
+	 * Verifies if there is any card on enemy hand
+	 * 
+	 * @param card
+	 * 			Card object used to compare to enemyHandCards
+	 * @return boolean
+	 * 			true: There is a card on enemy hand
+	 * 			false: there is no card on enemy hand
+	 */
 	public boolean cardOnEnemyHand(Card card) {
 		boolean b = false;
 		for(Card c: enemyHandCards){
