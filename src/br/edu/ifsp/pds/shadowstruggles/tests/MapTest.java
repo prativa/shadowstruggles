@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import br.edu.ifsp.pds.shadowstruggles.model.Card;
+import br.edu.ifsp.pds.shadowstruggles.model.Fighter;
 import br.edu.ifsp.pds.shadowstruggles.model.Map;
 import br.edu.ifsp.pds.shadowstruggles.scripts.DefaultAction;
 
@@ -21,76 +22,82 @@ public class MapTest {
 
 	@Test
 	public void testEnemyBaseAttacked() {
-		fail("Not yet implemented");
+		Map map = new Map("teste");
+		Fighter fighter = new Fighter("DR002", "DR002", 15, "", 14, new DefaultAction(), 15, 15, 15.0f, 1, false, "", 0, null);
+		fighter.setDirection(1);
+		map.addCard(fighter, 40, 1);
+		assertEquals("Result:",1, map.enemyBaseAttacked());
 	}
 
 	@Test
 	public void testPlayerBaseAttacked() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetPlayerCards() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetEnemyCards() {
-		fail("Not yet implemented");
+		Map map = new Map("teste");
+		Fighter fighter = new Fighter("DR002", "DR002", 15, "", 14, new DefaultAction(), 15, 15, 15.0f, 1, false, "", 0, null);
+		fighter.setDirection(-1);
+		map.addCard(fighter, 1, 1);
+		assertEquals("Result:",1, map.enemyBaseAttacked());
 	}
 
 	@Test
 	public void testNextAvailableLane() {
-		fail("Not yet implemented");
+		Map map = new Map("teste");
+		Card card1 = new Card("DR-002", "DR-002", 15, "description", 100, new DefaultAction());
+		card1.setDirection(1);
+		map.addCard(card1, 1, 0);
+		Card card2 = new Card("DR-002", "DR-002", 15, "description", 100, new DefaultAction());
+		card2.setDirection(1);
+		map.addCard(card2, 2, 0);
+		Card card3 = new Card("DR-002", "DR-002", 15, "description", 100, new DefaultAction());
+		card3.setDirection(1);
+		map.addCard(card3, 3, 0);
+		Card card4 = new Card("DR-002", "DR-002", 15, "description", 100, new DefaultAction());
+		card4.setDirection(1);
+		map.addCard(card4, 4, 0);
+		Card card5 = new Card("DR-002", "DR-002", 15, "description", 100, new DefaultAction());
+		card5.setDirection(1);
+		map.addCard(card5, 5, 0);
+		assertEquals("Result:", 1, map.nextAvailableLane(1));
 	}
 
 	@Test
 	public void testNextAvailableTile() {
+//		assertEquals("Result:", aaa, aaa);
 		fail("Not yet implemented");
-	}
+		}
 
 	@Test
 	public void testLaneWithMoreEnemies() {
+//		assertEquals("Result:", aaa, aaa);
 		fail("Not yet implemented");
-	}
+		}
 
 	@Test
 	public void testLaneWithLessAllies() {
+//		assertEquals("Result:", aaa, aaa);
 		fail("Not yet implemented");
-	}
+		}
 
 	@Test
 	public void testLaneWithMoreEnemiesInvading() {
+//		assertEquals("Result:", aaa, aaa);
 		fail("Not yet implemented");
-	}
+		}
 
 	@Test
 	public void testTileClosestToBase() {
+//		assertEquals("Result:", aaa, aaa);
 		fail("Not yet implemented");
-	}
+		}
 
 	@Test
 	public void testTileFurthestFromBase() {
+//		assertEquals("Result:", aaa, aaa);
 		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetTiles() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetTiles() {
-		fail("Not yet implemented");
-	}
+		}
 
 	@Test
 	public void testAddCard() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetName() {
+//		assertEquals("Result:", aaa, aaa);
 		fail("Not yet implemented");
 	}
 

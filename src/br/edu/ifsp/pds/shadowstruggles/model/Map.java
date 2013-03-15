@@ -143,7 +143,7 @@ public class Map {
 		else
 			cards = getEnemyCards();
 		for (Card card : cards)
-			lane[(int) ((Fighter) card).getMarkLane()] += 1;
+			lane[(int) card.getMarkLane()] += 1;
 		for (int i = 0; i < 4; i++) {
 			if (lane[i] < 5)
 				return i;
