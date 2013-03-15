@@ -1,7 +1,12 @@
 package br.edu.ifsp.pds.shadowstruggles;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import br.edu.ifsp.pds.shadowstruggles.data.DataManager;
 import br.edu.ifsp.pds.shadowstruggles.data.SoundManager;
+import br.edu.ifsp.pds.shadowstruggles.logging.MyLogger;
 import br.edu.ifsp.pds.shadowstruggles.model.Profile;
 import br.edu.ifsp.pds.shadowstruggles.screens.BaseScreen;
 import br.edu.ifsp.pds.shadowstruggles.screens.LoadingScreen;
@@ -22,6 +27,8 @@ import com.badlogic.gdx.utils.Array;
 
 public class ShadowStruggles extends Game {
 	public static final String LOG = ShadowStruggles.class.getName();
+	private final static Logger LOGGER = Logger.getLogger(ShadowStruggles.class
+		      .getName());
 	private Controller controller;
 	private Profile profile;
 	private DataManager manager;
@@ -44,7 +51,12 @@ public class ShadowStruggles extends Game {
 		this.controller = new Controller();
 		this.setAssets(new AssetManager());
 		this.setScreen(new LoadingScreen(this));
-
+		try {
+		      MyLogger.setup();
+		    } catch (IOException e) {
+		      e.printStackTrace();
+		      throw new RuntimeException("Problems with creating the log files");
+		    }
 	}
 
 	public void setScreen(Screen screen) {
@@ -80,6 +92,12 @@ public class ShadowStruggles extends Game {
 	@Override
 	public void render() {
 		super.render();
+		
+		LOGGER.setLevel(Level.INFO);
+	    LOGGER.severe("Info Log");
+	    LOGGER.warning("Info Log");
+	    LOGGER.info("Info Log");
+	    LOGGER.finest("Really not important");
 	}
 
 	@Override
@@ -95,6 +113,7 @@ public class ShadowStruggles extends Game {
 	@Override
 	public void dispose() {
 		super.dispose();
+		
 	}
 
 	public void setController(Controller controller) {
