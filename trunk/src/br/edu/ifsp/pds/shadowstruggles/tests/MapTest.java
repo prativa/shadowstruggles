@@ -61,8 +61,20 @@ public class MapTest {
 
 	@Test
 	public void testNextAvailableTile() {
-//		assertEquals("Result:", aaa, aaa);
-		fail("Not yet implemented");
+		Map map = new Map("teste");
+		Card card1 = new Card("DR-002", "DR-002", 15, "description", 100, new DefaultAction());
+		card1.setDirection(1);
+		map.addCard(card1, 0, 0);
+		Card card2 = new Card("DR-002", "DR-002", 15, "description", 100, new DefaultAction());
+		card2.setDirection(1);
+		map.addCard(card2, 1, 0);
+		Card card3 = new Card("DR-002", "DR-002", 15, "description", 100, new DefaultAction());
+		card3.setDirection(1);
+		map.addCard(card3, 2, 0);
+		Card card4 = new Card("DR-002", "DR-002", 15, "description", 100, new DefaultAction());
+		card4.setDirection(1);
+		map.addCard(card4, 3, 0);
+		assertEquals("Result:", 4, map.nextAvailableTile(0,1));
 		}
 
 	@Test

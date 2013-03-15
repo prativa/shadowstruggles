@@ -173,9 +173,9 @@ public class Map {
 			cards = getEnemyCards();
 		}
 		for (Card card : cards)
-			if (((Fighter) card).getMarkLane() == lane)
-				tile[(int) ((Fighter) card).getMarkTile() - start] = 1;
-		for (int i = 0; i < 4; i++) {
+			if (card.getMarkLane() == lane)
+				tile[(int) card.getMarkTile() - start] = 1;
+		for (int i = 0; i <= 4; i++) {
 			if (tile[i] != 1)
 				return i + start;
 		}
