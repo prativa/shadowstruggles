@@ -40,13 +40,13 @@ public abstract class Enemy {
 		card.setDirection(-card.getDirection());
 
 		if (card.getClass().equals(Fighter.class)) {
-			/*Fighter2D i2d = new Fighter2D((Fighter) card,
+			Fighter2D i2d = new Fighter2D((Fighter) card,
 					screen.getGame());
 			i2d.create();
 			card.setImage(i2d);
 			platform.getMap().addCard(card, tile, lane);
 			card.setMarkLane(lane);
-			screen.addGameObject(i2d);*/
+			screen.addGameObject(i2d);
 			
 			
 		} else if (card.getClass().equals(Effect.class)) {
