@@ -109,7 +109,7 @@ public class Controller {
 		playCard(handCard, lane, tile);
 	}
 
-	private void summonFighter(Card handCard, int lane, int tile) {
+	public void summonFighter(Card handCard, int lane, int tile) {
 		playCard(handCard, lane, tile);
 	}
 
