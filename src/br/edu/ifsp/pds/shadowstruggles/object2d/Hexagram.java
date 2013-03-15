@@ -7,12 +7,12 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
 /**
- * A Pentagram object is shown when the human player selects a card, in order to
+ * A Hexagram object is shown when the human player selects a card, in order to
  * inform him where it's possible to place his cards.
  */
-public class Pentagram extends Image {
+public class Hexagram extends Image {
 
-	public Pentagram(float x, float y, ShadowStruggles game) {
+	public Hexagram(float x, float y, ShadowStruggles game) {
 		super(new TextureRegion(game.getAssets().get("data/images/objects/pentagram.png", Texture.class), 0, 0, 128, 128));
 		this.setScaleX (((float) game.getManager().getSettings().tileWidth*2 / (float) 128));
 		this.setScaleY( ((float) game.getManager().getSettings().tileHeight / (float) 128));
