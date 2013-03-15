@@ -6,15 +6,18 @@
 "buyCost":0,
 "duration":5.0,
 "hasImmediateEffect":true,
-"isActivated":false},
+"isActivated":false,
+"Action":{"class":"br.edu.ifsp.pds.shadowstruggles.scripts.EletricCurrent1Action"}
+},
 {"class":"br.edu.ifsp.pds.shadowstruggles.model.Trap",
 "name":"Hacking",
 "nameVisualization":"Hacking",
 "energyCost":30,
-"description":"By altering the composition of the robot’s core systems, converts the next “DR” enemy fighter which activates the trap into an ally.",
+"description":"By altering the composition of the robotï¿½s core systems, converts the next ï¿½DRï¿½ enemy fighter which activates the trap into an ally.",
 "buyCost":0,
 "duration":0.0,
 "hasImmediateEffect":true,
-"isActivated":false
+"isActivated":false,
+"Action":{"class":"br.edu.ifsp.pds.shadowstruggles.scripts.HackingAction"}
 }
 ]
