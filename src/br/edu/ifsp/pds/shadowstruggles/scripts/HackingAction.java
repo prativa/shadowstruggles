@@ -20,8 +20,6 @@ public class HackingAction extends CardAction {
 
 	private boolean finished;
 	private boolean activated;
-	private int id;
-
 	public HackingAction() {
 		this.finished = false;
 		this.activated = false;

@@ -32,7 +32,7 @@ public class LoadingScreen extends BaseScreen {
 		public LoadingBar() {
 			super(new TextureRegion(new Texture(
 					"data/images/objects/loading_bar.png"), 0, 0,
-					BAR_MAX_WIDTH, 36));
+					BAR_MAX_WIDTH, 32));
 			this.setScaleX(0.8f);
 			this.setScaleY(1.9f);
 		}
@@ -44,7 +44,6 @@ public class LoadingScreen extends BaseScreen {
 
 		public void drawLabel(Skin skin) {
 			if (percentageLbl != null)
-				//this.getStage().removeActor(percentageLbl);		Leon
 				this.percentageLbl.remove();
 
 			String lifeString = String.valueOf((int) (percentage * 100)) + "%";
@@ -66,27 +65,27 @@ public class LoadingScreen extends BaseScreen {
 
 		// Load main textures.
 		
-		game.getAssets().load("data/images/controls/right.png", Texture.class);
-		game.getAssets().load("data/images/controls/minus.png", Texture.class);
-		game.getAssets().load("data/images/controls/plus.png", Texture.class);
-		game.getAssets().load("data/images/controls/mute.png", Texture.class);
-		game.getAssets().load("data/images/controls/Profiles.png",
-				Texture.class);
-		game.getAssets().load("data/images/objects/deck.png", Texture.class);
-		game.getAssets().load("data/images/objects/deckNotReady.png",
-				Texture.class);
-		game.getAssets().load("data/images/objects/energy100.png",
-				Texture.class);
+//		game.getAssets().load("data/images/controls/right.png", Texture.class);
+//		game.getAssets().load("data/images/controls/minus.png", Texture.class);
+//		game.getAssets().load("data/images/controls/plus.png", Texture.class);
+//		game.getAssets().load("data/images/controls/mute.png", Texture.class);
+//		game.getAssets().load("data/images/controls/Profiles.png",
+//				Texture.class);
+//		game.getAssets().load("data/images/objects/deck.png", Texture.class);
+//		game.getAssets().load("data/images/objects/deckNotReady.png",
+//				Texture.class);
 //		game.getAssets().load("data/images/objects/background.png",
 //				Texture.class);
 //		game.getAssets().load("data/images/objects/msbackground.png",
 //				Texture.class);
-		game.getAssets().load("data/images/objects/life100.png", Texture.class);
-		game.getAssets().load("data/images/objects/hexagram.png",
+//		game.getAssets().load("data/images/objects/life100.png", Texture.class);
+//		game.getAssets().load("data/images/objects/hexagram.png",
+//				Texture.class);
+//		game.getAssets().load("data/images/objects/back_card.png",
+//				Texture.class);
+		game.getAssets().load("data/images/objects/energy100.png",
 				Texture.class);
-		game.getAssets().load("data/images/objects/back_card.png",
-				Texture.class);
-//		game.getAssets().load("data/images/objects/objects.atlas", TextureAtlas.class);
+		game.getAssets().load("data/images/objects/objects.atlas", TextureAtlas.class);
 
 		// Load music and sound effects.
 		

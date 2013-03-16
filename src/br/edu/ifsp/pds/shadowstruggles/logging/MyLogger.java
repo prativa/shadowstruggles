@@ -7,9 +7,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.files.FileHandle;
-
 public class MyLogger {
   static private FileHandler fileTxt;
   static private SimpleFormatter formatterTxt;

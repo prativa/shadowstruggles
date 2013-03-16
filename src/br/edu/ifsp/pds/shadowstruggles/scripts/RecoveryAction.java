@@ -22,8 +22,6 @@ public class RecoveryAction extends CardAction {
 
 	private boolean finished;
 	private boolean used;
-	private int id;
-	
 	public RecoveryAction() {
 		this.used=false;
 	}

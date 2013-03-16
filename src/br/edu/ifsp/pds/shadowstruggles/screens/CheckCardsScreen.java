@@ -11,6 +11,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -45,35 +46,37 @@ public class CheckCardsScreen extends BaseScreen {
 
 	private void initComponents() {
 		final InGameMenu menu = this.menu;
-		background = new Image(new TextureRegion(game.getAssets().get(
-				"data/images/objects/msbackground.png", Texture.class), 512, 380));
-		background.setScale((960f / 512f),(640f / 380f));
+		background = new Image(game.getAssets()
+				.get("data/images/objects/objects.atlas", TextureAtlas.class)
+				.findRegion("msbackground"));
+		background.setScale((960f / 512f), (640f / 380f));
 
-		name = new Label("",super.getSkin());
+		name = new Label("", super.getSkin());
 		name.setX(410);
 		name.setWidth(500);
 		name.setHeight(50);
 		name.setWrap(true);
 		name.setStyle(new LabelStyle(super.getSkin().getFont("andalus-font"),
 				Color.BLACK));
-		description = new Label("",super.getSkin());
+
+		description = new Label("", super.getSkin());
 		description.setX(410);
 		description.setWidth(500);
 		description.setWrap(true);
 		description.setStyle(new LabelStyle(super.getSkin().getFont(
 				"andalus-font"), Color.BLACK));
 
-		box = new Image(new Texture(
-				Gdx.files.internal("data/images/objects/box.png")));
+		box = new Image(game.getAssets()
+				.get("data/images/objects/objects.atlas", TextureAtlas.class)
+				.findRegion("box"));
 		ScreenUtils.defineImage(box, 390, 177, 600, 600, 0.9f, 0.76f);
-		
 
-		right = new TransitionControl(1, game);
+		right = new TransitionControl(1, this.getSkin());
 		right.setY(20);
 		right.setX(900);
-		right.setScaleY( 4f);
+		right.setScaleY(4f);
 		right.setScaleX(1.5f);
-		
+
 		right.addListener(new ClickListener() {
 
 			@Override
@@ -83,11 +86,11 @@ public class CheckCardsScreen extends BaseScreen {
 
 			}
 		});
-		left = new TransitionControl(-1, game);
+		left = new TransitionControl(-1, this.getSkin());
 		left.setY(20);
 		left.setX(120);
-		left.setScaleY (4f);
-		left.setScaleX (1.5f);
+		left.setScaleY(4f);
+		left.setScaleX(1.5f);
 		left.addListener(new ClickListener() {
 
 			@Override
@@ -141,8 +144,9 @@ public class CheckCardsScreen extends BaseScreen {
 			Image cardImage = new Image(new TextureRegion(game.getAssets().get(
 					"data/images/sprites/" + card.getName() + "/card.png",
 					Texture.class), 360, 480));
-			ScreenUtils.defineImage(cardImage, 180 + count * 120, 5, cardImage.getWidth(), cardImage.getHeight(), 0.3f, 0.3f);
-			
+			ScreenUtils.defineImage(cardImage, 180 + count * 120, 5,
+					cardImage.getWidth(), cardImage.getHeight(), 0.3f, 0.3f);
+
 			final Card card2 = card;
 			cardImage.addListener(new ClickListener() {
 
@@ -191,7 +195,7 @@ public class CheckCardsScreen extends BaseScreen {
 		this.selectedCard = card;
 		description.setText(card.getDescription());
 		description.setHeight(description.getPrefHeight());
-		description.setY( 590 - description.getHeight());
+		description.setY(590 - description.getHeight());
 		try {
 			stage.removeActor(selectedImage);
 		} catch (Exception e) {
@@ -202,7 +206,7 @@ public class CheckCardsScreen extends BaseScreen {
 		selectedImage.setX(20);
 		selectedImage.setY(160);
 		name.setText(selectedCard.getNameVisualization());
-		name.setY( 590);
+		name.setY(590);
 		stage.addActor(selectedImage);
 	}
 

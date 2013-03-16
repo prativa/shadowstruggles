@@ -6,12 +6,6 @@ import br.edu.ifsp.pds.shadowstruggles.model.Fighter;
 import br.edu.ifsp.pds.shadowstruggles.model.Profile;
 import br.edu.ifsp.pds.shadowstruggles.model.Scene;
 import br.edu.ifsp.pds.shadowstruggles.model.Trap;
-import br.edu.ifsp.pds.shadowstruggles.scripts.DefaultAction;
-import br.edu.ifsp.pds.shadowstruggles.scripts.EletricCurrent1Action;
-import br.edu.ifsp.pds.shadowstruggles.scripts.HackingAction;
-import br.edu.ifsp.pds.shadowstruggles.scripts.MineralogyAction;
-import br.edu.ifsp.pds.shadowstruggles.scripts.RecoveryAction;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.utils.Array;

@@ -3,6 +3,7 @@ package br.edu.ifsp.pds.shadowstruggles.object2d;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -17,7 +18,9 @@ public class EnergyBar extends FixedObject {
 	private Label energy;
 	private ShadowStruggles game;
 	public EnergyBar(int initialX, ShadowStruggles game) {
-		super(new TextureRegion(game.getAssets().get("data/images/objects/energy100.png", Texture.class), 0, 0, 128, 128), initialX);
+		super(game.getAssets()
+				.get("data/images/objects/objects.atlas", TextureAtlas.class)
+				.findRegion("energy100"), initialX);
 		this.percentage = 0.45f;
 		this.game=game;
 	}

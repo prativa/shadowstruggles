@@ -1,12 +1,10 @@
 package br.edu.ifsp.pds.shadowstruggles.object2d;
 
-import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 import br.edu.ifsp.pds.shadowstruggles.screens.BattleScreen;
 import br.edu.ifsp.pds.shadowstruggles.screens.SceneScreen;
 
 import com.badlogic.gdx.InputProcessor;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
 /**
@@ -19,11 +17,11 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
 public class TransitionControl extends FixedObject implements InputProcessor {
 
-	public TransitionControl(int side, ShadowStruggles game) {
-		super(new TextureRegion(game.getAssets().get("data/images/controls/right.png", Texture.class), 64, 64),
-				480 + 440 * side);
+	public TransitionControl(int side, Skin skin) {
+		super(skin.getRegion("right"), 480 + 440 * side);
 		if (side == -1)
-			((TextureRegionDrawable) this.getDrawable()).getRegion().flip(true, false);
+			((TextureRegionDrawable) this.getDrawable()).getRegion().flip(true,
+					false);
 		this.setY(340);
 		this.setWidth(32);
 		this.setHeight(32);
@@ -47,7 +45,6 @@ public class TransitionControl extends FixedObject implements InputProcessor {
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-		System.out.println("tochedDown");
 		return false;
 	}
 
@@ -70,7 +67,5 @@ public class TransitionControl extends FixedObject implements InputProcessor {
 	public boolean scrolled(int amount) {
 		return false;
 	}
-
-	
 
 }

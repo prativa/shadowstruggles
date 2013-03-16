@@ -18,8 +18,6 @@ public class MineralogyAction extends CardAction {
 
 	private boolean finished;
 	private boolean started;
-	private int id;
-
 	public MineralogyAction() {
 		this.finished = false;
 		this.started = false;

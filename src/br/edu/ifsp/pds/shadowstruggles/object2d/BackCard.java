@@ -5,6 +5,7 @@ import br.edu.ifsp.pds.shadowstruggles.model.Card;
 
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
@@ -17,9 +18,9 @@ public class BackCard extends Image implements InputProcessor {
 	private Card card;
 
 	public BackCard(float x, float y, ShadowStruggles game) {
-		super(new TextureRegion(game.getAssets().get(
-				"data/images/objects/back_card.png", Texture.class), 0, 0, 64,
-				48));
+		super(game.getAssets()
+				.get("data/images/objects/objects.atlas", TextureAtlas.class)
+				.findRegion("back_card"));
 		this.setScaleX( game.getManager().getSettings().tileWidth / this.getWidth());
 		this.setX(x);
 		this.setY(y);

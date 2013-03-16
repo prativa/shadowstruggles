@@ -3,6 +3,7 @@ package br.edu.ifsp.pds.shadowstruggles.object2d;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 /***
@@ -12,8 +13,9 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 public class HandBackground extends FixedObject {
 
 	public HandBackground(int initialX, ShadowStruggles game) {
-		super(new TextureRegion(game.getAssets().get("data/images/objects/background.png", Texture.class), 0,
-				0, 960, 160), initialX);
+		super(game.getAssets()
+				.get("data/images/objects/objects.atlas", TextureAtlas.class)
+				.findRegion("background"), initialX);
 	}
 
 }

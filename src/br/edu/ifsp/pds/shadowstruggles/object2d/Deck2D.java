@@ -5,8 +5,10 @@ import br.edu.ifsp.pds.shadowstruggles.screens.BaseScreen;
 
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
 /***
@@ -24,9 +26,9 @@ public class Deck2D extends FixedObject implements InputProcessor {
 	private ShadowStruggles game;
 
 	public Deck2D(ShadowStruggles game, int initialX) {
-		super(new TextureRegion(game.getAssets().get(
-				"data/images/objects/deck.png", Texture.class), 0, 0,
-				DECK_WIDTH, DECK_HEIGHT), initialX);
+		super(game.getAssets()
+				.get("data/images/objects/objects.atlas", TextureAtlas.class)
+				.findRegion("deck"), initialX);
 
 		this.setScaleX(SCALE_X);
 		this.setScaleY(SCALE_Y);
@@ -34,7 +36,7 @@ public class Deck2D extends FixedObject implements InputProcessor {
 		this.setReady(true);
 	}
 
-	public void startBlink() {	
+	public void startBlink() {
 		this.addAction(Actions.forever(Actions.sequence(Actions.fadeOut(0.3f),
 				Actions.fadeIn(0.3f))));
 	}
@@ -48,15 +50,17 @@ public class Deck2D extends FixedObject implements InputProcessor {
 		this.ready = ready;
 
 		if (ready) {
-			this.setDrawable(new TextureRegionDrawable(new TextureRegion(game
-					.getAssets().get("data/images/objects/deck.png",
-							Texture.class), 0, 0, DECK_WIDTH, DECK_HEIGHT)));
+			this.setDrawable(new TextureRegionDrawable(game
+					.getAssets()
+					.get("data/images/objects/objects.atlas",
+							TextureAtlas.class).findRegion("deck")));
 			startBlink();
 		}
 		if (!ready) {
-			this.setDrawable(new TextureRegionDrawable(new TextureRegion(game
-					.getAssets().get("data/images/objects/deckNotReady.png",
-							Texture.class), 0, 0, DECK_WIDTH, DECK_HEIGHT)));
+			this.setDrawable(new TextureRegionDrawable(game
+					.getAssets()
+					.get("data/images/objects/objects.atlas",
+							TextureAtlas.class).findRegion("deckNotReady")));
 		}
 	}
 

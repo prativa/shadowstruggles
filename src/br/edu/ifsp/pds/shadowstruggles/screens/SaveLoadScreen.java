@@ -11,8 +11,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Input.Keys;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -61,9 +60,9 @@ public class SaveLoadScreen extends BaseScreen implements InputProcessor {
 
 	private void initComponents() {
 		
-		background = new Image(new TextureRegion(game.getAssets().get(
-				"data/images/objects/msbackground.png", Texture.class), 512,
-				380));
+		background = new Image(game.getAssets()
+				.get("data/images/objects/objects.atlas", TextureAtlas.class)
+				.findRegion("msbackground"));
 		background.setScaleX(960f / 512f);
 		background.setScaleY(640f / 380f);
 

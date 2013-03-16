@@ -6,8 +6,7 @@ import br.edu.ifsp.pds.shadowstruggles.data.SceneDAO;
 import br.edu.ifsp.pds.shadowstruggles.screens.utils.ScreenUtils;
 
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -41,11 +40,13 @@ public class ConfigurationScreen extends BaseScreen {
 	}
 
 	private void initComponents() {
-		background = new Image(new TextureRegion(game.getAssets().get("data/images/objects/msbackground.png", Texture.class), 512,
-				380));
+		background = new Image(game.getAssets()
+				.get("data/images/objects/objects.atlas", TextureAtlas.class)
+				.findRegion("msbackground"));
 		background.setScaleX (960f / 512f);
 		background.setScaleY (640f / 380f);
-		volumePlus = new Image(new TextureRegion(game.getAssets().get("data/images/controls/Plus.png", Texture.class)));
+		
+		volumePlus = new Image(this.getSkin().getDrawable("plus"));
 		volumePlus.setWidth (100);
 		volumePlus.setHeight(100);
 		volumePlus.setX( 290);
@@ -61,7 +62,8 @@ public class ConfigurationScreen extends BaseScreen {
 
 			}
 		});
-		volumeMinus = new Image(new TextureRegion(game.getAssets().get("data/images/controls/Minus.png", Texture.class)));
+		
+		volumeMinus = new Image(this.getSkin().getDrawable("minus"));
 		volumeMinus.setWidth(100);
 		volumeMinus.setHeight ( 100);
 		volumeMinus.setX( 50);
@@ -76,6 +78,7 @@ public class ConfigurationScreen extends BaseScreen {
 
 			}
 		});
+		
 		returnButton = new TextButton(
 				game.getManager().getMenuText().returnToStart, super.getSkin());
 		returnButton = ScreenUtils.defineButton(returnButton, 100, 100, 300, 100, super.getSkin());
@@ -97,6 +100,7 @@ public class ConfigurationScreen extends BaseScreen {
 		volume.setY(400);
 		volume.setStyle(new LabelStyle(super.getSkin().getFont("andalus-font"),
 				Color.BLACK));
+		
 		volumeLabel = new Label(
 				this.getGame().getManager().getMenuText().volume,
 				super.getSkin());
@@ -107,7 +111,7 @@ public class ConfigurationScreen extends BaseScreen {
 		volumeLabel.setStyle(new LabelStyle(super.getSkin().getFont(
 				"default-font"), Color.BLACK));
 
-		soundOnOff = new Image(new TextureRegion(game.getAssets().get("data/images/controls/Mute.png", Texture.class)));
+		soundOnOff = new Image(this.getSkin().getDrawable("mute"));
 		soundOnOff.setWidth(100);
 		soundOnOff.setHeight(100);
 		soundOnOff.setX(20);

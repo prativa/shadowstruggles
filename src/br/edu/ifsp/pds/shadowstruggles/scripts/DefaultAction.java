@@ -17,8 +17,6 @@ import com.badlogic.gdx.utils.OrderedMap;
  */
 public class DefaultAction extends CardAction {
 
-	private int id; //pra fazer a gambiarra
-	
 	@Override
 	public void doAction(BattlePlatform platform, Image image, float delta) {
 		Fighter2D fighter = (Fighter2D) image;
