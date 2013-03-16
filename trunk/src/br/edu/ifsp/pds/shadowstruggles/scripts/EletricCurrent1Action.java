@@ -23,8 +23,6 @@ public class EletricCurrent1Action extends CardAction {
 	private float initialSpeed;
 	private int count;
 	private Card aflicted;
-	private int id;
-
 	public EletricCurrent1Action() {
 		this.finished = false;
 		this.started = false;

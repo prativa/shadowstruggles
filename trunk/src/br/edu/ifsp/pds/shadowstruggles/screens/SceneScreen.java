@@ -14,6 +14,7 @@ import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -77,6 +78,7 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 		background.setY(0);
 		background.setWidth(960);
 		background.setHeight(640);
+		
 		text.setStyle(new LabelStyle(super.getSkin().getFont("andalus-font"),
 				Color.WHITE));
 		text.setWidth(800);
@@ -85,14 +87,15 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 		text.setX(80);
 		text.setY(640 - text.getHeight() - 50);
 
-		box = new Image(new Texture(
-				Gdx.files.internal("data/images/objects/box.png")));
+		box = new Image(game.getAssets()
+				.get("data/images/objects/objects.atlas", TextureAtlas.class)
+				.findRegion("box"));
 		box.setWidth(text.getWidth() + 50);
 		box.setHeight(text.getHeight() + 50);
 		box.setX(55);
 		box.setY(text.getY() - 25);
 
-		next = new TransitionControl(1, game);
+		next = new TransitionControl(1, this.getSkin());
 		next.addListener(new ClickListener(){
 			@Override
 			public void clicked(InputEvent event, float x, float y) {

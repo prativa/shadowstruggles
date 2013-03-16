@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -51,8 +52,9 @@ public class ShopScreen extends BaseScreen {
 
 	private void initComponents() {
 		final BaseScreen menu = this.previousScreen;
-		background = new Image(new TextureRegion(game.getAssets().get(
-				"data/images/objects/msbackground.png", Texture.class), 512, 380));
+		background = new Image(game.getAssets()
+				.get("data/images/objects/objects.atlas", TextureAtlas.class)
+				.findRegion("msbackground"));
 		background.setScaleX(960f / 512f);
 		background.setScaleY((640f / 380f));
 
@@ -80,8 +82,9 @@ public class ShopScreen extends BaseScreen {
 						Color.BLACK));	
 		
 
-		box = new Image(new Texture(
-				Gdx.files.internal("data/images/objects/box.png")));
+		box = new Image(game.getAssets()
+				.get("data/images/objects/objects.atlas", TextureAtlas.class)
+				.findRegion("box"));
 		box.setWidth(600);
 		box.setHeight(600);
 		box.setX(390);
@@ -89,7 +92,7 @@ public class ShopScreen extends BaseScreen {
 		box.setScaleX(0.9f);
 		box.setScaleY(0.76f);
 
-		right = new TransitionControl(1, game);
+		right = new TransitionControl(1, this.getSkin());
 		right.setY(20);
 		right.setX(900);
 		right.setScaleY(4f);
@@ -103,7 +106,7 @@ public class ShopScreen extends BaseScreen {
 			}
 		});
 		
-		left = new TransitionControl(-1, game);
+		left = new TransitionControl(-1, this.getSkin());
 		left.setY(20);
 		left.setX(120);
 		left.setScaleY(4f);

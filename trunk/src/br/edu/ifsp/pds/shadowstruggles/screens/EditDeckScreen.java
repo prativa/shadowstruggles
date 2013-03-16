@@ -3,6 +3,7 @@ package br.edu.ifsp.pds.shadowstruggles.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -19,9 +20,9 @@ import br.edu.ifsp.pds.shadowstruggles.model.Deck;
 import br.edu.ifsp.pds.shadowstruggles.object2d.TransitionControl;
 import br.edu.ifsp.pds.shadowstruggles.screens.utils.ScreenUtils;
 
-public class EditDeckScreen extends BaseScreen{
-	private BaseScreen previousScreen;		
-	
+public class EditDeckScreen extends BaseScreen {
+	private BaseScreen previousScreen;
+
 	private Image background;
 	private Image box;
 	private Label name;
@@ -30,55 +31,57 @@ public class EditDeckScreen extends BaseScreen{
 	private TransitionControl right;
 	private TransitionControl left;
 	private TextButton exit;
-	private TextButton moveCard;	
+	private TextButton moveCard;
 	private Card selectedCard;
 	private Deck selectedDeck;
 	private Array<Image> cardImages;
 	private Array<Card> trunk;
-	
-	
-	public EditDeckScreen(ShadowStruggles game, Controller controller, BaseScreen previousScreen) {
-		super(game,controller);
-		this.previousScreen=previousScreen;		
+
+	public EditDeckScreen(ShadowStruggles game, Controller controller,
+			BaseScreen previousScreen) {
+		super(game, controller);
+		this.previousScreen = previousScreen;
 		initComponents();
-		
+
 	}
-	
+
 	private void initComponents() {
 		final BaseScreen menu = this.previousScreen;
-		this.selectedDeck=game.getProfile().getDeck(game.getManager());
-		this.trunk=game.getProfile().getTrunk();
-		background = new Image(new TextureRegion(game.getAssets().get(
-				"data/images/objects/msbackground.png", Texture.class), 512, 380));
+		this.selectedDeck = game.getProfile().getDeck(game.getManager());
+		this.trunk = game.getProfile().getTrunk();
+		background = new Image(game.getAssets()
+				.get("data/images/objects/objects.atlas", TextureAtlas.class)
+				.findRegion("msbackground"));
 		background.setScaleX(960f / 512f);
 		background.setScaleY(640f / 380f);
 
-		name = new Label("" , super.getSkin());
+		name = new Label("", super.getSkin());
 		name.setX(410);
 		name.setWidth(500);
 		name.setHeight(50);
 		name.setWrap(true);
 		name.setStyle(new LabelStyle(super.getSkin().getFont("andalus-font"),
 				Color.BLACK));
-		description = new Label("" , super.getSkin());
+		
+		description = new Label("", super.getSkin());
 		description.setX(410);
 		description.setWidth(500);
 		description.setWrap(true);
 		description.setStyle(new LabelStyle(super.getSkin().getFont(
 				"andalus-font"), Color.BLACK));
-		
-		decks= new Label("" , super.getSkin());
+
+		decks = new Label("", super.getSkin());
 		decks.setText("Decks:");
 		decks.setX(30);
 		decks.setY(590);
 		decks.setWidth(200);
 		decks.setHeight(50);
 		decks.setStyle(new LabelStyle(super.getSkin().getFont("andalus-font"),
-						Color.BLACK));	
-		
+				Color.BLACK));
 
-		box = new Image(new Texture(
-				Gdx.files.internal("data/images/objects/box.png")));
+		box = new Image(game.getAssets()
+				.get("data/images/objects/objects.atlas", TextureAtlas.class)
+				.findRegion("box"));
 		box.setWidth(780);
 		box.setHeight(600);
 		box.setX(180);
@@ -86,7 +89,7 @@ public class EditDeckScreen extends BaseScreen{
 		box.setScaleX(0.9f);
 		box.setScaleY(0.76f);
 
-		right = new TransitionControl(1, game);
+		right = new TransitionControl(1, this.getSkin());
 		right.setY(20);
 		right.setX(900);
 		right.setScaleY(4f);
@@ -100,7 +103,7 @@ public class EditDeckScreen extends BaseScreen{
 
 			}
 		});
-		left = new TransitionControl(-1, game);
+		left = new TransitionControl(-1, this.getSkin());
 		left.setY(20);
 		left.setX(120);
 		left.setScaleY(4f);
@@ -126,15 +129,17 @@ public class EditDeckScreen extends BaseScreen{
 				game.getManager().writeProfile(game.getProfile());
 			}
 		});
-		
-		moveCard = new TextButton("Move", getSkin());//TODO: string Move p/ arquivo
-		moveCard = ScreenUtils.defineButton(moveCard, 15, 180, 170, 70, super.getSkin());
+
+		moveCard = new TextButton("Move", getSkin());// TODO: string Move p/
+														// arquivo
+		moveCard = ScreenUtils.defineButton(moveCard, 15, 180, 170, 70,
+				super.getSkin());
 		moveCard.addListener(new ClickListener() {
 
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				game.getAudio().playSound("button_6");
-				
+
 			}
 		});
 
@@ -144,7 +149,7 @@ public class EditDeckScreen extends BaseScreen{
 		stage.addActor(description);
 		stage.addActor(exit);
 		stage.addActor(right);
-		stage.addActor(decks);		
+		stage.addActor(decks);
 		int count = 0;
 		cardImages = new Array<Image>();
 		for (Card card : trunk) {
@@ -168,7 +173,7 @@ public class EditDeckScreen extends BaseScreen{
 			if (cardImage.getX() >= 180 && cardImage.getX() < 900)
 				stage.addActor(cardImage);
 			count++;
-		}		
+		}
 		stage.addActor(right);
 		stage.addActor(left);
 		stage.addActor(moveCard);
@@ -185,7 +190,7 @@ public class EditDeckScreen extends BaseScreen{
 
 		if ((side > 0 && movableToLeft) || (side < 0 && movableToRight))
 			for (Image card : cardImages) {
-				card.setX(card.getX()-120 * side);
+				card.setX(card.getX() - 120 * side);
 				if (card.getX() >= 120 && card.getX() < 900)
 					stage.addActor(card);
 				else {
@@ -201,7 +206,6 @@ public class EditDeckScreen extends BaseScreen{
 
 	private void changeCard(Card card) {
 		this.selectedCard = card;
-		
-		
+
 	}
 }

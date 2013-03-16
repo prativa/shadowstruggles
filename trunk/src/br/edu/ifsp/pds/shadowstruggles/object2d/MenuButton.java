@@ -7,6 +7,7 @@ import br.edu.ifsp.pds.shadowstruggles.screens.BaseScreen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 /***
@@ -21,10 +22,10 @@ public class MenuButton extends FixedObject implements InputProcessor {
 	private ShadowStruggles game;
 
 	public MenuButton(Controller c, final ShadowStruggles game) {
-		super(new TextureRegion(new Texture(
-				Gdx.files.internal("data/images/objects/pause.png")), 45, 45),
-				10);
-		this.setY (560);
+		super(game.getAssets()
+				.get("data/images/objects/objects.atlas", TextureAtlas.class)
+				.findRegion("pause"), 10);
+		this.setY(560);
 		this.game = game;
 		this.controller = c;
 
@@ -68,8 +69,8 @@ public class MenuButton extends FixedObject implements InputProcessor {
 
 		if (touched) {
 			if (x + deltaCamX >= this.getX()
-					&& x + deltaCamX <= this.getX() + this.getWidth() * getScaleX()
-					&& invertY >= this.getY()
+					&& x + deltaCamX <= this.getX() + this.getWidth()
+							* getScaleX() && invertY >= this.getY()
 					&& invertY <= this.getY() + this.getHeight() * getScaleY()) {
 				controller.menuButtonClicked(this.game);
 			}
@@ -111,7 +112,5 @@ public class MenuButton extends FixedObject implements InputProcessor {
 	public boolean scrolled(int amount) {
 		return false;
 	}
-
-	
 
 }

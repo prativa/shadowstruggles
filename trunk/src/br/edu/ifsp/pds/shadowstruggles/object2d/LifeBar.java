@@ -3,6 +3,7 @@ package br.edu.ifsp.pds.shadowstruggles.object2d;
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -29,7 +30,9 @@ public class LifeBar extends FixedObject {
 	private Label life;
 
 	public LifeBar(int initialX, ShadowStruggles game) {
-		super(new TextureRegion(game.getAssets().get("data/images/objects/life100.png", Texture.class), 0, 0, MAX_WIDTH, 36), initialX);
+		super(game.getAssets()
+				.get("data/images/objects/objects.atlas", TextureAtlas.class)
+				.findRegion("life100"), initialX);
 		this.setScaleX(0.8f);
 		this.setScaleY( 0.8f);
 

@@ -8,6 +8,7 @@ import br.edu.ifsp.pds.shadowstruggles.screens.utils.ScreenUtils;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -48,15 +49,14 @@ public class PosGameScreen extends BaseScreen {
 	}
 
 	public void initComponents(String message) {
-		background = new Image(new TextureRegion(game.getAssets().get("data/images/objects/msbackground.png", Texture.class), 512,
-				380));
+		background = new Image(game.getAssets()
+				.get("data/images/objects/objects.atlas", TextureAtlas.class)
+				.findRegion("msbackground"));
 		background.setScaleX(960f / 512f);
 		background.setScaleY(640f / 380f);
 
 		mainMenu = new TextButton(
 				game.getManager().getMenuText().mainMenuButton, super.getSkin());
-//		mainMenu = ScreenUtils.initButton(mainMenu, 500, 100, game.getManager()			Leon
-//				.getMenuText().mainMenuButton.length() * 32, 100, super.getSkin());
 		mainMenu = ScreenUtils.defineButton(mainMenu, 500, 100,game.getManager()
 				.getMenuText().mainMenuButton.length() * 32, 100, super.getSkin());
 		mainMenu.setClip(true);
@@ -73,8 +73,6 @@ public class PosGameScreen extends BaseScreen {
 		this.text = new Label(message, super.getSkin());
 		text.setStyle(new LabelStyle(super.getSkin().getFont("andalus-font"),
 				Color.YELLOW));
-//		text.x = (960 - text.getPrefWidth()) / 2;			Leon
-//		text.y = 300;
 		text.setOriginX((960 - text.getPrefWidth()) / 2);
 		text.setOriginY(300);
 		
@@ -86,8 +84,6 @@ public class PosGameScreen extends BaseScreen {
 		if (isInCampaign) {
 			continueButton = new TextButton(
 					game.getManager().getMenuText().continueButton, super.getSkin());
-//			continueButton = ScreenUtils.initButton(continueButton, 100, 100, 300,		Leon
-//					100, super.getSkin());
 			continueButton = ScreenUtils.defineButton(continueButton, 100, 100, 300, 100, super.getSkin());
 			continueButton.addListener(new ClickListener() {
 
