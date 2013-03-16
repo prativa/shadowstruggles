@@ -67,9 +67,9 @@ public class LoadingScreen extends BaseScreen {
 		// Load main textures.
 		
 		game.getAssets().load("data/images/controls/right.png", Texture.class);
-		game.getAssets().load("data/images/controls/Minus.png", Texture.class);
-		game.getAssets().load("data/images/controls/Plus.png", Texture.class);
-		game.getAssets().load("data/images/controls/Mute.png", Texture.class);
+		game.getAssets().load("data/images/controls/minus.png", Texture.class);
+		game.getAssets().load("data/images/controls/plus.png", Texture.class);
+		game.getAssets().load("data/images/controls/mute.png", Texture.class);
 		game.getAssets().load("data/images/controls/Profiles.png",
 				Texture.class);
 		game.getAssets().load("data/images/objects/deck.png", Texture.class);
@@ -77,12 +77,12 @@ public class LoadingScreen extends BaseScreen {
 				Texture.class);
 		game.getAssets().load("data/images/objects/energy100.png",
 				Texture.class);
-		game.getAssets().load("data/images/objects/background.png",
-				Texture.class);
-		game.getAssets().load("data/images/objects/msbackground.png",
-				Texture.class);
+//		game.getAssets().load("data/images/objects/background.png",
+//				Texture.class);
+//		game.getAssets().load("data/images/objects/msbackground.png",
+//				Texture.class);
 		game.getAssets().load("data/images/objects/life100.png", Texture.class);
-		game.getAssets().load("data/images/objects/pentagram.png",
+		game.getAssets().load("data/images/objects/hexagram.png",
 				Texture.class);
 		game.getAssets().load("data/images/objects/back_card.png",
 				Texture.class);
