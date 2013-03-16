@@ -42,11 +42,15 @@ public class StartScreen extends BaseScreen {
 //	@Override
 //	public void resize(int width, int height) {
 //		super.resize(width, height);
-//		initComponents();
 //	}
 //	
 //	public void initComponents() {
 //		stage.clear();
+//	}
+//	
+//	@Override
+//	public void show() {
+//		super.show();
 //		
 //		continueGame = new TextButton(game.getManager().getMenuText().continueGame, this.getSkin().get("blur", TextButtonStyle.class));
 //		newGame = new TextButton(game.getManager().getMenuText().newGame, this.getSkin().get("blur", TextButtonStyle.class));
@@ -58,17 +62,9 @@ public class StartScreen extends BaseScreen {
 //		tripod = new Image(this.getSkin().getDrawable("tripod"));
 //		scrollStates = new ScrollPane(null);
 //		
-//		Table table = new Table();
-//		table.row();
-//		table.add(continueGame).fillX().expandX();
+//		table.add(continueGame);
 //		table.row();
 //		table.add(newGame);
-//		table.row();
-//		table.add(teste);
-//		table.row();
-//		table.add(tripod);
-//		
-//		stage.addActor(table);
 //	}
 
 	private Image background;

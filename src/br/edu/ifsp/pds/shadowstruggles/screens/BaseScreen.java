@@ -14,6 +14,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 
 public abstract class BaseScreen implements Screen {
 	protected static final int BACKGROUND_Y = 160;
@@ -33,6 +34,7 @@ public abstract class BaseScreen implements Screen {
 	protected int screenHeight;
 	protected OrthographicCamera camera;
 	protected Settings settings;
+	protected Table table;
 
 	public BaseScreen(ShadowStruggles game, Controller controller) {
 		this.game = game;
@@ -45,6 +47,10 @@ public abstract class BaseScreen implements Screen {
 		this.camera.zoom = ((float) 960 / (float) width);
 		this.camera.position.x = CAMERA_INITIAL_X;
 		this.stage.setCamera(camera);
+
+		this.table = new Table();
+		table.setFillParent(true);
+		this.stage.addActor(table);
 	}
 
 	/**
@@ -65,8 +71,8 @@ public abstract class BaseScreen implements Screen {
 	public Skin getSkin() {
 		if (skin == null) {
 			skin = new Skin(Gdx.files.internal("data/files/skin.json"),
-					new TextureAtlas(
-							Gdx.files.internal("data/images/controls/skin.atlas")));
+					new TextureAtlas(Gdx.files
+							.internal("data/images/controls/skin.atlas")));
 		}
 
 		return skin;
