@@ -70,22 +70,27 @@ public class Controller {
 		float initialX = 0;
 		if ((handCard.getImage()).getClass().equals(HandCard.class))
 			initialX = ((HandCard) handCard.getImage()).getInitialX();
-		Image cardImage = new Image();
+		
 		if (handCard.getClass().equals(Fighter.class)) {
 			Fighter2D f2d = new Fighter2D((Fighter) handCard,
 					currentScreen.getGame());
 			f2d.create();
-			cardImage = f2d;
+			addCardToMap(handCard, f2d, tile, lane);
 		} else if (handCard.getClass().equals(Effect.class)) {
 			Effect2D e2d = (Effect2D) new Effect2D((Effect) handCard,
 					this.currentScreen.getGame());
 			e2d.create();
-			cardImage = e2d;
+			addCardToMap(handCard, e2d, tile, lane);
 		} else if (handCard.getClass().equals(Trap.class)) {
 			Trap2D t2d = new Trap2D((Trap) handCard, currentScreen.getGame());
 			t2d.create();
-			cardImage = t2d;
+			addCardToMap(handCard, t2d, tile, lane);
 		}
+		rearrangeCards(initialX);
+	}
+	
+	
+	private void addCardToMap(Card handCard, Image cardImage, int tile, int lane){
 		platform.getMap().addCard(handCard, tile, lane);
 		currentScreen.addGameObject(cardImage);
 		platform.getPlayerHandCards().removeValue(platform.getSelectedCard(),
@@ -100,9 +105,7 @@ public class Controller {
 			Effect2D e2d = (Effect2D) cardImage;
 			e2d.getEffect().action(platform, cardImage, 0);
 		}
-		currentScreen.getGame().getAudio().playSound("button_7");
-		rearrangeCards(initialX);
-
+		currentScreen.getGame().getAudio().playSound("button_7");		
 	}
 
 	private void activateEffect(Card handCard, int lane, int tile) {
