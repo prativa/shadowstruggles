@@ -41,7 +41,7 @@ public class HandCard extends FixedObject implements InputProcessor {
 				0, 360, 480), initialX, true);
 
 		this.illustration = new TextureRegion(new Texture(
-				Gdx.files.internal("data/images/sprites/DR-002/card.png")), 0,
+				Gdx.files.internal("data/images/sprites/"+name+"/card.png")), 0,
 				0, 360, 480);
 		((TextureRegionDrawable) super.getDrawable()).setRegion(illustration);
 
