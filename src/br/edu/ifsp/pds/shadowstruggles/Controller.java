@@ -26,6 +26,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 public class Controller {
 	private BaseScreen currentScreen;
 	private BattlePlatform platform;
+	
+	
+	//---------------------------------------------EVENT HANDLE----------------------------------------------------
 
 	public void mapClicked(float x, float y) {
 		int lane = (int) ((y - 48) / 72);
@@ -57,6 +60,147 @@ public class Controller {
 
 		}
 	}
+	
+	public void backCardClicked(int lane, int tile) {
+		Card handCard = platform.getSelectedCard();
+		if (handCard.getClass().equals(Effect.class)
+				&& ((Effect) handCard).isOnFighter()) {
+			activateEffect(handCard, lane, tile);
+			platform.setSelectedCard(null);
+			((BattleScreen) currentScreen).changeHexagram(false);
+		} else
+			returnHandCard();
+	}
+	
+	public void pentagramClicked(int lane, int tile) {
+		BattleScreen battleScreen = (BattleScreen) currentScreen;
+		Card handCard = platform.getSelectedCard();
+		this.playerEnergyChanged(-handCard.getEnergyCost());
+		battleScreen.changeHexagram(false);
+		if (handCard.getClass().equals(Fighter.class)) {
+			summonFighter(handCard, lane, tile);
+
+		} else if (handCard.getClass().equals(Effect.class)
+				&& !((Effect) handCard).isOnFighter()) {
+			activateEffect(handCard, lane, tile);
+		} else if (handCard.getClass().equals(Trap.class)) {
+			putTrap(handCard, lane, tile);
+		}
+		platform.setSelectedCard(null);
+	}
+
+	public void handCardClicked(Card handCard, boolean isSelected) {
+		if (isSelected) {
+			for (Card card : platform.getPlayerHandCards()) {
+				if (card.getImage().getClass().equals(HandCard.class)) {
+					((HandCard) (card.getImage())).resetBlink();
+					if (!card.equals(handCard))
+						((HandCard) (card.getImage())).setSelected(false);
+				}
+			}
+			platform.setSelectedCard(handCard);
+		} else {
+			for (Card card : platform.getPlayerHandCards()) {
+				if (card.getImage().getClass().equals(HandCard.class)) {
+					((HandCard) (card.getImage())).resetBlink();
+				}
+			}
+			platform.setSelectedCard(null);
+		}
+		((BattleScreen) currentScreen).changeHexagram(isSelected);
+
+	}
+
+	public void deckClicked() {
+		BattleScreen battleScreen = (BattleScreen) currentScreen;
+		if (battleScreen.getTimeDelay() <= 0) {
+			if (platform.getPlayerDeck().getCards().size > 0
+					&& platform.getPlayerHandCards().size < 5) {
+				Card card = platform.getPlayerDeck().draw();
+
+				((BattleScreen) currentScreen).insertHandCard(card);
+				platform.addPlayerHandCard(card);
+				battleScreen
+						.setTimeDelay((float) battleScreen.getSettings().drawInterval);
+				battleScreen.getDeck().setReady(false);
+				battleScreen.getDeck().stopBlink();
+			}
+		}
+	}
+	
+	public void menuButtonClicked(ShadowStruggles game) {
+		game.setScreenWithTransition(new InGameMenu(game, game.getController(),
+				(BattleScreen) game.getScreen()));
+	}
+	
+	/***
+	 * Updates the player life to the BattlePlatform and LifeBar objects.
+	 * 
+	 * @param amount
+	 *            If negative, it means the player has taken the amount of
+	 *            damage. If positive, it means the player was healed by the
+	 *            specified amount.
+	 */
+	
+	
+
+	public void playerLifeChanged(int amount) {		
+		int newLife = this.platform.getRules().getPlayerHP() + amount;
+		int maxLife= this.platform.getRules().getPlayerHPmax();
+		this.platform.getRules().setPlayerHP(verifyValueChange(newLife, maxLife));		
+		try {
+
+			((BattleScreen) this.currentScreen).getPlayerLife().setPercentage(
+					this.platform.getRules().getPlayerHpPercent());
+		} catch (Exception ex) {
+		}
+
+	}
+
+	/***
+	 * Updates the enemy life to the BattlePlatform and LifeBar objects.
+	 * 
+	 * @param amount
+	 *            If negative, it means the enemy has taken the amount of
+	 *            damage. If positive, it means the enemy was healed by the
+	 *            specified amount.
+	 */
+
+	public void enemyLifeChanged(int amount) {
+		int newLife = this.platform.getRules().getEnemyHP() + amount;
+		int maxLife = this.platform.getRules().getEnemyHPmax();
+
+		this.platform.getRules().setEnemyHP(verifyValueChange(newLife, maxLife));
+		((BattleScreen) this.currentScreen).getEnemyLife().setPercentage(
+				this.platform.getRules().getEnemyHpPercent());
+	}
+
+	
+	
+	
+	
+	public void playerEnergyChanged(int amount) {		
+		int newEnergy = this.platform.getRules().getPlayerEnergy() + amount;
+		int maxEnergy= this.platform.getRules().getPlayerEnergyMax();		
+		this.platform.getRules().setPlayerEnergy(verifyValueChange(newEnergy, maxEnergy));
+		((BattleScreen) this.currentScreen).getEnergyBar().setPercentage(
+				this.platform.getRules().getPlayerEnergyPercent());
+	}
+
+	public void enemyEnergyChanged(int amount) {		
+		int newEnergy = this.platform.getRules().getEnemyEnergy() + amount;
+		int maxEnergy= this.platform.getRules().getPlayerEnergyMax();		
+		this.platform.getRules().setEnemyEnergy(verifyValueChange(newEnergy, maxEnergy));
+	}
+
+	public void tileChanged(Fighter card) {
+		this.platform.getMap().getTiles().get(card.getTile())
+				.get(card.getLane()).removeValue(card, true);
+		this.platform.getMap().addCard(card,
+				card.getTile() + card.getDirection(), (card.getLane()));
+	}
+	
+	//----------------------------------------------ACTION METHODS---------------------------------------------------
 
 	private void playCard(Card handCard, int lane, int tile) {
 		handCard.setLane(lane);
@@ -120,28 +264,8 @@ public class Controller {
 		playCard(handCard, lane, tile);
 	}
 
-	public void backCardClicked(int lane, int tile) {
-		Card handCard = platform.getSelectedCard();
-		if (handCard.getClass().equals(Effect.class)
-				&& ((Effect) handCard).isOnFighter()) {
-			activateEffect(handCard, lane, tile);
-			platform.setSelectedCard(null);
-			((BattleScreen) currentScreen).changeHexagram(false);
-		} else
-			returnHandCard();
-	}
+	
 
-	@SuppressWarnings("unused")
-	private int nextAvailableSlot(int lane) {
-		int next = 4;
-		for (BackCard backCard : ((BattleScreen) currentScreen).getBackcards()) {
-			if (backCard.isVisible()
-					&& ((int) ((backCard.getImageY() - 48) / 72)) - 2 == lane) {
-				next--;
-			}
-		}
-		return next;
-	}
 
 	private void returnHandCard() {
 		for (Actor actor : currentScreen.getStage().getActors())
@@ -165,161 +289,7 @@ public class Controller {
 			}
 		}
 	}
-
-	public void pentagramClicked(int lane, int tile) {
-		BattleScreen battleScreen = (BattleScreen) currentScreen;
-		Card handCard = platform.getSelectedCard();
-		this.playerEnergyChanged(-handCard.getEnergyCost());
-		battleScreen.changeHexagram(false);
-		if (handCard.getClass().equals(Fighter.class)) {
-			summonFighter(handCard, lane, tile);
-
-		} else if (handCard.getClass().equals(Effect.class)
-				&& !((Effect) handCard).isOnFighter()) {
-			activateEffect(handCard, lane, tile);
-		} else if (handCard.getClass().equals(Trap.class)) {
-			putTrap(handCard, lane, tile);
-		}
-		platform.setSelectedCard(null);
-	}
-
-	public void handCardClicked(Card handCard, boolean isSelected) {
-		if (isSelected) {
-			for (Card card : platform.getPlayerHandCards()) {
-				if (card.getImage().getClass().equals(HandCard.class)) {
-					((HandCard) (card.getImage())).resetBlink();
-					if (!card.equals(handCard))
-						((HandCard) (card.getImage())).setSelected(false);
-				}
-			}
-			platform.setSelectedCard(handCard);
-		} else {
-			for (Card card : platform.getPlayerHandCards()) {
-				if (card.getImage().getClass().equals(HandCard.class)) {
-					((HandCard) (card.getImage())).resetBlink();
-				}
-			}
-			platform.setSelectedCard(null);
-		}
-		((BattleScreen) currentScreen).changeHexagram(isSelected);
-
-	}
-
-	public void deckClicked() {
-		BattleScreen battleScreen = (BattleScreen) currentScreen;
-		if (battleScreen.getTimeDelay() <= 0) {
-			if (platform.getPlayerDeck().getCards().size > 0
-					&& platform.getPlayerHandCards().size < 5) {
-				Card card = platform.getPlayerDeck().draw();
-
-				((BattleScreen) currentScreen).insertHandCard(card);
-				platform.addPlayerHandCard(card);
-				battleScreen
-						.setTimeDelay((float) battleScreen.getSettings().drawInterval);
-				battleScreen.getDeck().setReady(false);
-				battleScreen.getDeck().stopBlink();
-			}
-		}
-	}
-
-	/***
-	 * Updates the player life to the BattlePlatform and LifeBar objects.
-	 * 
-	 * @param amount
-	 *            If negative, it means the player has taken the amount of
-	 *            damage. If positive, it means the player was healed by the
-	 *            specified amount.
-	 */
 	
-	
-
-	public void playerLifeChanged(int amount) {		
-		int newLife = this.platform.getRules().getPlayerHP() + amount;
-		int maxLife= this.platform.getRules().getPlayerHPmax();
-		this.platform.getRules().setPlayerHP(verifyValueChange(newLife, maxLife));		
-		try {
-
-			((BattleScreen) this.currentScreen).getPlayerLife().setPercentage(
-					this.platform.getRules().getPlayerHpPercent());
-		} catch (Exception ex) {
-		}
-
-	}
-
-	/***
-	 * Updates the enemy life to the BattlePlatform and LifeBar objects.
-	 * 
-	 * @param amount
-	 *            If negative, it means the enemy has taken the amount of
-	 *            damage. If positive, it means the enemy was healed by the
-	 *            specified amount.
-	 */
-
-	public void enemyLifeChanged(int amount) {
-		int newLife = this.platform.getRules().getEnemyHP() + amount;
-		int maxLife = this.platform.getRules().getEnemyHPmax();
-
-		this.platform.getRules().setEnemyHP(verifyValueChange(newLife, maxLife));
-		((BattleScreen) this.currentScreen).getEnemyLife().setPercentage(
-				this.platform.getRules().getEnemyHpPercent());
-	}
-
-	
-	
-	public int verifyValueChange(int newValue, int maxValue){	
-		/*
-		 * If new value is in normal range, apply changes without correction.
-		 * If new value is less than zero, set new value to zero. If new
-		 * value is greater than maximum value, set new value to maximum
-		 * value. */		
-		if (newValue >= 0
-				&& newValue <= maxValue) {
-			return newValue;
-		} else if (newValue < 0) {
-			return 0;
-		} else if (newValue > maxValue) {
-			return maxValue;
-		}
-		return 0;
-	}
-	
-	public void playerEnergyChanged(int amount) {		
-		int newEnergy = this.platform.getRules().getPlayerEnergy() + amount;
-		int maxEnergy= this.platform.getRules().getPlayerEnergyMax();		
-		this.platform.getRules().setPlayerEnergy(verifyValueChange(newEnergy, maxEnergy));
-		((BattleScreen) this.currentScreen).getEnergyBar().setPercentage(
-				this.platform.getRules().getPlayerEnergyPercent());
-	}
-
-	public void enemyEnergyChanged(int amount) {		
-		int newEnergy = this.platform.getRules().getEnemyEnergy() + amount;
-		int maxEnergy= this.platform.getRules().getPlayerEnergyMax();		
-		this.platform.getRules().setEnemyEnergy(verifyValueChange(newEnergy, maxEnergy));
-	}
-
-	public void tileChanged(Fighter card) {
-		this.platform.getMap().getTiles().get(card.getTile())
-				.get(card.getLane()).removeValue(card, true);
-		this.platform.getMap().addCard(card,
-				card.getTile() + card.getDirection(), (card.getLane()));
-	}
-
-	public BaseScreen getCurrentScreen() {
-		return currentScreen;
-	}
-
-	public void setCurrentscreen(BaseScreen currentScreen) {
-		this.currentScreen = currentScreen;
-	}
-
-	public BattlePlatform getPlatform() {
-		return platform;
-	}
-
-	public void setPlatform(BattlePlatform platform) {
-		this.platform = platform;
-	}
-
 	public void updateTimer(float delta) {
 		this.platform.getRules().update(delta);
 
@@ -349,8 +319,62 @@ public class Controller {
 
 	}
 
-	public void menuButtonClicked(ShadowStruggles game) {
-		game.setScreenWithTransition(new InGameMenu(game, game.getController(),
-				(BattleScreen) game.getScreen()));
+	//-----------------------------------------------------------------CALC METHODS---------------------------------------
+	
+
+	@SuppressWarnings("unused")
+	private int nextAvailableSlot(int lane) {
+		int next = 4;
+		for (BackCard backCard : ((BattleScreen) currentScreen).getBackcards()) {
+			if (backCard.isVisible()
+					&& ((int) ((backCard.getImageY() - 48) / 72)) - 2 == lane) {
+				next--;
+			}
+		}
+		return next;
 	}
+	
+	public int verifyValueChange(int newValue, int maxValue){	
+		/*
+		 * If new value is in normal range, apply changes without correction.
+		 * If new value is less than zero, set new value to zero. If new
+		 * value is greater than maximum value, set new value to maximum
+		 * value. */		
+		if (newValue >= 0
+				&& newValue <= maxValue) {
+			return newValue;
+		} else if (newValue < 0) {
+			return 0;
+		} else if (newValue > maxValue) {
+			return maxValue;
+		}
+		return 0;
+	}
+	
+	
+	
+	
+	//----------------------------------------------------GETTERS/SETTERS---------------------------------------------------
+	
+
+	public BaseScreen getCurrentScreen() {
+		return currentScreen;
+	}
+
+	public void setCurrentscreen(BaseScreen currentScreen) {
+		this.currentScreen = currentScreen;
+	}
+
+	public BattlePlatform getPlatform() {
+		return platform;
+	}
+
+	public void setPlatform(BattlePlatform platform) {
+		this.platform = platform;
+	}
+
+	
+	
+
+	
 }

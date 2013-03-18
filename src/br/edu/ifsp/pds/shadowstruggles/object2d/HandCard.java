@@ -40,9 +40,9 @@ public class HandCard extends FixedObject implements InputProcessor {
 				"data/images/sprites/" + name + "/card.png", Texture.class), 0,
 				0, 360, 480), initialX, true);
 
-		this.illustration = new TextureRegion(new Texture(
-				Gdx.files.internal("data/images/sprites/"+name+"/card.png")), 0,
-				0, 360, 480);
+		this.illustration = new TextureRegion(
+				new Texture(Gdx.files.internal("data/images/sprites/" + name
+						+ "/card.png")), 0, 0, 360, 480);
 		((TextureRegionDrawable) super.getDrawable()).setRegion(illustration);
 
 		this.card = card;
@@ -55,12 +55,34 @@ public class HandCard extends FixedObject implements InputProcessor {
 		this.justTouched = false;
 		this.dragging = false;
 	}
+	
+	//----------------------------------------CLASS METHODS--------------------------------------------------------------
 
 	public void move(Stage st, int cameraInitialX) {
 		if (!dragging)
 			this.setX(this.getInitialX() + st.getCamera().position.x
 					- cameraInitialX);
 	}
+	
+	public void startBlink() {
+		this.addAction(Actions.forever(Actions.sequence(Actions.fadeOut(0.3f),
+				Actions.fadeIn(0.3f))));
+	}
+
+	public void resetBlink() {
+		this.clearActions();
+		this.addAction(Actions.fadeIn(0.3f));
+	}
+	
+	public void resetPosition() {
+		this.setX(getInitialX()
+				+ (int) (game.getController().getCurrentScreen().getCamera().position.x - BaseScreen.CAMERA_INITIAL_X));
+		this.setY(game.getController().getCurrentScreen().getSettings().bottomElementY);
+		this.setScaleX(SCALE_X);
+		this.setScaleY(SCALE_Y);
+	}
+	
+	//----------------------------------------GETTERS/SETTERS-------------------------------------------------------------
 
 	public int getType() {
 		return type;
@@ -84,18 +106,7 @@ public class HandCard extends FixedObject implements InputProcessor {
 
 	public boolean isDragging() {
 		return this.dragging;
-	}
-
-	public void startBlink() {
-		this.addAction(Actions.forever(Actions.sequence(Actions.fadeOut(0.3f),
-				Actions.fadeIn(0.3f))));
-
-	}
-
-	public void resetBlink() {
-		this.clearActions();
-		this.addAction(Actions.fadeIn(0.3f));
-	}
+	}	
 
 	public boolean isSelected() {
 		return isSelected;
@@ -104,22 +115,31 @@ public class HandCard extends FixedObject implements InputProcessor {
 	public void setSelected(boolean isSelected) {
 		this.isSelected = isSelected;
 	}
+	
+	//---------------------------------------EVENT METHODS ------------------------------------------------------------
+
+	private int getInvertY(int y) {
+		return (int) ((game.getController().getCurrentScreen().getHeight() - y) * (float) ((float) game
+				.getController().getCurrentScreen().getSettings().screenHeight / (float) game
+				.getController().getCurrentScreen().getHeight()));
+	}
+
+	private int calcX(int x) {
+		return (int) (x * (float) ((float) game.getController()
+				.getCurrentScreen().getSettings().screenWidth / (float) game
+				.getController().getCurrentScreen().getWidth()));
+	}
+
+	private int getDeltaCamX() {
+		return (int) (game.getController().getCurrentScreen().getCamera().position.x - BaseScreen.CAMERA_INITIAL_X);
+	}
 
 	@Override
 	public boolean touchDown(int x, int y, int pointer, int button) {
-		int invertY = (int) ((game.getController().getCurrentScreen()
-				.getHeight() - y) * (float) ((float) game.getController()
-				.getCurrentScreen().getSettings().screenHeight / (float) game
-				.getController().getCurrentScreen().getHeight()));
-		x = (int) (x * (float) ((float) game.getController().getCurrentScreen()
-				.getSettings().screenWidth / (float) game.getController()
-				.getCurrentScreen().getWidth()));
-
-		int deltaCamX = (int) (game.getController().getCurrentScreen()
-				.getCamera().position.x - BaseScreen.CAMERA_INITIAL_X);
-
-		if (x + deltaCamX >= this.getX()
-				&& x + deltaCamX <= this.getX() + this.getWidth()
+		int invertY = getInvertY(y);
+		x = calcX(x);
+		if (x + getDeltaCamX() >= this.getX()
+				&& x + getDeltaCamX() <= this.getX() + this.getWidth()
 						* this.getScaleX() && invertY >= this.getY()
 				&& invertY <= this.getY() + this.getHeight() * this.getScaleY()) {
 			touched = true;
@@ -139,20 +159,13 @@ public class HandCard extends FixedObject implements InputProcessor {
 
 	@Override
 	public boolean touchUp(int x, int y, int pointer, int button) {
-		int invertY = (int) ((game.getController().getCurrentScreen()
-				.getHeight() - y) * (float) ((float) game.getController()
-				.getCurrentScreen().getSettings().screenHeight / (float) game
-				.getController().getCurrentScreen().getHeight()));
-		x = (int) (x * (float) ((float) game.getController().getCurrentScreen()
-				.getSettings().screenWidth / (float) game.getController()
-				.getCurrentScreen().getWidth()));
-		int deltaCamX = (int) (game.getController().getCurrentScreen()
-				.getCamera().position.x - BaseScreen.CAMERA_INITIAL_X);
+		int invertY = getInvertY(y);
+		x = calcX(x);
 
 		if (touched) {
 			if (!dragging) {
-				if (x + deltaCamX >= this.getX()
-						&& x + deltaCamX <= this.getX() + this.getWidth()
+				if (x + getDeltaCamX() >= this.getX()
+						&& x + getDeltaCamX() <= this.getX() + this.getWidth()
 								* this.getScaleX()
 						&& invertY >= this.getY()
 						&& invertY <= this.getY() + this.getHeight()
@@ -161,7 +174,6 @@ public class HandCard extends FixedObject implements InputProcessor {
 						isSelected = true;
 					else
 						isSelected = false;
-					
 
 					if (isSelected) {
 						game.getController().handCardClicked(getCard(),
@@ -192,15 +204,8 @@ public class HandCard extends FixedObject implements InputProcessor {
 
 	@Override
 	public boolean touchDragged(int x, int y, int pointer) {
-		int invertY = (int) ((game.getController().getCurrentScreen()
-				.getHeight() - y) * (float) ((float) game.getController()
-				.getCurrentScreen().getSettings().screenHeight / (float) game
-				.getController().getCurrentScreen().getHeight()));
-		x = (int) (x * (float) ((float) game.getController().getCurrentScreen()
-				.getSettings().screenWidth / (float) game.getController()
-				.getCurrentScreen().getWidth()));
-		int deltaCamX = (int) (game.getController().getCurrentScreen()
-				.getCamera().position.x - BaseScreen.CAMERA_INITIAL_X);
+		int invertY = getInvertY(y);
+		x = calcX(x);
 
 		if (justTouched) {
 			game.getController().handCardClicked(this.getCard(), true);
@@ -216,7 +221,8 @@ public class HandCard extends FixedObject implements InputProcessor {
 				clickedX = -100;
 				clickedY = -100;
 			}
-			this.setX(x - this.getWidth() * this.getScaleX() / 2 + deltaCamX);
+			this.setX(x - this.getWidth() * this.getScaleX() / 2
+					+ getDeltaCamX());
 			this.setY(invertY - this.getHeight() * this.getScaleY() / 2);
 
 			return true;
@@ -224,13 +230,7 @@ public class HandCard extends FixedObject implements InputProcessor {
 		return false;
 	}
 
-	public void resetPosition() {
-		this.setX(getInitialX()
-				+ (int) (game.getController().getCurrentScreen().getCamera().position.x - BaseScreen.CAMERA_INITIAL_X));
-		this.setY(game.getController().getCurrentScreen().getSettings().bottomElementY);
-		this.setScaleX(SCALE_X);
-		this.setScaleY(SCALE_Y);
-	}
+	
 
 	@Override
 	public boolean keyDown(int keycode) {

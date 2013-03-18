@@ -2,9 +2,7 @@ package br.edu.ifsp.pds.shadowstruggles.object2d;
 
 import br.edu.ifsp.pds.shadowstruggles.ShadowStruggles;
 
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
