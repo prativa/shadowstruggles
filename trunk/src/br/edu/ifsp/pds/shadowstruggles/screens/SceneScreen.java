@@ -37,7 +37,12 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 	private Image next;
 	private TextButton[] choices;
 	private Image box;
+	private Image nextDialog;
 	private TextButton menu;
+	private String currentText;
+	private int currentTextIndex;
+	
+	
 
 	private InputMultiplexer inputSources;
 
@@ -45,14 +50,17 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 		super(game, controller);
 		this.game = game;
 		this.scene = game.getProfile().getCurrentScene();
+		currentTextIndex=0;
 		inputSources = new InputMultiplexer();
 		initComponents();
 
 	}
 
 	private void initComponents() {
+		
+		currentText=splitScript()[currentTextIndex];
 
-		this.text = new Label(scene.getScript(), super.getSkin());
+		this.text = new Label(currentText, super.getSkin());
 		
 		if (!scene.getBackgroundMusic().equals("")) {
 			game.getAudio().stop();
@@ -85,26 +93,33 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 		text.setWrap(true);
 		text.setHeight(text.getPrefHeight());
 		text.setX(80);
-		text.setY(640 - text.getHeight() - 50);
+		text.setY(580 - text.getHeight() - 50);
 
 		box = new Image(game.getAssets()
 				.get("data/images/objects/objects.atlas", TextureAtlas.class)
 				.findRegion("box"));
 		box.setWidth(text.getWidth() + 50);
-		box.setHeight(text.getHeight() + 50);
+		//box.setHeight(text.getHeight() + 50);
+		box.setHeight(500);
 		box.setX(55);
-		box.setY(text.getY() - 25);
+		//box.setY(text.getY() - 25);
+		box.setY(100);
 
 		next = new TransitionControl(1, this.getSkin());
 		next.addListener(new ClickListener(){
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				nextScreen();
+				//nextScreen();
+				currentTextIndex++;
+				updateText();
 				super.clicked(event, x, y);
+				game.getAudio().playSound("button_7");
 			}
 		});
 
 		next.setScaleY(6.0f);
+		//TODO: adicionar botão nextDialog para avançar os dialogos
+		nextDialog= new Image();
 
 		menu = new TextButton("M", getSkin());
 		menu = ScreenUtils.defineButton(menu, next.getX() - 15, 70, 50, 50, super.getSkin());
@@ -159,6 +174,20 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 		} else
 			stage.addActor(next);
 	}
+	
+	private void updateText(){
+		if(currentTextIndex < splitScript().length){
+			currentText=splitScript()[currentTextIndex];
+			if(currentText.length()>2){
+			text.setText(currentText);
+			text.setHeight(text.getPrefHeight());
+			text.setY(580 - text.getHeight() - 50);
+			}else {
+				currentTextIndex++;
+				updateText();
+			}
+		}else nextScreen();
+	}
 
 	public void nextScreen() {
 		if (scene.getId() == 1000) {
@@ -175,6 +204,10 @@ public class SceneScreen extends BaseScreen implements InputProcessor {
 			game.getManager().writeProfile(game.getProfile());
 			game.setScreenWithTransition(new SceneScreen(game, controller));
 		}
+	}
+	
+	private String[] splitScript(){
+		return scene.getScript().split("\n");
 	}
 
 	@Override
