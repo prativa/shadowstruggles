@@ -85,6 +85,8 @@ public class LoadingScreen extends BaseScreen {
 //				Texture.class);
 		game.getAssets().load("data/images/objects/energy100.png",
 				Texture.class);
+		//TODO: adicionar next-dialog no Atlas
+		game.getAssets().load("data/images/controls/next-dialog.png", Texture.class);
 		game.getAssets().load("data/images/objects/objects.atlas", TextureAtlas.class);
 
 		// Load music and sound effects.

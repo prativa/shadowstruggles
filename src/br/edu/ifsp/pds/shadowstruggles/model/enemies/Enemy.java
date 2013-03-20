@@ -1,5 +1,7 @@
 package br.edu.ifsp.pds.shadowstruggles.model.enemies;
 
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+
 import br.edu.ifsp.pds.shadowstruggles.Controller;
 import br.edu.ifsp.pds.shadowstruggles.model.BattlePlatform;
 import br.edu.ifsp.pds.shadowstruggles.model.Card;
@@ -38,29 +40,24 @@ public abstract class Enemy {
 		card.setLane(lane);
 		card.setTile(tile);
 		card.setDirection(-card.getDirection());
-
+		Image cardImage = new Image();
 		if (card.getClass().equals(Fighter.class)) {
-			Fighter2D i2d = new Fighter2D((Fighter) card,
+			Fighter2D f2d = new Fighter2D((Fighter) card,
 					screen.getGame());
-			i2d.create();
-			card.setImage(i2d);
-			platform.getMap().addCard(card, tile, lane);
+			f2d.create();
 			card.setMarkLane(lane);
-			screen.addGameObject(i2d);
-			
-			
+			cardImage=f2d;		
 		} else if (card.getClass().equals(Effect.class)) {
-			Effect2D i2d = new Effect2D((Effect) card, screen.getGame());
-			i2d.create();
-			card.setImage(i2d);
-			platform.getMap().addCard(card, tile, lane);
-			screen.addGameObject(i2d);
+			Effect2D e2d = new Effect2D((Effect) card, screen.getGame());
+			e2d.create();
+			cardImage=e2d;
 		} else if (card.getClass().equals(Trap.class)) {
-			Trap2D i2d = new Trap2D((Trap) card, screen.getGame());
-			i2d.create();
-			card.setImage(i2d);
-			platform.getMap().addCard(card, tile, lane);
-			screen.addGameObject(i2d);
-		}
+			Trap2D t2d = new Trap2D((Trap) card, screen.getGame());
+			t2d.create();
+			cardImage=t2d;
+		}		
+		card.setImage(cardImage);
+		platform.getMap().addCard(card, tile, lane);
+		screen.addGameObject(cardImage);
 	}
 }
