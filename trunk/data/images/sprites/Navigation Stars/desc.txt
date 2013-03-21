@@ -1,1 +1,0 @@
-Recovers the last two destroyed cards from the player back to his hand. Additionally, if Astrology is active on the player’s field, a random fighter from the enemy is immediately activated as an allied fighter on a random slot.
