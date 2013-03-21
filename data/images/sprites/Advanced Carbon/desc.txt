@@ -1,1 +1,0 @@
-Reinforces the player’s base with a very resistant layer of diamond, which takes up to 15 units of damage directed at the base. If Mineralogy is active, transmutates any rocks or graphite ores into diamonds, which take up to 30 units of damage, and grants 10 more units of health to Golem.

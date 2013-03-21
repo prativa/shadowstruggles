@@ -1,1 +1,0 @@
-Transmutes all rocks on the player’s field to graphite ores, each able to withstand 20 units of damage.
