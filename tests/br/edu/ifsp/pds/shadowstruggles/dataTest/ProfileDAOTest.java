@@ -1,4 +1,4 @@
-package br.edu.ifsp.pds.shadowstruggles.tests;
+package br.edu.ifsp.pds.shadowstruggles.dataTest;
 
 import static org.junit.Assert.*;
 
