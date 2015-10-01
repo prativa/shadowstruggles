@@ -1,0 +1,1 @@
+Shadow Struggles is a cross-platform strategy game for Android and desktop. The player competes against the machine defending his base and trying to destroy the enemy base.
